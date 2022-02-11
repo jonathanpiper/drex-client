@@ -1,0 +1,792 @@
+{
+    "title": "Getting Louder",
+    "body": "<p>By the 1920s, the big band craze had driven many ensembles to be larger and louder than what even the widest archtop guitars could keep up with. These bands incorporated trumpets, trombones, saxophones, drums, and often a piano. Many guitarists found that they simply needed louder instruments. Luthiers and engineers began experimenting with electricity to determine what this then-new technology could do to add volume. With the amplifying vacuum tube and moving coil speaker already having been invented in 1906 and 1924, respectively, luthiers were left to convert the guitar’s sound into electricity. The instruments here include some direct results, and some distant descendants, of this pioneering work.</p>",
+    "dwell": {
+        "images": [
+            "1A2-DWELL1.jpg",
+            "1A2-DWELL2.jpg",
+            "1A2-DWELL3.jpg"
+        ]
+    },
+    "stories": {
+        "label": "Stories",
+        "icon": "stories",
+        "content": [
+            {
+                "title": "Picking Up Sound",
+                "thumbnail": "1a2-storythumb-1.jpg",
+                "body": "<p>After his work with John Dopyera of the National String Instrument Company to create the resonator guitar, George Beauchamp sought to make his instrument even louder using electrical amplification. He initially experimented with microphones, which were prone to feeding back, before recognizing that the vibration of the guitar’s strings, rather than its body, was the most effective source for a signal to amplify. Using two large magnets and a length of wire, he created the pickup that enabled Ro-Pat-In (later renamed Rickenbacker) to release the A-22 “Frying Pan” electric lap steel guitar in 1932. Paired with an amplifier, the pickup made the Frying Pan loud enough to play with the large bands of the day.</p><p>Makers continued to innovate pickups with different magnets, variations in wiring, and even entirely new electric circuitry. These new designs have added the possibility for even more volume and sensitivity and a huge range of options for crafting unique tones.</p>",
+                "images": [
+                    {
+                        "full": "1-1-FULL.jpg",
+                        "thumbnail": "1-1-THUMB.jpg",
+                        "caption": "George Delmetia Beauchamp (left). Courtesy of Ron Middlebrook."
+                    },
+                    {
+                        "full": "1-2-FULL.jpg",
+                        "thumbnail": "1-2-THUMB.jpg",
+                        "caption": "Rickenbacker Lap Steel 1934 Patent Application."
+                    }
+                ]
+            },
+            {
+                "title": "Experimental Shapes",
+                "thumbnail": "1a2-storythumb-2.jpg",
+                "body": "<p>Because magnetic pickups take their signal directly from vibrating strings rather than a resonating body, luthiers making electric instruments are free to make instruments in just about any shape.</p><p>Rickenbacker’s Frying Pan, based on the Hawaiian lap guitar, eliminated almost all of that instrument’s body other than a small circular section supporting the pickup, bridge, and volume control. Fender’s solid-body Telecaster was larger than the Frying Pan, but still much shallower than an acoustic or hollow-body electric.</p><p>Unconstrained entirely by the need for a resonant body, luthiers pioneered new designs, styles, and even new instruments. Fender’s Precision Bass, in addition to being significantly smaller than an upright string bass, gave bass guitarists new opportunities for dexterity and virtuosity. Steinberger’s L-series bass eliminated the headstock completely to change the instrument’s balance. Lap, console, and pedal steel guitars opened up entirely new ways to play stringed instruments.</p>",
+                "images": [
+                    {
+                        "full": "2-1-FULL.jpg",
+                        "thumbnail": "2-1-THUMB.jpg",
+                        "caption": "Fender Guitar Factory, 1950s. Courtesy of Fender Guitar."
+                    },
+                    {
+                        "full": "2-2-FULL.jpg",
+                        "thumbnail": "2-2-THUMB.jpg",
+                        "caption": "Examples of electric guitar body shapes."
+                    }
+                ]
+            },
+            {
+                "title": "Turn It Up to 11!",
+                "thumbnail": "1a2-storythumb-3.jpg",
+                "body": "<p>Without amplification, many electric instruments would be almost silent – or at least much quieter.</p><p>Early guitar amplifiers, first released with matching electrified guitars in 1928 and as standalone units in 1933, were scaled-down versions of public address and movie theater sound systems. Portability was key, as they were primarily used in performances by guitarists who needed to be heard in a larger band. As popular tastes changed, particularly with the advent of rock and roll in the 1940s and 50s, many musicians demanded ever-increasing volume.</p><p>In the 1960s, guitarists Dick Dale and Pete Townshend worked with Leo Fender and Jim Marshall, respectively, to develop 100 watt amplifiers that would let them push their sound to incredible levels. The development of transistor-based, or solid-state, amplifiers led to even more power albeit with a different tone quality.</p><p>Many guitarists continue to play through vacuum tube-based amplifiers, while bass guitarists often rely on the greater power afforded by solid-state amplifiers: bass frequencies need to be amplified at a higher level to be heard as equally loud.</p>",
+                "images": [
+                    {
+                        "full": "3-1-FULL.jpg",
+                        "thumbnail": "3-1-FULL.jpg",
+                        "caption": "Jim Marshall’s First Music Store. Courtesy of Marshall."
+                    },
+                    {
+                        "full": "3-2-FULL.jpg",
+                        "thumbnail": "3-2-FULL.jpg",
+                        "caption": "Ampli à Lampes. Courtesy of Jelora (CC BY-NC-ND 2.0)."
+                    },
+                    {
+                        "full": "3-3-FULL.jpg",
+                        "thumbnail": "3-3-FULL.jpg",
+                        "caption": "Jim Marshall. Courtesy of Marshall."
+                    }
+                ]
+            }
+        ]
+    },
+    "artifacts": {
+        "label": "Artifacts",
+        "icon": "artifacts",
+        "content": [
+            {
+                "maker": "Fender Musical Instrument Company",
+                "title": "Bassman Amplifier and Cabinet",
+                "date": "1965",
+                "objectID": "L1998.6.3",
+                "body": "<p>The Fender Bassman was released shortly after the Precision Bass, as other bass-oriented amplifiers at the time tended to be underpowered. The first Bassman, introduced in 1952, was immediately lauded for its tone and volume. Over numerous revisions, the Bassman grew larger and louder, leading to hugely powerful Super Bassman amplifiers in the late 1960s. Fender continues to manufacture Bassman amplifiers combining vacuum tube preamplifiers and solid-state power amplifiers.</p>",
+                "credit": "On Loan from the Fender Museum",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 4000,
+                        "width": 5001,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Controls",
+                        "height": 4000,
+                        "width": 6017,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 4000,
+                        "width": 5001,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Marshall Amplification",
+                "title": "1959 Super Lead Amplifier<br/>1969ax Cabinet<br/>1960bx Cabinet",
+                "date": "1998, Early 1970s",
+                "objectID": "M2001.50.1-3",
+                "body": "<p>Driven largely by Fender’s successes with the high-powered Bassman and Showman, music storeowner Jim Marshall decided to pursue amplifier design and construction as more and more of his clients sought to make ever-louder music. Marshall’s first amplifier, the JTM 45, was closely based on the Bassman circuit but introduced a unique and quickly popular “Marshall sound.” The “Marshall stack” combination of an amplifier head like the 1959 Super Lead and two 1960 cabinets, came to define much of the sound of rock in the 1960s, 70s, and beyond.  To accompany the 1959 amplifier, Marshall initially designed a single, large speaker cabinet enclosing eight 12\" drivers. This cabinet proved to be too unwieldy for practical use, leading to the creation of two styles of “4x12” cabinets (each with four 12” drivers): the 1960a with an angled face, and the 1960b with a box shape. The two placed on top of each other define the “Marshall stack.”</p>",
+                "credit": "Gift of Korg USA, Inc.",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Controls",
+                        "height": 4000,
+                        "width": 6016,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Rickenbacker",
+                "title": "Frying Pan Guitar Amplifier",
+                "date": "1930s",
+                "objectID": "L2015.6.2",
+                "body": "<p>Early guitar amplifiers such as this one were likely sold bundled with corresponding instruments. Electric guitars and basses were largely novel at the time, and it would have been very uncommon for a musician to already have the guitar and not the amplifier, and vice versa. This example bears the name “Rickenbacher Electro,” from the original spelling of co-founder Adolph Rickenbacher’s name.</p>",
+                "credit": "On Loan from Rick King",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 4000,
+                        "width": 5002,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 4000,
+                        "width": 5002,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Carvin",
+                "title": "Model #209 Electric Guitar Amplifier",
+                "date": "1951",
+                "objectID": "L2021.8.1",
+                "body": "<p>Carvin Corporation was founded by Lowell C. Kiesel in San Diego in 1946 to manufacture guitar pickups and, by the early 1950s, lap steel guitars and amplifiers. This 1951 Model #209 amplifier uses five vacuum tubes producing 15 total watts and a 12” speaker. The pearl celluloid finish matched that of Carvin's lap steel guitars of the time.</p><p>The Carvin name, introduced in 1949, combined the names of Kiesel's oldest sons, Carson and Gavin. Through several moves, Carvin has remained headquartered in the San Diego area since its founding and, in 2021, celebrated its 75th anniversary. It remains a family-operated business, now in its third generation.</p>",
+                "credit": "On Loan from Carvin Corporation",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 4000,
+                        "width": 5004,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Controls",
+                        "height": 4000,
+                        "width": 6016,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 4000,
+                        "width": 5004,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Fender Musical Instrument Company",
+                "title": "Super Amp Guitar Amplifier",
+                "date": "1953",
+                "objectID": "L2012.20.2",
+                "body": "<p>The Fender Super-Amp descended from the company's Dual Professional amplifier, and featured two 10” Jensen speakers and a 25 watt circuit. Because of its dual-speaker design, the Super-Amp was wider than many of Fender's earlier amplifiers. It remains prized for its volume and tone, which can range widely from clear to heavily overdriven.</p>",
+                "credit": "On Loan from Curtis Ray Young",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 4000,
+                        "width": 5000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Controls",
+                        "height": 4000,
+                        "width": 6000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 4000,
+                        "width": 5000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "PremierVox",
+                "title": "Electric Guitar and Amplifier Case",
+                "date": "1935",
+                "objectID": "L2018.1.1",
+                "body": "<p>This PremierVox electric Spanish guitar was sold in the United Kingdom beginning in 1935, making it one of the first electric guitars available in that country. The body is made from molded Bakelite, an early plastic, making the guitar quite heavy despite its small size. This example also features an original case with built-in tube amplifier, simplifying travel and setup for the early electrified musician.</p>",
+                "credit": "On Loan from Robert Wilson, MBE",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "AmpClosed",
+                        "height": 4000,
+                        "width": 6016,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "AmpOpen",
+                        "height": 4000,
+                        "width": 6016,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Sho-Bud",
+                "title": "Pedal Steel Guitar",
+                "date": "1950s",
+                "objectID": "L2006.6.1",
+                "body": "<p>The Hawaiian or steel guitar is played with a glass or metal bar held against the strings to change pitch. This allows the musician to scoop or slide up or down to specific notes or chords. The strings are tuned in an “open” tuning, with each string corresponding to a note in a major or minor chord. This means that, when using a slide, the player is largely limited in the chords they can play unless they change the guitar’s tuning. Luthiers developed the console guitar as a response to this limitation, essentially combining multiple necks with different possible tunings into a single instrument. To consolidate the multiple necks back into one, musicians like Alvino Rey worked toward a pedal-based solution that would allow them to quickly change the pitch of any string. These efforts led to the creation of the pedal steel guitar, like this example made for Alvino Rey by Sho-Bud, named for founders Shot Jackson and Buddy Emmons.</p>",
+                "credit": "On Loan from the Estate of Alvino Rey",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 4000,
+                        "width": 6000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 4000,
+                        "width": 6000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Mechanism",
+                        "height": 4000,
+                        "width": 6000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Rickenbacker",
+                "title": "A-22 \"Frying Pan\" Electric Guitar",
+                "date": "Mid-1930s",
+                "objectID": "L2005.1.1",
+                "body": "<p>Rickenbacker’s A-22 “Frying Pan,” released in 1932, was the first commercially available electric guitar to enjoy some success. It was designed to allow Hawaiian or steel guitar players to keep up with the volume of a large ensemble. Its aluminum construction, though fairly durable, also proved to be temperamental: the body would expand and contract going from the case to a hot stage and back, causing the instrument to go out of tune.</p>",
+                "credit": "On Loan from Rick King",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Rickenbacker",
+                "title": "Model 59 Electric Hawaiian Guitar",
+                "date": "1936",
+                "objectID": "L1998.25.1",
+                "body": "<p>Soon after the A-22 Frying Pan’s introduction, Rickenbacker released guitars made of Bakelite (an early plastic) and stamped steel. This Model 59, with its stamped steel body, was one of the more affordably priced instruments in Rickenbacker’s catalog.</p>",
+                "credit": "On Loan from John Hall and Rickenbacker Intl. Corp.",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Gibson, Inc.",
+                "title": "Les Paul “Gold Top” Electric Guitar",
+                "date": "1952",
+                "objectID": "L2011.18.1",
+                "body": "<p>Pioneering guitarist Les Paul had developed his own solid-body electric guitar, “The Log,” in 1940. He approached Gibson in 1941 about bringing it to market, but it wasn’t until Fender’s success with the Telecaster that Gibson acted. With a promotional deal in place, the Gibson Les Paul guitar was released in 1952. Together, the Telecaster, Stratocaster, and Les Paul have come to represent archetypal forms of the electric guitar, inspiring countless subsequent instruments.</p>",
+                "credit": "On Loan from Mike Steciuk",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Fender Musical Instrument Company",
+                "title": "Telecaster (“Nocaster”)",
+                "date": "1937",
+                "objectID": "L1999.4.2",
+                "body": "<p>In the 1940s, Leo Fender and his partner Doc Kauffman experimented with solid-body Spanish-style electric guitars. Because the solid body wasn’t prone to feeding back at amplified volumes, these guitars could sustain notes far longer than hollow-body designs. By 1949, Fender had created a prototype for a guitar that could be produced in large quantities, with a cut-out wooden body and a bolt-on neck. The instrument was released with a single pickup in 1950 as the Fender Esquire, and with a second pickup later that same year as the Broadcaster. Legal action by Gretsch, makers of the Broadkaster line of drums, led Fender to remove the model name from their guitars until they came up with the new name of Telecaster. Guitars released without the model name during this transition have been nicknamed “Nocasters.”</p>",
+                "credit": "On Loan from the Skip Maggiora Collection",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Fender Musical Instrument Company",
+                "title": "Stratocaster",
+                "date": "1954",
+                "objectID": "L2012.20.1",
+                "body": "<p>Curtis Ray Young was a regular performer on the local television show <i>Monte Hall’s Tiny Town Ranch</i>, broadcast on San Diego’s KFMB Channel 8 in the early 1950s. His guitar, a Fender Stratocaster, is a very early example of the instrument. Its serial number, 0002, likely makes it one of the first few hundred (though not the second) production Stratocaster.</p>",
+                "credit": "On Loan from Curtis Ray Young",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Fender Musical Instrument Company",
+                "title": "Precision Electric Bass Guitar",
+                "date": "1965",
+                "objectID": "L1998.6.2",
+                "body": "<p>Though not the first electric bass guitar (Paul Tutmarc of Audiovox had invented a bass instrument in 1936 without commercial success), the Precision Bass was and remains one of the most popular and best-selling. The P-Bass wasn’t an immediate hit upon release in 1951, but by the end of the decade its advantages were clear to see: it was significantly smaller and lighter than acoustic upright basses, featured frets to make playing more precise (giving the instrument its name), and produced a punchier tone suitable for rock and roll, soul, funk and other genres.</p>",
+                "credit": "On Loan from the Fender Museum",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Kay Musical Instrument Company",
+                "title": "Double Bass with Ampeg Pickup",
+                "date": "1951",
+                "objectID": "M2015.18.1",
+                "body": "<p>Invented in 1946, the Ampeg pickup was upright bassist Everett Hull’s solution to amplifying his instrument. The pickup sits on the bass’ support peg, leading Everett’s wife to call it the Ampeg, short for amplified peg. Everett founded the Ampeg Bassamp Company, which would go on to be a major supplier of bass amplifiers until the present day.</p>",
+                "credit": "Gift of Greg and Sara Billings",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Control",
+                        "height": 4000,
+                        "width": 6048,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Peg",
+                        "height": 6000,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "Kubicki Technology",
+                "title": "Ex Factor Electric Bas Guitar",
+                "date": "1985",
+                "objectID": "L1998.15.1",
+                "body": "<p>Phil Kubicki joined Fender in 1964, and soon became the assistant to Roger Rossmeisl, head of research and development. This led Kubicki to develop and build a huge range of instruments, from established products using different woods to entirely new models. In 1983 he launched his own business focused on the Factor electric bass guitar, which introduced a number of unique features such as tuning machines on the bass’ body rather than headstock and a mechanism for easily and precisely detuning the low string.</p>",
+                "credit": "On Loan from Philip Kubicki Technology",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Back",
+                        "height": 6016,
+                        "width": 4000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            },
+            {
+                "maker": "NS Design",
+                "title": "20th Anniversary NXT4 Electric Double Bass",
+                "date": "2010",
+                "objectID": "M2010.12.1",
+                "body": "<p>After achieving success with his line of eponymous “headless” electric guitars and bass guitars, Ned Steinberger founded NS Designs in 1990 to bring some his expertise to the design of bowed string instruments, from the violin to the upright bass. NS Design’s bass model strips away almost all of the traditional instrument’s body, reducing its form to something barely longer than its strings. With innovative onboard electronics, the bass is able to replicate the sound of an acoustic upright bass or an electric bass or anything between.</p>",
+                "credit": "Donation in Honor of the Museum of Making Music and in Commemoration of the 20th Anniversary of NS Design",
+                "images": [
+                    {
+                        "name": "Front",
+                        "height": 4000,
+                        "width": 6000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    },
+                    {
+                        "name": "Controls",
+                        "height": 4000,
+                        "width": 6000,
+                        "altsizes": [
+                            "_threequarter",
+                            "_half",
+                            "_quarter"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "media": {
+        "label": "Watch+Listen",
+        "icon": "media",
+        "categories": [
+            {
+                "title": "Musical Moments",
+                "slug": "musicalmoments",
+                "thumbnail": "1A2-mediathumb-1.jpg",
+                "content": [
+                    {
+                        "title": "Next Life",
+                        "person": "Jackie Venson",
+                        "thumbnail": "MM-JV-TH.jpg",
+                        "clip": "MM-JV.mp4",
+                        "instrument": "Fender Elite Stratocaster",
+                        "credit": "Courtesy: Jackie Venson"
+                    },
+                    {
+                        "title": "I Take What I Want",
+                        "person": "Carl Verheyen",
+                        "thumbnail": "MM-CV-TH.jpg",
+                        "clip": "MM-CV.mp4",
+                        "instrument": "LsL Guitars, CV Special",
+                        "credit": "Courtesy: Carl Verheyen"
+                    },
+                    {
+                        "title": "In the Aftermath",
+                        "person": "Jennifer Batten",
+                        "thumbnail": "MM-JB-TH.jpg",
+                        "clip": "MM-JB.mp4",
+                        "instrument": "Washburn Parallaxe",
+                        "credit": "Courtesy: Jennifer Batten"
+                    },
+                    {
+                        "title": "Improvisation",
+                        "person": "Lionel Loueke",
+                        "thumbnail": "MM-LL-TH.jpg",
+                        "clip": "MM-LL.mp4",
+                        "instrument": "D'Angelico Deluxe Brighton Limited Edition",
+                        "credit": "Courtesy: D'Angelico Guitars"
+                    },
+                    {
+                        "title": "Foggy Mountain Rock",
+                        "person": "Cindy Cashdollar",
+                        "thumbnail": "MM-CC-TH.jpg",
+                        "clip": "MM-CC.mp4",
+                        "instrument": "Lap King Rodeo Lap Steel",
+                        "credit": "Courtesy: Fretboard Journal"
+                    },
+                    {
+                        "title": "Laid Back",
+                        "person": "Cary Morin",
+                        "thumbnail": "MM-CM-TH.jpg",
+                        "clip": "MM-CM.mp4",
+                        "instrument": "Taylor T5 Acoustic-Electric",
+                        "credit": "Courtesy: Little House of Sound"
+                    },
+                    {
+                        "title": "Shut Out the World",
+                        "person": "Steve Lawson",
+                        "thumbnail": "MM-SL-TH.jpg",
+                        "clip": "MM-SL.mp4",
+                        "instrument": "Modulus Q6 Bass",
+                        "credit": "Courtesy: Gregor Fris & Steve Lawson"
+                    }
+                ]
+            },
+            {
+                "title": "Making the Instrument",
+                "slug": "makingtheinstrument",
+                "thumbnail": "1A2-mediathumb-2.jpg",
+                "content": [
+                    {
+                        "label": "A Fender is Born",
+                        "caption": "",
+                        "thumbnail": "FF-FENDER-THUMB.jpg",
+                        "clip": "FF-FENDER.mp4"
+                    },
+                    {
+                        "label": "Turner Guitar",
+                        "caption": "",
+                        "thumbnail": "FF-TURNER-THUMB.jpg",
+                        "clip": "FF-TURNER.mp4"
+                    },
+                    {
+                        "label": "How a Gibson Body is Made",
+                        "caption": "",
+                        "thumbnail": "FF-GIBSON-THUMB.jpg",
+                        "clip": "FF-GIBSON.mp4"
+                    },
+                    {
+                        "label": "How Orange Amps are Made",
+                        "caption": "",
+                        "thumbnail": "FF-ORANGE-THUMB.jpg",
+                        "clip": "FF-ORANGE.mp4"
+                    }
+                ]
+            },
+            {
+                "title": "Voices of the Industry",
+                "slug": "voicesoftheindustry",
+                "thumbnail": "1A2-mediathumb-3.jpg",
+                "content": [
+                    {
+                        "label": "Ed Caustin",
+                        "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                        "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                        "clip": "OH-EDCAUSTIN.mp4"
+                    },
+                    {
+                        "label": "Dick Dale",
+                        "summary": "Known as “The King of the Surf Guitar,” musician Dick Dale reminisces about working with Leo Fender.",
+                        "thumbnail": "OH-DICKDALE-TH.jpg",
+                        "clip": "OH-DICKDALE.mp4"
+                    },
+                    {
+                        "label": "Pat Quilter",
+                        "summary": "Founder of Quilter Amplification Pat Quilter discusses the early market for guitar amplifiers.",
+                        "thumbnail": "OH-QUILTER-TH.jpg",
+                        "clip": "OH-QUILTER.mp4"
+                    },
+                    {
+                        "label": "Don Randall",
+                        "summary": "Former president of Fender Musical Instruments Corporation Don Randall discusses the development of the solid-body guitar.",
+                        "thumbnail": "OH-RANDALL-TH.jpg",
+                        "clip": "OH-RANDALL.mp4"
+                    },
+                    {
+                        "label": "Ned Steinberger",
+                        "summary": "Ned Steinberger, founder of NS Designs, explains the reasons that drove him to create a headless bass guitar.",
+                        "thumbnail": "OH-STEINBERGER-TH.jpg",
+                        "clip": "OH-STEINBERGER.mp4"
+                    },
+                    {
+                        "label": "Rick Turner",
+                        "summary": "Luthier Rick Turner shares his approach to creating tools for musicians.",
+                        "thumbnail": "OH-TURNER-TH.jpg",
+                        "clip": "OH-TURNER.mp4"
+                    }
+                ]
+            }
+        ]
+    }
+}
