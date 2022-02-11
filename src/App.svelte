@@ -118,7 +118,7 @@ loading!
     <ContentWindow {rail} on:resetState={resetState} />
   </div>
   {:catch}
-  fuck!
+  Connection disrupted!
 {/await}
 
 
