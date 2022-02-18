@@ -12,7 +12,7 @@ import del from 'rollup-plugin-delete';
 
 const production = !process.env.ROLLUP_WATCH;
 
-const railTarget = "1A1";
+const railTarget = "1A2";
 
 const mediaFiles = fs.readdirSync("./public/" + railTarget + "media/");
 

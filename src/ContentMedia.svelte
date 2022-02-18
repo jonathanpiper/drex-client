@@ -3,6 +3,7 @@
 
   function setActiveObject(value) {
     $state.activeObject = value;
+    playPause = "Pause";
   }
   var playPause = "Pause";
   function toggleVideo() {
@@ -18,16 +19,16 @@
 </script>
 
 <div class="dr-content-media">
-  {#if Object.keys($state.activeMediaCategory).length > 0}
+  {#if Object.keys($state.activeSecondary).length > 0}
     <div class="dr-content-media-header">
-      <h2>{$state.activeMediaCategory.title}</h2>
+      <h2>{$state.activeSecondary.title}</h2>
     </div>
     {#if Object.keys($state.activeObject).length > 0}
       <video id="video" autoplay>
-        <source src="{$config.mediaPath + $state.activeObject.clip}" type="video/mp4" />
+        <source src="{$config.mediaPath}{$state.activeObject.clip}" type="video/mp4" />
         <track src="" kind="captions" />
       </video>
-      <div class="dr-content-media-overlay-{$state.activeSecondary}">
+      <div class="dr-content-media-overlay-{$state.activeSecondary.slug}">
         {#if $state.activeObject.person}
           <h2>{$state.activeObject.person}</h2>
         {/if}
@@ -62,24 +63,24 @@
       </div>
     {:else}
       <div class="dr-content-media-list">
-        {#each $state.activeMediaCategory.content as item}
+        {#each $state.activeSecondary.content as item}
           <div class="dr-content-media-wrapper">
             <div
-              class="dr-content-media-item-{$state.activeSecondary}"
+              class="dr-content-media-item-{$state.activeSecondary.slug}"
               on:click={() => setActiveObject(item)}
             >
               <img
-                src="{$config.mediaPath + item.thumbnail}"
+                src="{$config.mediaPath}{item.thumbnail}"
                 alt={item.title || item.label}
               />
-              {#if $state.activeSecondary == "musicalmoments"}
+              {#if $state.activeSecondary.slug == "musicalmoments"}
                 <h2>“{item.title}”</h2>
                 <h2>{item.person}</h2>
-              {:else if $state.activeSecondary == "makingtheinstrument" || "voicesoftheindustry"}
+              {:else if $state.activeSecondary.slug == "makingtheinstrument" || "voicesoftheindustry"}
                 <h2>{item.label || item.summary}</h2>
               {/if}
             </div>
-            {#if $state.activeSecondary == "voicesoftheindustry"}<p>
+            {#if $state.activeSecondary.slug == "voicesoftheindustry"}<p>
                 {item.summary}
               </p>{/if}
           </div>

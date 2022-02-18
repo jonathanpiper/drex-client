@@ -1,0 +1,270 @@
+{
+    "title": "Getting Louder",
+    "body": "<p>By the 1920s, the big band craze had driven many ensembles to be larger and louder than what even the widest archtop guitars could keep up with. These bands incorporated trumpets, trombones, saxophones, drums, and often a piano. Many guitarists found that they simply needed louder instruments. Luthiers and engineers began experimenting with electricity to determine what this then-new technology could do to add volume. With the amplifying vacuum tube and moving coil speaker already having been invented in 1906 and 1924, respectively, luthiers were left to convert the guitar’s sound into electricity. The instruments here include some direct results, and some distant descendants, of this pioneering work.</p>",
+    "dwell": {
+        "images": [
+            "1A2-DWELL1.jpg",
+            "1A2-DWELL2.jpg",
+            "1A2-DWELL3.jpg"
+        ]
+    },
+    "content": [
+        {
+            "stories": {
+                "label": "Stories",
+                "icon": "stories",
+                "content": [
+                    {
+                        "title": "Picking Up Sound",
+                        "thumbnail": "1a2-storythumb-1.jpg",
+                        "body": "<p>After his work with John Dopyera of the National String Instrument Company to create the resonator guitar, George Beauchamp sought to make his instrument even louder using electrical amplification. He initially experimented with microphones, which were prone to feeding back, before recognizing that the vibration of the guitar’s strings, rather than its body, was the most effective source for a signal to amplify. Using two large magnets and a length of wire, he created the pickup that enabled Ro-Pat-In (later renamed Rickenbacker) to release the A-22 “Frying Pan” electric lap steel guitar in 1932. Paired with an amplifier, the pickup made the Frying Pan loud enough to play with the large bands of the day.</p><p>Makers continued to innovate pickups with different magnets, variations in wiring, and even entirely new electric circuitry. These new designs have added the possibility for even more volume and sensitivity and a huge range of options for crafting unique tones.</p>",
+                        "images": [
+                            {
+                                "full": "1-1-FULL.jpg",
+                                "thumbnail": "1-1-THUMB.jpg",
+                                "caption": "George Delmetia Beauchamp (left). Courtesy of Ron Middlebrook."
+                            },
+                            {
+                                "full": "1-2-FULL.jpg",
+                                "thumbnail": "1-2-THUMB.jpg",
+                                "caption": "Rickenbacker Lap Steel 1934 Patent Application."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Experimental Shapes",
+                        "thumbnail": "1a2-storythumb-2.jpg",
+                        "body": "<p>Because magnetic pickups take their signal directly from vibrating strings rather than a resonating body, luthiers making electric instruments are free to make instruments in just about any shape.</p><p>Rickenbacker’s Frying Pan, based on the Hawaiian lap guitar, eliminated almost all of that instrument’s body other than a small circular section supporting the pickup, bridge, and volume control. Fender’s solid-body Telecaster was larger than the Frying Pan, but still much shallower than an acoustic or hollow-body electric.</p><p>Unconstrained entirely by the need for a resonant body, luthiers pioneered new designs, styles, and even new instruments. Fender’s Precision Bass, in addition to being significantly smaller than an upright string bass, gave bass guitarists new opportunities for dexterity and virtuosity. Steinberger’s L-series bass eliminated the headstock completely to change the instrument’s balance. Lap, console, and pedal steel guitars opened up entirely new ways to play stringed instruments.</p>",
+                        "images": [
+                            {
+                                "full": "2-1-FULL.jpg",
+                                "thumbnail": "2-1-THUMB.jpg",
+                                "caption": "Fender Guitar Factory, 1950s. Courtesy of Fender Guitar."
+                            },
+                            {
+                                "full": "2-2-FULL.jpg",
+                                "thumbnail": "2-2-THUMB.jpg",
+                                "caption": "Examples of electric guitar body shapes."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Turn It Up to 11!",
+                        "thumbnail": "1a2-storythumb-3.jpg",
+                        "body": "<p>Without amplification, many electric instruments would be almost silent – or at least much quieter.</p><p>Early guitar amplifiers, first released with matching electrified guitars in 1928 and as standalone units in 1933, were scaled-down versions of public address and movie theater sound systems. Portability was key, as they were primarily used in performances by guitarists who needed to be heard in a larger band. As popular tastes changed, particularly with the advent of rock and roll in the 1940s and 50s, many musicians demanded ever-increasing volume.</p><p>In the 1960s, guitarists Dick Dale and Pete Townshend worked with Leo Fender and Jim Marshall, respectively, to develop 100 watt amplifiers that would let them push their sound to incredible levels. The development of transistor-based, or solid-state, amplifiers led to even more power albeit with a different tone quality.</p><p>Many guitarists continue to play through vacuum tube-based amplifiers, while bass guitarists often rely on the greater power afforded by solid-state amplifiers: bass frequencies need to be amplified at a higher level to be heard as equally loud.</p>",
+                        "images": [
+                            {
+                                "full": "3-1-FULL.jpg",
+                                "thumbnail": "3-1-FULL.jpg",
+                                "caption": "Jim Marshall’s First Music Store. Courtesy of Marshall."
+                            },
+                            {
+                                "full": "3-2-FULL.jpg",
+                                "thumbnail": "3-2-FULL.jpg",
+                                "caption": "Ampli à Lampes. Courtesy of Jelora (CC BY-NC-ND 2.0)."
+                            },
+                            {
+                                "full": "3-3-FULL.jpg",
+                                "thumbnail": "3-3-FULL.jpg",
+                                "caption": "Jim Marshall. Courtesy of Marshall."
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "artifacts": {
+                "label": "Artifacts",
+                "icon": "artifacts",
+                "content": [
+                    {
+                        "maker": "Fender Musical Instrument Company",
+                        "title": "Bassman Amplifier and Cabinet",
+                        "date": "1965",
+                        "objectID": "L1998.6.3",
+                        "body": "<p>The Fender Bassman was released shortly after the Precision Bass, as other bass-oriented amplifiers at the time tended to be underpowered. The first Bassman, introduced in 1952, was immediately lauded for its tone and volume. Over numerous revisions, the Bassman grew larger and louder, leading to hugely powerful Super Bassman amplifiers in the late 1960s. Fender continues to manufacture Bassman amplifiers combining vacuum tube preamplifiers and solid-state power amplifiers.</p>",
+                        "credit": "On Loan from the Fender Museum",
+                        "images": [
+                            {
+                                "name": "Front",
+                                "height": 4000,
+                                "width": 5001,
+                                "altsizes": [
+                                    "_threequarter",
+                                    "_half",
+                                    "_quarter"
+                                ]
+                            },
+                            {
+                                "name": "Controls",
+                                "height": 4000,
+                                "width": 6017,
+                                "altsizes": [
+                                    "_threequarter",
+                                    "_half",
+                                    "_quarter"
+                                ]
+                            },
+                            {
+                                "name": "Back",
+                                "height": 4000,
+                                "width": 5001,
+                                "altsizes": [
+                                    "_threequarter",
+                                    "_half",
+                                    "_quarter"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "media": {
+                "label": "Watch+Listen",
+                "icon": "media",
+                "categories": [
+                    {
+                        "title": "Musical Moments",
+                        "slug": "musicalmoments",
+                        "thumbnail": "1A2-mediathumb-1.jpg",
+                        "content": [
+                            {
+                                "title": "Next Life",
+                                "person": "Jackie Venson",
+                                "thumbnail": "MM-JV-TH.jpg",
+                                "clip": "MM-JV.mp4",
+                                "instrument": "Fender Elite Stratocaster",
+                                "credit": "Courtesy: Jackie Venson"
+                            },
+                            {
+                                "title": "I Take What I Want",
+                                "person": "Carl Verheyen",
+                                "thumbnail": "MM-CV-TH.jpg",
+                                "clip": "MM-CV.mp4",
+                                "instrument": "LsL Guitars, CV Special",
+                                "credit": "Courtesy: Carl Verheyen"
+                            },
+                            {
+                                "title": "In the Aftermath",
+                                "person": "Jennifer Batten",
+                                "thumbnail": "MM-JB-TH.jpg",
+                                "clip": "MM-JB.mp4",
+                                "instrument": "Washburn Parallaxe",
+                                "credit": "Courtesy: Jennifer Batten"
+                            },
+                            {
+                                "title": "Improvisation",
+                                "person": "Lionel Loueke",
+                                "thumbnail": "MM-LL-TH.jpg",
+                                "clip": "MM-LL.mp4",
+                                "instrument": "D'Angelico Deluxe Brighton Limited Edition",
+                                "credit": "Courtesy: D'Angelico Guitars"
+                            },
+                            {
+                                "title": "Foggy Mountain Rock",
+                                "person": "Cindy Cashdollar",
+                                "thumbnail": "MM-CC-TH.jpg",
+                                "clip": "MM-CC.mp4",
+                                "instrument": "Lap King Rodeo Lap Steel",
+                                "credit": "Courtesy: Fretboard Journal"
+                            },
+                            {
+                                "title": "Laid Back",
+                                "person": "Cary Morin",
+                                "thumbnail": "MM-CM-TH.jpg",
+                                "clip": "MM-CM.mp4",
+                                "instrument": "Taylor T5 Acoustic-Electric",
+                                "credit": "Courtesy: Little House of Sound"
+                            },
+                            {
+                                "title": "Shut Out the World",
+                                "person": "Steve Lawson",
+                                "thumbnail": "MM-SL-TH.jpg",
+                                "clip": "MM-SL.mp4",
+                                "instrument": "Modulus Q6 Bass",
+                                "credit": "Courtesy: Gregor Fris & Steve Lawson"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Making the Instrument",
+                        "slug": "makingtheinstrument",
+                        "thumbnail": "1A2-mediathumb-2.jpg",
+                        "content": [
+                            {
+                                "label": "A Fender is Born",
+                                "caption": "",
+                                "thumbnail": "FF-FENDER-THUMB.jpg",
+                                "clip": "FF-FENDER.mp4"
+                            },
+                            {
+                                "label": "Turner Guitar",
+                                "caption": "",
+                                "thumbnail": "FF-TURNER-THUMB.jpg",
+                                "clip": "FF-TURNER.mp4"
+                            },
+                            {
+                                "label": "How a Gibson Body is Made",
+                                "caption": "",
+                                "thumbnail": "FF-GIBSON-THUMB.jpg",
+                                "clip": "FF-GIBSON.mp4"
+                            },
+                            {
+                                "label": "How Orange Amps are Made",
+                                "caption": "",
+                                "thumbnail": "FF-ORANGE-THUMB.jpg",
+                                "clip": "FF-ORANGE.mp4"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Voices of the Industry",
+                        "slug": "voicesoftheindustry",
+                        "thumbnail": "1A2-mediathumb-3.jpg",
+                        "content": [
+                            {
+                                "label": "Ed Caustin",
+                                "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                                "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                                "clip": "OH-EDCAUSTIN.mp4"
+                            },
+                            {
+                                "label": "Dick Dale",
+                                "summary": "Known as “The King of the Surf Guitar,” musician Dick Dale reminisces about working with Leo Fender.",
+                                "thumbnail": "OH-DICKDALE-TH.jpg",
+                                "clip": "OH-DICKDALE.mp4"
+                            },
+                            {
+                                "label": "Pat Quilter",
+                                "summary": "Founder of Quilter Amplification Pat Quilter discusses the early market for guitar amplifiers.",
+                                "thumbnail": "OH-QUILTER-TH.jpg",
+                                "clip": "OH-QUILTER.mp4"
+                            },
+                            {
+                                "label": "Don Randall",
+                                "summary": "Former president of Fender Musical Instruments Corporation Don Randall discusses the development of the solid-body guitar.",
+                                "thumbnail": "OH-RANDALL-TH.jpg",
+                                "clip": "OH-RANDALL.mp4"
+                            },
+                            {
+                                "label": "Ned Steinberger",
+                                "summary": "Ned Steinberger, founder of NS Designs, explains the reasons that drove him to create a headless bass guitar.",
+                                "thumbnail": "OH-STEINBERGER-TH.jpg",
+                                "clip": "OH-STEINBERGER.mp4"
+                            },
+                            {
+                                "label": "Rick Turner",
+                                "summary": "Luthier Rick Turner shares his approach to creating tools for musicians.",
+                                "thumbnail": "OH-TURNER-TH.jpg",
+                                "clip": "OH-TURNER.mp4"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

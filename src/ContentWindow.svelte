@@ -5,13 +5,13 @@
   import ContentArtifacts from "./ContentArtifacts.svelte";
   import { state } from "./stores.js";
   export let rail;
-  $: if ($state.activePrimary == "media" && $state.activeSecondary) {
-    $state.activeMediaCategory = rail[$state.activePrimary].categories.filter(
-      (obj) => {
-        return obj.slug === $state.activeSecondary;
-      }
-    )[0];
-  }
+  // $: if ($state.activePrimary == "media" && $state.activeSecondary) {
+  //   $state.activeMediaCategory = $state.activePrimary.content.filter(
+  //     (obj) => {
+  //       return obj.slug === $state.activeSecondary;
+  //     }
+  //   )[0];
+  // }
   
 </script>
 
@@ -21,11 +21,11 @@
       <h2>{rail.title}</h2>
       {@html rail.body}
     </div>
-  {:else if $state.activePrimary == "stories"}
+  {:else if $state.activePrimary.contentType == "stories"}
     <ContentStories />
-  {:else if $state.activePrimary == "media"}
+  {:else if $state.activePrimary.contentType == "media"}
     <ContentMedia />
-  {:else if $state.activePrimary == "artifacts"}
+  {:else if $state.activePrimary.contentType == "artifacts"}
     <ContentArtifacts />
   {/if}
 </div>

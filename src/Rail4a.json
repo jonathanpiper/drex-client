@@ -1,0 +1,237 @@
+{
+    "_id": {
+        "$oid": "620e7d5539d507bc939b51a6"
+    },
+    "content": {
+        "rail": "rail4a",
+        "gallery": 4,
+        "title": "Beyond the Instruments",
+        "body": "<p>Music and musical instruments are filled with and extended by layers upon layers of rich meaning that are built up by everyone who participates in the music making process&mdash;performers, listeners, producers, engineers, makers, retailers, and countless more. From among the nearly limitless variety of meanings that instruments can take on, we have chosen four here: instruments becoming works of art through incredible craftsmanship; instruments reinterpreted beyond their original intentions to inspire creativity; instruments bringing together community in times of adversity; and instruments expressing a personal passion that can spark a global change.</p>",
+        "dwell": {
+            "images": [
+                "4A-DWELL1.jpg",
+                "4A-DWELL2.jpg",
+                "4A-DWELL3.jpg",
+                "4A-DWELL4.jpg",
+                "4A-DWELL5.jpg"
+            ]
+        },
+        "content": [
+            {
+                "name": "Artistry in the Instrument",
+                "slug": "artistryintheinstrument",
+                "contentType": "stories",
+                "content": [
+                    {
+                        "title": "More than Sonic Expression",
+                        "thumbnail": "ART1-IMAGE.jpg",
+                        "body": "<p>At a fundamental level, a musical instrument is a tool for sonic expression. It’s almost always much more than that, though. Each and every instrument is layered with meaning and intention. Perhaps most notably, a musical instrument’s appearance reflects the ideas and decisions of its maker, from how best to make a sound to how best to make a visually appealing object. Some instruments are layered further with the intention of being visual works of art just as much as they are functional, expressive tools. </p>",
+                        "images": [
+                            {
+                                "full": "ART1-IMAGE1-FULL.jpg",
+                                "thumbnail": "ART1-IMAGE1-THUMB.jpg",
+                                "caption": "The intricate banjo inlay scene “The Predator” by Reneé Karnes depicts over 60 animals, including several bears hunting fish. It took over 2 years and 700 hours to create, 2004."
+                            },
+                            {
+                                "full": "ART1-IMAGE2-FULL.jpg",
+                                "thumbnail": "ART1-IMAGE2-THUMB.jpg",
+                                "caption": "The <em>Harunobu/Geisha</em> by Harvey Leach features recreations of the work of Suzuki Harunobu, an 18th Century artist known as the father of the brocade, or colored print, 2007."
+                            },
+                            {
+                                "full": "ART1-IMAGE3-FULL.jpg",
+                                "thumbnail": "ART1-IMAGE3-THUMB.jpg",
+                                "caption": "This banjo was built by Reneé Karnes for a retired Air Force colonel who had sailed around the world on a schooner, which is depicted at the top of the peghead, 1997."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "The Instrument as a Canvas",
+                        "thumbnail": "ART2-IMAGE.jpg",
+                        "body": "<p>Most, if not all, instrument families have been treated at some point as canvases for artistic expression. Four examples are presented here to showcase some of the techniques, and possible outcomes, of this treatment. The Chickering & Sons “Anniversary” piano here is embellished with geometric patterns of inlaid wood, highly figured burled walnut, and intricate sculpting. This instrument is part of the long tradition of art case pianos, which combine cutting edge instrument components and construction techniques with stunning visual artistry. Taylor Guitars’ “Living Jewel” dreadnought guitar showcases beautiful woods treated with an aqua-colored finish and the precise application of inlaid materials to depict koi swimming along the neck and around the sound hole. The C.G. Conn double-bell euphonium here, a brass instrument, is silver-plated. Its plating is extensively engraved with intricate patterns and burnished in some sections to create a matte finish.</p><p>Like these examples, an instrument is rarely just an instrument. Though not all are meant to be&emdash;or interpreted as&emdash;works of art, they are always layered with meanings that go beyond “instrument.”</p>",
+                        "images": [
+                            {
+                                "full": "ART2-IMAGE1-FULL.jpg",
+                                "thumbnail": "ART2-IMAGE1-THUMB.jpg",
+                                "caption": "The art nouveau-inspired guitar <em>Lautrec Yvette</em> by Paul Schmidt and luthier Michael Spalt."
+                            },
+                            {
+                                "full": "ART2-IMAGE2-FULL.jpg",
+                                "thumbnail": "ART2-IMAGE2-THUMB.jpg",
+                                "caption": "A conceptual drawing of <em>Lautrec Yvette</em>, one in a series of 14 art nouveau-inspired guitars developed and created by musician/author Paul Schmidt and luthier Michael Spalt, 2009."
+                            },
+                            {
+                                "full": "ART2-IMAGE3-FULL.jpg",
+                                "thumbnail": "ART2-IMAGE3-THUMB.jpg",
+                                "caption": "This Steinway art case piano by Paul Wyse was inspired by Russian composer Modest Mussorgsky’s <em>Pictures at an Exhibition</em> piano suite, 2017."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Sound and Sanctuary",
+                "slug": "soundandsanctuary",
+                "contentType": "stories",
+                "content": [
+                    {
+                        "title": "Sanctuary and Relief",
+                        "thumbnail": "SANC1-IMAGE.jpg",
+                        "body": "<p>The sounds of specific musical instruments have the power to carry us to different places&emdash;to familiar places of comfort, mysterious and unknown realms, and anywhere in between.</p><p>In times of trouble, an instrument and its sound can transport a listener to a place of sanctuary and relief. Steinway & Sons gained direct experience with this when, at the behest of the U.S. government’s War Production Board in 1941, they developed and manufactured the Victory Vertical piano. The instrument was designed from the ground up to be delivered overseas&emdash;on B-17 bombers&emdash;to troops fighting on the front lines of World War II. Despite material restrictions that had largely shuttered the manufacture of musical instruments nationwide, both the government and Steinway believed strongly enough in the power of music and sound to undertake a program that, through the end of World War II, delivered more than 2,000 Victory Vertical pianos to American troups as a reminder of their lives back home.</p>",
+                        "images": [
+                            {
+                                "full": "SANC1-IMAGE1.jpg",
+                                "thumbnail": "",
+                                "caption": ""
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Transporting the Listener",
+                        "thumbnail": "SANC2-IMAGE.jpg",
+                        "body": "<p>The sound of a phonograph record&emdash;or the sound on a phonograph record&emdash;can be immediately evocative. The introduction of recorded sound at the turn of the 20th century was met with excitement and fascination. For the first time in human history, records made it possible to hear something that happened somewhere and somewhen else. The effect could transport, comfort, and surprise a listener all at once. The Victor Talking Machine Company’s Victor V phonograph on display here was designed to impress with its look and sound: the large wooden “spearpoint” horn is part of an amplification mechanism that was considered among the best of its day.</p><p>For some listeners, the sound of home&emdash;and particularly one’s childhood home&emdash;can be heard in a music box. Though music boxes are mostly known now as small novelties, for most of the 1800s they were one of the only ways to hear music without a live performer present. Because of their role as home entertainment devices, music boxes were large, loud, and visually attractive. With the rise of phonographs, radio, and formats for listening to music, the music box has shrunk in size and scope to its current form. As a nearly ubiquitous child’s toy for much of the 20th century, its sound has been solidified as a marker of home, childhood, and even innocence.</p>",
+                        "images": [
+                            {
+                                "full": "SANC2-IMAGE1-FULL.jpg",
+                                "thumbnail": "SANC2-IMAGE1-THUMB.jpg",
+                                "caption": "A young couple listens to music on a phonograph, c.1920."
+                            },
+                            {
+                                "full": "PhonographComp.mp4",
+                                "thumbnail": "ART1-IMAGE2-THUMB.jpg",
+                                "caption": "The <em>Harunobu/Geisha</em> by Harvey Leach features recreations of the work of Suzuki Harunobu, an 18th Century artist known as the father of the brocade, or colored print, 2007."
+                            },
+                            {
+                                "full": "Music BoxComp.mp4",
+                                "thumbnail": "ART1-IMAGE3-THUMB.jpg",
+                                "caption": "This banjo was built by Reneé Karnes for a retired Air Force colonel who had sailed around the world on a schooner, which is depicted at the top of the peghead, 1997."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Mysterious Realms",
+                        "thumbnail": "SANC3-IMAGE.jpg",
+                        "body": "<p>Other instruments can immediately take listeners to entirely new places, even when they don’t know what the instrument actually is! One such instrument is the celesta, invented in 1886 and used widely across many genres of music despite rarely being seen. Its ethereal bell-like tones (its name means “heavenly” in French) had one of their earliest and most enduring uses in Dance of the Sugar Plum Fairy, from Tchaikovsky’s ballet The Nutcracker.</p><p>The celesta’s connection to fantasy and imagination has led to its inclusion in the scores for movies like Pinocchio, Willie Wonka and the Chocolate Factory, and Harry Potter and the Sorcerer’s Stone, and in the theme music for Mister Roger’s Neighborhood.</p><p>It has also been used frequently in genres like jazz, rock, and pop, often to evoke its dreamy qualities. Even though the instrument itself rarely spends time in the spotlight, its sound is recognized far and wide.</p>",
+                        "images": [
+                            {
+                                "full": "SANC2-IMAGE1-FULL.jpg",
+                                "caption": "A young couple listens to music on a phonograph, c.1920."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Uncharted Change",
+                "slug": "unchartedchange",
+                "contentType": "stories",
+                "content": [
+                    {
+                        "title": "Beyond Intent",
+                        "thumbnail": "CHANGE1.jpg",
+                        "body": "<p>Musical instrument designers and manufacturers typically have a sense of who will use their products, and how, as they develop them. Instruments might be intended for certain genres of music, or particular venues and contexts, or even for specific musicians. In some cases, though, musicians find a use for an instrument that’s beyond what it was intended, or even imagined, for.</p>",
+                        "images": [
+                            {
+                                "full": "CHANGE1-IMAGE1-FULL.jpg",
+                                "thumbnail": "",
+                                "caption": "A musician uses a beat production unit to create music that may impact societal change, cultural norms, or more."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Hammond: Soul Searching",
+                        "thumbnail": "CHANGE2.jpg",
+                        "body": "<p>The Hammond Organ Company introduced its first instrument, the Model A, in 1935. It was developed to meet the needs of houses of worship who might be seeking the sound of a pipe organ but were constrained by budget and available space. The Model A sold in large numbers precisely to that market and was never pitched directly to professional musicians. Before long, though, jazz musicians and club owners began exploring the sonic potential of the organ.</p><o>Though he was not the first to play jazz on an electric organ, Jimmy Smith took the instrument to new heights of artistry and popularity in the 1950s and 60s. Notably, Smith and many of the musicians he inspired&mdash;including Billy Preston, Booker T. Jones, and may more&mdash;brought significant influence from the gospel music developed in African American church contexts. Smith’s success, due in no small part to the way he used the sound of the Hammond B-3, helped to amplify those influences outward into soul, funk, rock, and jazz more widely. </p>",
+                        "images": [
+                            {
+                                "full": "CHANGE2-IMAGE1-FULL.jpg",
+                                "thumbnail": "CHANGE2-IMAGE1-THUMB.jpg",
+                                "caption": "An artist performs on a Hammond organ."
+                            },
+                            {
+                                "full": "B3CompTrimmed.mp4",
+                                "thumbnail": "CHANGE2-IMAGE2-THUMB.jpg",
+                                "caption": ""
+                            }
+                        ]
+                    },
+                    {
+                        "title": "TR-808: Demo to Driving Force",
+                        "thumbnail": "CHANGE3.jpg",
+                        "body": "<p>Roland’s TR-808 drum machine was introduced in 1980 as an affordable alternative to more expensive sample-based drum machines, particularly for musicians who just needed drums for demonstration purposes. By using synthesized sounds, the TR-808 could meet a lower price point but couldn’t match the sound quality of instruments like the Linn LM-1. After being discontinued in 1983, the TR-808 could be found on the used market for a fraction of its original price.</p><p>The instrument’s affordability, as well as its futuristic sound, attracted young musicians like Afrika Bambaataa from New York, Cybotron (Juan Atkins and Richard Davis) from Detroit, and 808 State (Graham Massey, Martin Price, and Gerald Simpson) from Manchester. Almost immediately, these innovative musicians used the TR-808 to help drive the development of hip-hop, techno, electronica, acid house, and myriad related genres. It was used extensively in the years following its introduction by musicians like Run-DMC, Public Enemy, the Beastie Boys, and Talking Heads.</p><p>The “808,” as it’s now commonly known, has been used on more hit records than any other drum machine and remains extremely popular today.</p>",
+                        "images": [
+                            {
+                                "full": "CHANGE3-IMAGE1-FULL.jpg",
+                                "thumbnail": "CHANGE3-IMAGE1-THUMB.jpg",
+                                "caption": "Roland TR-808."
+                            },
+                            {
+                                "full": "CHANGE3-IMAGE1-FULL.jpg",
+                                "thumbnail": "CHANGE3-IMAGE2-THUMB.jpg",
+                                "caption": "Tadao Kikumoto led a team of Roland engineers to develop a product that would help professional musicians create drum tracks for their demos songs, c.1970s."
+                            },
+                            {
+                                "full": "CHANGE3-IMAGE1-FULL.jpg",
+                                "thumbnail": "CHANGE3-IMAGE3-THUMB.jpg",
+                                "caption": "After it was discontinued in 1982, the TR-808 made its way into the hands of young artists. Their experimental use of the device led to the rise of many new styles of music."
+                            },
+                            {
+                                "full": "TR808.mp4",
+                                "thumbnail": "CHANGE3-IMAGE4-THUMB.jpg",
+                                "caption": "Video Courtesy of Reverb.com"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Artifacts",
+                "slug": "artifacts",
+                "contentType": "artifacts",
+                "content": [
+                    {
+                        "maker": "Fender Musical Instrument Company",
+                        "title": "Bassman Amplifier and Cabinet",
+                        "date": "1965",
+                        "objectID": "L1998.6.3",
+                        "body": "<p>The Fender Bassman was released shortly after the Precision Bass, as other bass-oriented amplifiers at the time tended to be underpowered. The first Bassman, introduced in 1952, was immediately lauded for its tone and volume. Over numerous revisions, the Bassman grew larger and louder, leading to hugely powerful Super Bassman amplifiers in the late 1960s. Fender continues to manufacture Bassman amplifiers combining vacuum tube preamplifiers and solid-state power amplifiers.</p>",
+                        "credit": "On Loan from the Fender Museum",
+                        "images": [
+                            {
+                                "name": "Front",
+                                "height": 4000,
+                                "width": 5001,
+                                "altsizes": [
+                                    "_threequarter",
+                                    "_half",
+                                    "_quarter"
+                                ]
+                            },
+                            {
+                                "name": "Controls",
+                                "height": 4000,
+                                "width": 6017,
+                                "altsizes": [
+                                    "_threequarter",
+                                    "_half",
+                                    "_quarter"
+                                ]
+                            },
+                            {
+                                "name": "Back",
+                                "height": 4000,
+                                "width": 5001,
+                                "altsizes": [
+                                    "_threequarter",
+                                    "_half",
+                                    "_quarter"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "name": "rail4a",
+    "type": "rail"
+}

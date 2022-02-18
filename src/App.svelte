@@ -30,7 +30,7 @@
     bS.setProperty('--dr-gallery-color-active', configObject['dr-gallery-colors'][gallery].activeColor);
   }
 
-  var promise = getRailContent().then(idleTimer);
+  var promise = getRailContent().then(value => {console.log('loaded', value)}).then(idleTimer);
 
   getRailConfig().then(result => setRailStyles(result));
 
@@ -62,6 +62,7 @@
 
     function setDwellScreen() {
       $state.dwellScreenActive = true;
+      console.log('dwell');
       rotateDwellImage();
       setTimeout(resetState, 2000);
     }
@@ -81,9 +82,11 @@
     }
 
     function resetTimer() {
+      console.log('dwell timeout started');
       clearTimeout(t);
       t = setTimeout(setDwellScreen, DWELLTIMEOUT * 1000);
     }
+    resetTimer();
   }
 
   //console.log(rail);
@@ -114,7 +117,7 @@ loading!
   {/if}
   <div class="dr-container" transition:fade>
     <PrimaryNavigation {rail} on:resetState={resetState} />
-    <SecondaryNavigation {rail} on:resetState={resetState} />
+    <SecondaryNavigation on:resetState={resetState} />
     <ContentWindow {rail} on:resetState={resetState} />
   </div>
   {:catch}
@@ -141,6 +144,10 @@ loading!
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+  }
+
+  :global(html) {
+    background-color: black;
   }
 
   .dr-container {
