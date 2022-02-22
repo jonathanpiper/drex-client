@@ -1,29 +1,32 @@
 <script>
 	import { state, config } from "./stores.js";
-  import SvelteMarkdown from 'svelte-markdown';
+	import SvelteMarkdown from "svelte-markdown";
+	import { afterUpdate } from "svelte";
+
 
 	function setActiveImage(value) {
 		$state.activeImage = value;
-    if ($state.activeObject.images[$state.activeImage].full.substring($state.activeObject.images[$state.activeImage].full.length - 3) == "mp4") {
-      var video = document.getElementById("video");
-      video.pause();
-      video.load();
-      video.play();
-      playPause = "Pause";
-    }
+		if (
+			$state.activeObject.images[$state.activeImage].full.substring(
+				$state.activeObject.images[$state.activeImage].full.length - 3
+			) == "mp4"
+		) {
+			var video = document.getElementById("video");
+			video.pause();
+			video.load();
+			video.play();
+			$state.playPause = "Pause";
+		}
 	}
 
-	var playPause = "Pause";
-  var playPauseAudio = "Play";
-
-  function toggleAudio() {
+	function toggleAudio() {
 		var audio = document.getElementById("audio");
 		if (audio.paused) {
 			audio.play();
-			playPauseAudio = "Pause";
+			$state.playPauseAudio = "Pause";
 		} else {
 			audio.pause();
-			playPauseAudio = "Play";
+			$state.playPauseAudio = "Play";
 		}
 	}
 
@@ -31,35 +34,49 @@
 		var video = document.getElementById("video");
 		if (video.paused) {
 			video.play();
-			playPause = "Pause";
+			$state.playPause = "Pause";
 		} else {
 			video.pause();
-			playPause = "Play";
+			$state.playPause = "Play";
 		}
 	}
+
 </script>
 
 <div class="dr-content-stories">
 	{#if $state.activeSecondary !== false}
 		<div class="dr-content-story-text">
 			<h2>{$state.activeObject.title}</h2>
-			{@html $state.activeObject.body.replace(" – ", "&mdash;")}
-      {#if $state.activeObject.inlineAudioClip}
-      <audio id="audio" src="{$config.mediaPath}{$state.activeObject.inlineAudioClip.source}"></audio>
-      <div class="dr-content-audio-controls">
-        <div
-          class="dr-content-audio-control-item"
-          on:click={() => toggleAudio()}
-        >
-          <p>{$state.activeObject.inlineAudioClip.label}</p>
-        </div>
-      </div>
-      {/if}
+			<SvelteMarkdown source={$state.activeObject.body} />
+			<!-- {@html $state.activeObject.body.replace(" – ", "&mdash;")} -->
+			{#if $state.activeObject.inlineAudioClip}
+				<audio
+					id="audio"
+					src="{$config.mediaPath}{$state.activeObject.inlineAudioClip
+						.source}"
+				/>
+				<div class="dr-content-audio-controls">
+					<div
+						class="dr-content-audio-control-item"
+						on:click={() => toggleAudio()}
+					>
+						<p>
+							{$state.activeObject.inlineAudioClip.label}
+						</p>
+					</div>
+				</div>
+			{/if}
 		</div>
 		<div class="dr-content-story-image">
 			{#if $state.activeObject.hasOwnProperty("images")}
 				{#if $state.activeObject.images[$state.activeImage].full.substring($state.activeObject.images[$state.activeImage].full.length - 3) == "jpg"}
-					<div class="dr-content-story-image-container{$state.activeObject.images[$state.activeImage].thumbnail == "" ? "-nothumb" : ""}">
+					<div
+						class="dr-content-story-image-container{$state
+							.activeObject.images[$state.activeImage]
+							.thumbnail == ''
+							? '-nothumb'
+							: ''}"
+					>
 						<img
 							id="storyImage"
 							src="{$config.mediaPath}{$state.activeObject.images[
@@ -67,15 +84,15 @@
 							].full}"
 							alt="Story"
 						/>
-            {#if $state.activeObject.images[$state.activeImage].caption != ""}
-            <div class="dr-content-story-image-caption">
-              <p>
-                {@html $state.activeObject.images[
-                  $state.activeImage
-                ].caption}
-              </p>
-            </div>
-            {/if}
+						{#if $state.activeObject.images[$state.activeImage].caption != ""}
+							<div class="dr-content-story-image-caption">
+								<p>
+									{@html $state.activeObject.images[
+										$state.activeImage
+									].caption}
+								</p>
+							</div>
+						{/if}
 					</div>
 				{:else}
 					<div class="dr-content-video-player">
@@ -88,38 +105,42 @@
 							<track src="" kind="captions" />
 						</video>
 						<div class="dr-content-media-controls">
-              {#if $state.activeObject.images[$state.activeImage].caption != ""}
-              <div class="dr-content-media-caption">
-              <p>{$state.activeObject.images[$state.activeImage].caption}</p>
-            </div>
-              {/if}
+							{#if $state.activeObject.images[$state.activeImage].caption != ""}
+								<div class="dr-content-media-caption">
+									<SvelteMarkdown
+										source={$state.activeObject.images[
+											$state.activeImage
+										].caption}
+									/>
+								</div>
+							{/if}
 							<div
 								class="dr-content-media-control-item"
 								on:click={() => toggleVideo()}
 							>
-								<p>{playPause}</p>
+								<p>{$state.playPause}</p>
 							</div>
 						</div>
 					</div>
 				{/if}
-        {#if $state.activeObject.images[$state.activeImage].thumbnail != ""}
-				<div class="dr-content-story-image-selections">
-					{#each $state.activeObject.images as image, index}
-						<div
-							class="dr-content-story-image-selection-item {$state.activeImage ==
-							index
-								? 'active'
-								: ''}"
-							on:click={() => setActiveImage(index)}
-						>
-							<img
-								src="{$config.mediaPath}{image.thumbnail}"
-								alt={image.thumbnail}
-							/>
-						</div>
-					{/each}
-				</div>
-        {/if}
+				{#if $state.activeObject.images[$state.activeImage].thumbnail != ""}
+					<div class="dr-content-story-image-selections">
+						{#each $state.activeObject.images as image, index}
+							<div
+								class="dr-content-story-image-selection-item {$state.activeImage ==
+								index
+									? 'active'
+									: ''}"
+								on:click={() => setActiveImage(index)}
+							>
+								<img
+									src="{$config.mediaPath}{image.thumbnail}"
+									alt={image.thumbnail}
+								/>
+							</div>
+						{/each}
+					</div>
+				{/if}
 			{/if}
 		</div>
 	{/if}
@@ -171,7 +192,7 @@
 		line-height: 150%;
 	}
 	.dr-content-story-image {
-		width: 1000px!important;
+		width: 1000px !important;
 		height: 100%;
 		align-self: flex-end;
 		/* float: right; */
@@ -185,28 +206,28 @@
 		display: flex;
 		align-self: flex-start;
 		height: 1078px;
-    border-bottom: solid 2px white;
+		border-bottom: solid 2px white;
 	}
 
-  .dr-content-story-image-container-nothumb {
-    display: flex;
+	.dr-content-story-image-container-nothumb {
+		display: flex;
 		align-self: flex-start;
 		height: 1320px;
-  }
+	}
 
 	.dr-content-story-image-caption {
-    display: flex;
-    position: absolute;
+		display: flex;
+		position: absolute;
 		align-self: flex-end;
 		text-align: center;
-    justify-content: center;
-    align-items: center;
+		justify-content: center;
+		align-items: center;
 		background-color: rgba(0, 0, 0, 0.75);
 		width: 984px;
 		height: 106px;
 		z-index: 9;
-    padding-left: 8px;
-    padding-right: 8px;
+		padding-left: 8px;
+		padding-right: 8px;
 	}
 
 	.dr-content-story-image-caption p {
@@ -219,7 +240,7 @@
 		height: 1078px;
 		object-fit: cover;
 	}
-  .dr-content-story-image-container-nothumb img {
+	.dr-content-story-image-container-nothumb img {
 		align-self: flex-start;
 		width: 1000px;
 		height: 1320px;
@@ -244,10 +265,10 @@
 
 	.dr-content-video-player {
 		display: grid;
-    width: 1000px;
-    height: 1078px;
+		width: 1000px;
+		height: 1078px;
 		grid-template-rows: 1fr 562px 1fr;
-    border-bottom: solid 2px white;
+		border-bottom: solid 2px white;
 	}
 
 	video {
@@ -257,20 +278,20 @@
 		z-index: 0;
 		grid-row-start: 2;
 		grid-row-end: 3;
-    background-color: black;
+		background-color: black;
 	}
 
 	.dr-content-media-controls {
 		display: flex;
-    justify-content: flex-end;
-    z-index: 2;
+		justify-content: flex-end;
+		z-index: 2;
 		grid-row-start: 3;
 		grid-row-end: 4;
 	}
 
 	.dr-content-media-control-item {
 		margin-right: 50px;
-    margin-top: 50px;
+		margin-top: 50px;
 		width: 220px;
 		height: 60px;
 		font-family: var(--dr-body-font);
@@ -281,49 +302,49 @@
 		background-color: #bfbfbf;
 	}
 
-  .dr-content-audio-controls {
+	.dr-content-audio-controls {
 		display: flex;
-    justify-content: flex-start;
-    z-index: 2;
+		justify-content: flex-start;
+		z-index: 2;
 	}
 
 	.dr-content-audio-control-item {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding-left: 40px;
-    padding-right: 40px;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		padding-left: 40px;
+		padding-right: 40px;
 		margin-right: 50px;
 		height: 60px;
 		font-family: var(--dr-body-font);
-		font-size: 24px!important;
+		font-size: 24px !important;
 		font-weight: normal;
 		color: black;
 		border-radius: 50px;
 		background-color: #bfbfbf;
 	}
 
-  .dr-content-audio-control-item p {
-    margin: 12px;
-    font-size: 24px;
+	.dr-content-audio-control-item p {
+		margin: 12px;
+		font-size: 24px;
 	}
 
 	:global(.dr-content-media-control-item p) {
 		align-self: center;
 		margin: 0px;
 	}
-  .dr-content-media-caption {
-    font-family: var(--dr-body-font);
-    margin-left: 50px;
-    margin-top: 0px;
-    width: 100%;
-    font-size: 24px;
-    float: left;
-    height: 60px;
-    justify-content: center;
-  }
+	.dr-content-media-caption {
+		font-family: var(--dr-body-font);
+		margin-left: 50px;
+		margin-top: 0px;
+		width: 100%;
+		font-size: 24px;
+		float: left;
+		height: 60px;
+		justify-content: center;
+	}
 
-  .dr-content-media-caption p {
-    margin-top: 15px;
-  }
+	.dr-content-media-caption p {
+		margin-top: 15px;
+	}
 </style>

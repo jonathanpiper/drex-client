@@ -3,17 +3,17 @@
 
   function setActiveObject(value) {
     $state.activeObject = value;
-    playPause = "Pause";
+    $state.playPause = "Pause";
   }
-  var playPause = "Pause";
+
   function toggleVideo() {
     video = document.getElementById("video");
     if (video.paused) {
       video.play();
-      playPause = "Pause";
+      $state.playPause = "Pause";
     } else {
       video.pause();
-      playPause = "Play";
+      $state.playPause = "Play";
     }
   }
 </script>
@@ -58,7 +58,7 @@
           class="dr-content-media-control-item"
           on:click={() => toggleVideo()}
         >
-          <p>{playPause}</p>
+          <p>{$state.playPause}</p>
         </div>
       </div>
     {:else}

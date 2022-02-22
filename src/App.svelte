@@ -47,6 +47,8 @@
     $state.activeImage = 0;
     $state.activeObject = {};
     $state.activeMediaCategory = {};
+    $state.playPause = "Pause",
+    $state.playPauseAudio = "Play"
   }
 
   var dwellCount = 0;

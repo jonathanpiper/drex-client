@@ -1,5 +1,6 @@
 <script>
   import { state, config } from "./stores.js";
+  import SvelteMarkdown from "svelte-markdown";
   import OSD from "./OSD.svelte";
 </script>
 
@@ -9,7 +10,7 @@
       <h2>{$state.activeObject.maker}</h2>
       <h2>{@html $state.activeObject.title}</h2>
       <h2>{$state.activeObject.date}</h2>
-      {@html $state.activeObject.body}
+      <SvelteMarkdown source={$state.activeObject.body} />
       <p>{$state.activeObject.credit}</p>
     </div>
     <div class="dr-content-artifact-image">

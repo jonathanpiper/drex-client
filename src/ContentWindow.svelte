@@ -3,6 +3,7 @@
   import ContentMedia from "./ContentMedia.svelte";
   import ContentStories from "./ContentStories.svelte";
   import ContentArtifacts from "./ContentArtifacts.svelte";
+  import SvelteMarkdown from "svelte-markdown";
   import { state } from "./stores.js";
   export let rail;
   // $: if ($state.activePrimary == "media" && $state.activeSecondary) {
@@ -19,7 +20,8 @@
   {#if !$state.activePrimary}
     <div class="dr-content-home">
       <h2>{rail.title}</h2>
-      {@html rail.body}
+      <SvelteMarkdown source={rail.body} />
+      <!-- {@html rail.body} -->
     </div>
   {:else if $state.activePrimary.contentType == "stories"}
     <ContentStories />

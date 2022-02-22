@@ -21,6 +21,7 @@
 			? ($state.activeObject = object)
 			: ($state.activeObject = {});
 		$state.activeImage = 0;
+		$state.playPause = "Pause";
 	}
 
 	// function setActiveStory(value) {

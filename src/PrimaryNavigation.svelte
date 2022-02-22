@@ -8,7 +8,6 @@
 	function setPrimaryNavigation(value) {
 		dispatch("resetState");
 		$state.activePrimary = value;
-    console.log($state.activePrimary);
 	}
 </script>
 
@@ -37,33 +36,6 @@
 				<h2>{contentItem.name}</h2>
 			</div>
 		{/each}
-		<!-- <div
-      class="dr-primary-navigation-item {$state.activePrimary == 'stories'
-        ? 'active'
-        : ''}"
-      on:click={() => setPrimaryNavigation("stories")}
-    >
-      <img src="{$config.mediaPath}stories.svg" alt="Stories" />
-      <h2>Stories</h2>
-    </div>
-    <div
-      class="dr-primary-navigation-item {$state.activePrimary == 'media'
-        ? 'active'
-        : ''}"
-      on:click={() => setPrimaryNavigation("media")}
-    >
-      <img src="{$config.mediaPath}media.svg" alt="Watch+Learn" />
-      <h2>Watch+Listen</h2>
-    </div>
-    <div
-      class="dr-primary-navigation-item {$state.activePrimary == 'artifacts'
-        ? 'active'
-        : ''}"
-      on:click={() => setPrimaryNavigation("artifacts")}
-    >
-      <img src="{$config.mediaPath}artifacts.svg" alt="Artifacts" />
-      <h2>Artifacts</h2>
-    </div> -->
 	</div>
 </div>
 {#if $state.activePrimary === false}

@@ -1,11 +1,13 @@
-import { writable, readable } from 'svelte/store';
-//import railJSON from './JSON/RailRAIL_TARGET.json';
+import { writable } from 'svelte/store';
 
-// try {
-//     var railJSON = await fetch("http://192.168.168.180:4000/drex/RAIL_TARGET").json()
-// } catch (err) {
-//     console.log(err);
-// }
+async function getRailContent() {
+    let response = await fetch(
+      "http://192.168.168.180:4000/drex/railRAIL_TARGET"
+    );
+    promise = await response.json();
+  }
+
+export const rail = writable(getRailContent);
 
 function define_config() {
     this.railTarget = "RAIL_TARGET";
@@ -27,35 +29,7 @@ export const state = writable({
     "activeImage": 0,
     "activeObject": {},
     "activeMediaCategory": {},
-    "dwellScreenActive": false
+    "dwellScreenActive": false,
+    "playPause": "Pause",
+    "playPauseAudio": "Play"
 });
-
-// async function getJSONData(url) {
-// 	const loading = writable(false)
-// 	const error = writable(false)
-// 	const data = writable({})
-	
-// 	async function get() {
-// 		loading.set(true)
-// 		error.set(false)
-// 		try {
-// 			const response = await fetch(url)
-// 			data.set(await response.json())
-// 		} catch(e) {
-// 			error.set(e)
-// 		}
-// 		loading.set(false)
-// 	}
-	
-// 	get()
-	
-// 	return [ data, loading, error, get]
-// }
-
-// function lowerCase(str) {
-//     return str.toLowerCase();
-// }
-
-// const railJSON = getJSONData("http://192.168.168.180:4000/drex/rail" + lowerCase("RAIL_TARGET"));
-// console.log(railJSON);
-// export const rail = readable(railJSON);
