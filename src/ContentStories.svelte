@@ -3,7 +3,6 @@
 	import SvelteMarkdown from "svelte-markdown";
 	import { afterUpdate } from "svelte";
 
-
 	function setActiveImage(value) {
 		$state.activeImage = value;
 		if (
@@ -40,7 +39,6 @@
 			$state.playPause = "Play";
 		}
 	}
-
 </script>
 
 <div class="dr-content-stories">
@@ -86,11 +84,11 @@
 						/>
 						{#if $state.activeObject.images[$state.activeImage].caption != ""}
 							<div class="dr-content-story-image-caption">
-								<p>
-									{@html $state.activeObject.images[
+								<SvelteMarkdown
+									source={$state.activeObject.images[
 										$state.activeImage
 									].caption}
-								</p>
+								/>
 							</div>
 						{/if}
 					</div>
@@ -158,9 +156,9 @@
 		border: solid 4px black;
 		width: 180px;
 		height: 180px;
-		margin-right: 58px;
+		margin-right: 54px;
 	}
-	.dr-content-story-image-selection-item:nth-child(4n) {
+	.dr-content-story-image-selection-item:last-child {
 		margin-right: 0px;
 	}
 	#instruction-story {
@@ -230,7 +228,7 @@
 		padding-right: 8px;
 	}
 
-	.dr-content-story-image-caption p {
+	:global(.dr-content-story-image-caption p) {
 		font-family: var(--dr-body-font);
 		font-size: 24px;
 	}
@@ -248,12 +246,11 @@
 	}
 
 	.dr-content-story-image-selections {
-		align-self: flex-end;
+		align-self: flex-start;
 		height: calc(100%-1072px);
 		display: flex;
-		width: 100%;
+		width: 950px;
 		flex-flow: wrap row;
-		/* column-gap: 60px; */
 		margin-top: 26px;
 		margin-left: 40px;
 	}
