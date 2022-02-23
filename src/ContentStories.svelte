@@ -340,8 +340,4 @@
 		height: 60px;
 		justify-content: center;
 	}
-
-	.dr-content-media-caption p {
-		margin-top: 15px;
-	}
 </style>
