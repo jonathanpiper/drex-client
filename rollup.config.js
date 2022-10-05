@@ -5,16 +5,16 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import json from '@rollup/plugin-json';
-import fs from 'fs';
-import replace from '@rollup/plugin-replace';
-import copy from 'rollup-plugin-copy';
-import del from 'rollup-plugin-delete';
+// import fs from 'fs';
+// import replace from '@rollup/plugin-replace';
+// import copy from 'rollup-plugin-copy';
+//import del from 'rollup-plugin-delete';
 
 const production = !process.env.ROLLUP_WATCH;
 
-const railTarget = "4A";
+//const railTarget = "1B";
 
-const mediaFiles = fs.readdirSync("./public/" + railTarget + "media/");
+////const mediaFiles = fs.readdirSync("./public/" + railTarget + "media/");
 
 // const railMediaDirectoresToDelete = fs.readdirSync("../Rail " + railTarget).filter(dir => dir.includes('media')).filter(dir => dir.includes(railTarget) ? false : true);
 // console.log(railMediaDirectoresToDelete);
@@ -47,13 +47,14 @@ export default {
 		format: 'iife',
 		name: 'app',
 		file: 'public/build/bundle.js',
-		intro: `const MEDIA_FILES = ${JSON.stringify(mediaFiles)};`
+		//intro: `const MEDIA_FILES = ${JSON.stringify(mediaFiles)};`
 	},
 	plugins: [
-		replace({
-			RAIL_TARGET: railTarget,
-			delimiters: ['', '']
-		}),
+		// replace({
+		// 	RAIL_TARGET: railTarget,
+		// 	delimiters: ['', ''],
+		// 	preventAssignment: true
+		// }),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -88,14 +89,14 @@ export default {
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
 		production && terser(),
-		copy({
-			targets: [{src: './public/', dest: '../' + railTarget}]
-		}),
-		del({
-			targets: ['../' + railTarget + '/public/*media', '!../' + railTarget + '/public/'+ railTarget + 'media'],
-			hook: 'writeBundle',
-			force: true
-		})
+		// copy({
+		// 	targets: [{src: './public/', dest: '../' + railTarget}]
+		// }),
+		// del({
+		// 	targets: ['../' + railTarget + '/public/*media', '!../' + railTarget + '/public/'+ railTarget + 'media'],
+		// 	hook: 'writeBundle',
+		// 	force: true
+		// })
 	],
 	watch: {
 		clearScreen: false

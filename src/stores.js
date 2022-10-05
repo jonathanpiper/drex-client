@@ -1,21 +1,19 @@
 import { writable } from 'svelte/store';
 
-async function getRailContent() {
-    let response = await fetch(
-      "http://192.168.168.180:4000/drex/railRAIL_TARGET"
-    );
-    promise = await response.json();
-  }
+var api_url = 'http://192.168.168.180:9000';
 
-export const rail = writable(getRailContent);
+export const apiurl = writable(api_url);
 
 function define_config() {
-    this.railTarget = "RAIL_TARGET";
-    this.mediaPath = "./RAIL_TARGETmedia/";
-    this.fontsPath = "./fonts/";
-    this.OSDImagesPath = "./OSDimages/";
-    this.objectImagesPath = this.mediaPath + "object_images/";
-    this.JSONFile = "RAILRAIL_TARGET.json";
+    this.mediaPath = api_url + "/mediapool/";
+    this.localMediaPath = './mediapool/';
+    this.OSDImagesPath = this.localMediaPath;
+    this.objectImagesPath = this.localMediaPath;
+    this.iconsPath = this.localMediaPath;
+    this.fontsPath = this.localMediaPath;
+    this.imagesPath = this.localMediaPath;
+    this.videosPath = this.localMediaPath;
+    this.audioPath = this.localMediaPath;
 }
 
 var c = new define_config();
@@ -30,6 +28,14 @@ export const state = writable({
     "activeObject": {},
     "activeMediaCategory": {},
     "dwellScreenActive": false,
-    "playPause": "Pause",
+    "playPause": "Play",
     "playPauseAudio": "Play"
 });
+
+const subs = new Map();
+
+subs.set("musicalmoments", "Musical Moments");
+subs.set("factoryfootage", "Making the Instrument");
+subs.set("oralhistories", "Voices of the Industry");
+
+export const substitutions = writable(subs);

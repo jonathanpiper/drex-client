@@ -1,96 +1,50 @@
 <script>
-	import { config, state } from "./stores.js";
-	import { createEventDispatcher } from "svelte";
+	import { config, state, substitutions } from './stores.js';
+	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
-	// function setSecondaryNavigation(value) {
-	//   $state.activeSecondary = value;
-	// }
-
-	// function setActiveMediaCategory(value) {
-	//   setSecondaryNavigation(value);
-	//   $state.activeObject = {};
-	// }
-
 	function setActiveObject(object) {
-		$state.activePrimary.contentType == "media"
-			? ($state.activeSecondary = object)
-			: ($state.activeSecondary = {});
-		$state.activePrimary.contentType != "media"
-			? ($state.activeObject = object)
-			: ($state.activeObject = {});
+		$state.activePrimary.contentType == 'media' ? ($state.activeSecondary = object) : ($state.activeSecondary = {});
+		$state.activePrimary.contentType != 'media' ? ($state.activeObject = object) : ($state.activeObject = {});
 		$state.activeImage = 0;
-		$state.playPause = "Pause";
+		$state.playPause = 'Pause';
 	}
-
-	// function setActiveStory(value) {
-	//   $state.activeSecondary = "stories";
-	//   $state.activeImage = 0;
-	//   setActiveObject(value);
-	// }
 </script>
 
 <div class="dr-secondary-navigation-container">
-	<!-- <div class="dr-secondary-navigation-home" /> -->
-	<!-- <div class="dr-secondary-navigation-stories"> -->
 	{#if $state.activePrimary}
 		<div class="dr-secondary-navigation-header">
 			<div class="flex-item">
-				<img
-					src="{$config.mediaPath}{$state.activePrimary.slug}.svg"
-					alt={$state.activePrimary.name}
-				/>
+				<img src="{$config.iconsPath}{$state.activePrimary.title.toLowerCase().replace(/\s/g, '')}.svg" alt={$state.activePrimary.title} />
 			</div>
 			<div class="break" />
 			<div class="flex-item">
-				<h2
-					class={$state.activePrimary.name.length > 12
-						? "dr-secondary-navigation-header-small"
-						: ""}
-				>
-					{$state.activePrimary.name}
+				<h2 class={$state.activePrimary.title.length > 12 ? 'dr-secondary-navigation-header-small' : ''}>
+					{$state.activePrimary.title}
 				</h2>
 			</div>
 		</div>
-		{#if $state.activePrimary.slug != "artifacts"}
+		{#if $state.activePrimary.title.toLowerCase().replace(/\s/g, '') != 'artifacts'}
 			<div class="dr-secondary-navigation-items">
 				{#each $state.activePrimary.content as item}
-					<div
-						class="dr-secondary-navigation-item {$state.activeObject ==
-						item || $state.activeSecondary == item
-							? 'active'
-							: ''}"
-						on:click={() => setActiveObject(item)}
-					>
-						<img
-							src="{$config.mediaPath}{item.thumbnail}"
-							alt={item.title}
-						/>
-						<h2>{item.title}</h2>
+					<div class="dr-secondary-navigation-item {$state.activeObject == item || $state.activeSecondary == item ? 'active' : ''}" on:click={() => setActiveObject(item)}>
+						<img src="{$config.imagesPath}{item.heroImage}" alt={item.title} style="object-position: top" />
+						<h2>
+							{#if $substitutions.has(item.contentType)}
+								{$substitutions.get(item.contentType)}
+							{:else}
+								{item.title}
+							{/if}
+						</h2>
 					</div>
 				{/each}
 			</div>
-			<!-- {:else if $state.activePrimary == "media"}
-      <div class="dr-secondary-navigation-items">
-        {#each rail[$state.activePrimary].categories as category}
-          <div
-            class="dr-secondary-navigation-item {$state.activeSecondary == category.slug ? "active" : ""}"
-            on:click={() => setActiveMediaCategory(category.slug)}
-          >
-            <img src="{$config.mediaPath + category.thumbnail}" alt={category.title} />
-            <h2>{category.title}</h2>
-          </div>
-        {/each}
-      </div>.-->
 		{:else}
-			<div class="dr-secondary-navigation-artifacts-list">
+			<div class="dr-secondary-navigation-artifacts-list{$state.activePrimary.content.length > 18 ? '-small' : ''}">
 				{#each $state.activePrimary.content as artifact, index}
 					<div
-						class="dr-secondary-navigation-artifact {$state.activeObject ===
-						artifact
-							? 'active'
-							: ''}"
+						class="dr-secondary-navigation-artifact{$state.activePrimary.content.length > 18 ? '-small' : ''} {$state.activeObject === artifact ? 'active' : ''}"
 						on:click={() => setActiveObject(artifact)}
 					>
 						{index + 1}
@@ -181,26 +135,50 @@
 	}
 
 	.dr-secondary-navigation-artifacts-list {
-		display: flex;
-		flex-flow: row wrap;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 28px;
+		row-gap: 26px;
+		/* display: flex;
+		flex-flow: row wrap; */
 		/* row-gap: 28px;
     column-gap: 28px; */
 	}
 
+	.dr-secondary-navigation-artifacts-list-small {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		column-gap: 22px;
+		row-gap: 22px;
+	}
+
 	.dr-secondary-navigation-artifact {
-		width: 148px;
-		height: 148px;
-		line-height: 154px;
+		line-height: 148px;
 		background-color: var(--dr-gallery-color);
 		font-family: var(--dr-body-font);
 		font-size: 64px;
 		text-align: center;
 		border: solid 4px black;
-		margin-right: 28px;
-		margin-bottom: 26px;
+		/* margin-right: 28px;
+		margin-bottom: 26px; */
+		/* width: 148px; */
+		/* height: 148px; */
 	}
 
-	.dr-secondary-navigation-artifact:nth-child(3n) {
-		margin-right: 0px;
+	.dr-secondary-navigation-artifact-small {
+		line-height: 110px;
+		background-color: var(--dr-gallery-color);
+		font-family: var(--dr-body-font);
+		font-size: 64px;
+		text-align: center;
+		border: solid 4px black;
+		/* margin-right: 28px;
+		margin-bottom: 26px; */
+		/* width: 148px; */
+		/* height: 148px; */
 	}
+
+	/* .dr-secondary-navigation-artifact:nth-child(3n) {
+		margin-right: 0px;
+	} */
 </style>

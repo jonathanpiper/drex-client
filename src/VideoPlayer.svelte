@@ -4,7 +4,7 @@
 
 <figure id="videoContainer">
   <video id="video" autoplay>
-    <source src="./video/{source}" type="video/webm" />
+    <source src="{source}" type="video/webm" />
   </video>
 </figure>
 

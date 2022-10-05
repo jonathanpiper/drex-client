@@ -8,9 +8,11 @@
             "1A2-DWELL3.jpg"
         ]
     },
-    "stories": {
-        "label": "Stories",
-        "icon": "stories",
+    "content": [
+        {
+        "name": "Stories",
+        "slug": "stories",
+        "contentType": "stories",
         "content": [
             {
                 "title": "Picking Up Sound",
@@ -70,9 +72,10 @@
             }
         ]
     },
-    "artifacts": {
-        "label": "Artifacts",
-        "icon": "artifacts",
+    {
+        "name": "Artifacts",
+        "slug": "artifacts",
+        "contentType": "artifacts",
         "content": [
             {
                 "maker": "Fender Musical Instrument Company",
@@ -447,7 +450,7 @@
             {
                 "maker": "Fender Musical Instrument Company",
                 "title": "Telecaster (“Nocaster”)",
-                "date": "1937",
+                "date": "1951",
                 "objectID": "L1999.4.2",
                 "body": "<p>In the 1940s, Leo Fender and his partner Doc Kauffman experimented with solid-body Spanish-style electric guitars. Because the solid body wasn’t prone to feeding back at amplified volumes, these guitars could sustain notes far longer than hollow-body designs. By 1949, Fender had created a prototype for a guitar that could be produced in large quantities, with a cut-out wooden body and a bolt-on neck. The instrument was released with a single pickup in 1950 as the Fender Esquire, and with a second pickup later that same year as the Broadcaster. Legal action by Gretsch, makers of the Broadkaster line of drums, led Fender to remove the model name from their guitars until they came up with the new name of Telecaster. Guitars released without the model name during this transition have been nicknamed “Nocasters.”</p>",
                 "credit": "On Loan from the Skip Maggiora Collection",
@@ -646,10 +649,11 @@
             }
         ]
     },
-    "media": {
-        "label": "Watch+Listen",
-        "icon": "media",
-        "categories": [
+    {
+        "name": "Watch+Listen",
+        "slug": "media",
+        "contentType": "media",
+        "content": [
             {
                 "title": "Musical Moments",
                 "slug": "musicalmoments",
@@ -788,5 +792,5 @@
                 ]
             }
         ]
-    }
+    }]
 }

@@ -23,7 +23,7 @@
 {#if Object.keys($state.activeObject).length == 0}
   <img
     id="instruction-artifact"
-    src="{$config.mediaPath}INSTRUCTION-ARTIFACT.png"
+    src="{$config.imagesPath}INSTRUCTION-ARTIFACT.png"
     alt="Choose an artifact"
   />
 {/if}

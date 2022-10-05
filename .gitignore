@@ -1,0 +1,7 @@
+/node_modules/
+/public/build/
+/public/*media
+/public/*media/
+/public/fonts/
+
+.DS_Store

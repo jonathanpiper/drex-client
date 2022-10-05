@@ -1,0 +1,255 @@
+{
+    "_id": "62ba1c091e6d1804d58d4249",
+    "identifier": "rail1b",
+    "type": "rail",
+    "title": "People on the Move",
+    "body": "As people move from place to place, they often bring symbols and tools of expression—including musical instruments—on the journey to maintain connection to old homes. This migration of people and instruments affects the way that instruments are made, whether as enduring markers of tradition, as adaptations to new environments and influences, or as dramatic reimaginings inspired by collisions with new cultures. Immigrants coming to the USA from Europe in the 19th century carried accordions and mandolins, among other instruments, across the Atlantic. These instruments were quickly adapted to suit their new environments, new audiences, and generations of new players. Displayed here are accordions and mandolins representing some of the ways that instruments have changed with the movement of people across the globe.",
+    "dwell": {
+        "images": [
+            "1B-DWELL1.jpg",
+            "1B-DWELL2.jpg",
+            "1B-DWELL3.jpg"
+        ]
+    },
+    "content": [
+        {
+            "title": "Stories",
+            "contentType": "stories",
+            "content": [
+                {
+                    "title": "Making the Journey",
+                    "body": "The accordion and mandolin, like many instruments, were brought to the USA by immigrants who, in many cases, sought to maintain a connection to their previous home.\n\nThe accordion was brought to the USA by European immigrants almost immediately after being invented in Vienna in 1829. By the early 1830s, immigrant musical instrument dealers from Germany were selling accordions in Philadelphia. Over the next few decades, numerous ethnocultural groups brought accordions in various forms to new homes across the country, including in Chicago, Milwaukee, and San Francisco. The instrument became, and would remain, closely tied to these regional centers of immigration.\n\nMandolins, by contrast, reportedly first caught the American public’s attention because of a touring group called the Spanish Students, who ironically played bandurrias, a relative of the mandolin. Seizing on this interest, mandolin groups, many made up of Italian immigrants already established in the US, toured the country and drove the instrument to incredible popularity. Makers in the US were producing mandolins in the Neapolitan “bowlback” style by the end of the 1890s, and mandolin orchestras were formed in cities and towns nationwide.",
+                    "heroImage": "1B-STORY1.jpg",
+                    "images": [
+                        {
+                            "full": "1B-1-1-VIOLA.jpg",
+                            "thumbnail": "1B-1-1-VIOLA-THUMB.jpg",
+                            "caption": "Viola Turpenien"
+                        },
+                        {
+                            "full": "1B-1-2-SPANISH.jpg",
+                            "thumbnail": "1B-1-2-SPANISH-THUMB.jpg",
+                            "caption": "*The Celebrated Spanish Students.* Strobridge & Co. Lith.; Morgan, Matthew Somerville"
+                        },
+                        {
+                            "full": "1B-1-3-MANDOORCH.jpg",
+                            "thumbnail": "1B-1-3-MANDOORCH-THUMB.jpg",
+                            "caption": "A mandolin orchestra"
+                        }
+                    ]
+                },
+                {
+                    "title": "Blazing New Trails",
+                    "body": "In the midst of the widespread popularity and success of the bowlback mandolin in the late 1800s, Kalamazoo-based inventor and luthier Orville Gibson set out to improve the instrument. Drawing from the construction of violins, in 1898 Gibson patented a new form of mandolin that featured a carved top and back with the purpose of increasing rigidity and reducing the need for internal bracing. Gibson’s carved top mandolin proved to be much louder than the Neopolitan bowlback design. \n\nThe Gibson Mandolin-Guitar Manufacturing Company, established in 1902, heavily promoted their instruments in print advertising and with music teachers, who in turn recommended them to their students. By the 1920s, the bowlback had all but disappeared from American popular music. Lloyd Loar, an acoustician and luthier hired by Gibson in 1919, refined the carved top design to create the F-5 mandolin. A 1923 F-5 was purchased by bluegrass pioneer Bill Monroe in the early 1940s. Over the course of the next few decades, Monroe’s use of the F-5 solidified it, and the carved top mandolin more generally, as a fixture of bluegrass, country, and numerous other American musics that are now popular around the world.",
+                    "heroImage": "1B-STORY2.jpg",
+                    "images": [
+                        {
+                            "full": "1B-2-1-CARTOON.jpg",
+                            "thumbnail": "1B-2-1-CARTOON-THUMB.jpg",
+                            "caption": "Gibson sweeps potato bug mandolins into the sea. *Cadenza Magazine*, September 1908."
+                        },
+                        {
+                            "full": "1B-2-2-LOAR.jpg",
+                            "thumbnail": "1B-2-2-LOAR-THUMB.jpg",
+                            "caption": "Lloyd Loar, 1911. Courtesy of The University of Iowa Digital Library."
+                        },
+                        {
+                            "full": "1B-2-3-GIBSON.jpg",
+                            "thumbnail": "1B-2-3-GIBSON-THUMB.jpg",
+                            "caption": "Orville Gibson, c. 1910. Courtesy of Gibson."
+                        },
+                        {
+                            "full": "1B-2-4-GIBSONFACTORY.jpg",
+                            "thumbnail": "1B-2-4-GIBSONFACTORY-THUMB.jpg",
+                            "caption": "Gibson Mandolin-Guitar Company factory."
+                        }
+                    ]
+                },
+                {
+                    "title": "Finding Home",
+                    "body": "The button accordion, despite being the predominant form of the instrument worldwide in the early 20th century, was largely unfamiliar to mainstream American audiences.\n\nAccordions with piano-style keyboards, which had been developed over the course of the latter 19th century, caught the public’s attention after performances by Guido Deiro at the Alaska-Yukon-Pacific Exposition in Seattle and in San Francisco in 1909. Deiro immediately found stardom on the vaudeville circuit and in turn made the “piano accordion” popular nationwide. Many manufacturers added piano accordions to their catalogs to meet demand, and some even made button accordions disguised as piano models to allow button players to capitalize on the new craze.\n\nWhile the piano keyboard helped drive the accordion to become the most popular instrument in the USA by the early 1950s (measured by annual sales), button accordions remained central to many musical styles rooted in migrant communities and cultures, including Norteño, Tejano, Waila, Irish, and more. Manufacturers like Hohner have found success by developing wide varieties of button accordions to meet the needs of these diverse musical cultures across the US and around the world.",
+                    "heroImage": "1B-STORY3.jpg",
+                    "images": [
+                        {
+                            "full": "1B-3-1-DEIRO.jpg",
+                            "thumbnail": "1B-3-1-DEIRO-THUMB.jpg",
+                            "caption": "Count Guido Deiro, c. 1909."
+                        },
+                        {
+                            "full": "1B-3-2-BELLOWS.jpg",
+                            "thumbnail": "1B-3-2-BELLOWS-THUMB.jpg",
+                            "caption": "*Bellows-Driven Instruments*. Courtesy of Wiki Taro."
+                        },
+                        {
+                            "full": "1B-3-3-TOMORROW.jpg",
+                            "thumbnail": "1B-3-3-TOMORROW-THUMB.jpg",
+                            "caption": "The Accordion of Tomorrow"
+                        },
+                        {
+                            "full": "1B-3-4-STUDENTGROUP.jpg",
+                            "thumbnail": "1B-3-4-STUDENTGROUP-THUMB.jpg",
+                            "caption": "World's youngest accordion band, Chicago 1937. Courtesy of UPI/Corbis-Bettman."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Artifacts",
+            "contentType": "artifacts",
+            "content": [
+                {
+                    "objectID": "E2012.0.33",
+                    "body": "In the late 1990s, Roland Corporation founder Ikutaro Kakehashi asked his engineers to build an electric accordion. Their V-Accordion, introduced at the 2005 NAMM Show, combines traditional bellows with advanced sensors and signal processing to create sounds—nearly any sounds imaginable—without reeds.",
+                    "credit": "Collection of the Museum of Making Music",
+                    "date": "2011",
+                    "images": [
+                        {
+                            "name": "Front",
+                            "height": 4000,
+                            "width": 6020,
+                            "altsizes": [
+                                "_threequarter",
+                                "_half",
+                                "_quarter"
+                            ]
+                        },
+                        {
+                            "name": "Controls",
+                            "height": 6146,
+                            "width": 4000,
+                            "altsizes": [
+                                "_threequarter",
+                                "_half",
+                                "_quarter"
+                            ]
+                        }
+                    ],
+                    "maker": "Roland Corporation",
+                    "title": "FR-2 V-Accordion"
+                }
+            ]
+        },
+        {
+            "title": "Watch+Listen",
+            "contentType": "media",
+            "content": {
+                "categories": [
+                    {
+                        "name": "music",
+                        "content": [
+                            {
+                                "title": "Antonio Vivaldi, Lute Concerto in D Major, RV93",
+                                "person": "Caterina Lichtenberg",
+                                "thumbnail": "MM-CL-TH.jpg",
+                                "clip": "MM-CL.mp4",
+                                "instrument": "Bowlback Mandolin",
+                                "credit": "Caterina Lichtenberg"
+                            },
+                            {
+                                "title": "Bryon's",
+                                "person": "Mike Marshall & Chris Thile",
+                                "thumbnail": "MM-CT-TH.jpg",
+                                "clip": "MM-CT.mp4",
+                                "instrument": "Gibson Lloyd Loar Flatback Mandolin",
+                                "credit": "Mike Marshall"
+                            },
+                            {
+                                "title": "E-Tune",
+                                "person": "Sierra Hull",
+                                "thumbnail": "MM-SH-TH.jpg",
+                                "clip": "MM-SH.mp4",
+                                "instrument": "Gibson Lloyd Loar Flatback Mandolin",
+                                "credit": "Courtesy: Reverb.com"
+                            },
+                            {
+                                "title": "Astor Piazolla, Asturias",
+                                "person": "Michael Bridge",
+                                "thumbnail": "MM-MB-TH.jpg",
+                                "clip": "MM-MB.mp4",
+                                "instrument": "Pigini Nova Chromatic Accordion",
+                                "credit": "CBC Music"
+                            },
+                            {
+                                "title": "La Chicharronera",
+                                "person": "Los Texmaniacs",
+                                "thumbnail": "MM-TX-TH.jpg",
+                                "clip": "MM-TX.mp4",
+                                "instrument": "Hohner Button Accordion",
+                                "credit": "Smithsonian Folkways Recordings"
+                            },
+                            {
+                                "title": "Semente",
+                                "person": "Creosote",
+                                "thumbnail": "MM-CREO-TH.jpg",
+                                "clip": "MM-CREO.mp4",
+                                "instrument": "Petosa Accordions",
+                                "credit": "Creosote"
+                            },
+                            {
+                                "title": "Le Soleil est Levé",
+                                "person": "Cedric Watson",
+                                "thumbnail": "MM-CW-TH.jpg",
+                                "clip": "MM-CW.mp4",
+                                "instrument": "Hohner Button Accordion",
+                                "credit": "KEXP & Cedric Watson"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "factory",
+                        "content": [
+                            {
+                                "label": "A Fender is Born",
+                                "caption": "",
+                                "thumbnail": "FF-FENDER-THUMB.jpg",
+                                "clip": "FF-FENDER.mp4"
+                            },
+                            {
+                                "label": "A Fender is Born",
+                                "caption": "",
+                                "thumbnail": "FF-FENDER-THUMB.jpg",
+                                "clip": "FF-FENDER.mp4"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "oralhistory",
+                        "content": [
+                            {
+                                "label": "Ed Caustin",
+                                "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                                "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                                "clip": "OH-EDCAUSTIN.mp4"
+                            },
+                            {
+                                "label": "Ed Caustin",
+                                "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                                "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                                "clip": "OH-EDCAUSTIN.mp4"
+                            },
+                            {
+                                "label": "Ed Caustin",
+                                "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                                "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                                "clip": "OH-EDCAUSTIN.mp4"
+                            },
+                            {
+                                "label": "Ed Caustin",
+                                "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                                "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                                "clip": "OH-EDCAUSTIN.mp4"
+                            },
+                            {
+                                "label": "Ed Caustin",
+                                "summary": "Ed Caustin, nephew of musical instrument inventor George Beauchamp, remembers his uncle experimenting with guitar pickups.",
+                                "thumbnail": "OH-EDCAUSTIN-TH.jpg",
+                                "clip": "OH-EDCAUSTIN.mp4"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

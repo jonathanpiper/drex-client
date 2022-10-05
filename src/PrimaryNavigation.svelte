@@ -1,52 +1,68 @@
 <script>
-	import { config, state } from "./stores.js";
-	import { createEventDispatcher } from "svelte";
+	import { config, state } from './stores.js';
+	import { createEventDispatcher, onMount } from 'svelte';
 	export let rail;
+	var longestWord = 0;
+	var numberOfWords = 0;
 
 	const dispatch = createEventDispatcher();
 
 	function setPrimaryNavigation(value) {
-		dispatch("resetState");
+		dispatch('resetState');
 		$state.activePrimary = value;
 	}
+
+	function getTitleSize(string) {
+		var words = string.split(' ');
+		numberOfWords = words.length;
+		words.forEach(word => {
+			if (longestWord < word.length) {
+				longestWord = word.length;
+			}
+		})
+	}
+
+	onMount(async () => {
+		getTitleSize(rail.title);
+	});
+
 </script>
 
 <div class="dr-primary-navigation-container">
 	<div class="dr-primary-navigation-content">
-		<div
-			class="dr-primary-navigation-title"
-			on:click={() => dispatch("resetState")}
-		>
-			<div id="dr-title{rail.rail == 'rail4a' ? '-small' : ''}">
+		{#if rail.dateRange}
+		<h1 class="dr-primary-navigation-dateRange">{rail.dateRange}</h1>
+		{/if}
+		<div class="dr-primary-navigation-title" on:click={() => dispatch('resetState')}>
+			<div id="dr-title{rail.identifier == 'rail4a' || rail.identifier.substring(4, 5) == '2' ? '-small' : longestWord > 8 || numberOfWords > 3 ? '-mid' : ''}">
 				{rail.title}
 			</div>
 		</div>
 		{#each rail.content as contentItem, index}
-			<div
-				class="dr-primary-navigation-item {$state.activePrimary.slug ==
-				contentItem.slug
-					? 'active'
-					: ''}"
-				on:click={() => setPrimaryNavigation(contentItem)}
-			>
-				<img
-					src="{$config.mediaPath}{contentItem.slug}.svg"
-					alt={contentItem.name}
-				/>
-				<h2>{contentItem.name}</h2>
+			<div class="dr-primary-navigation-item {$state.activePrimary.title == contentItem.title ? 'active' : ''}" on:click={() => setPrimaryNavigation(contentItem)}>
+				<img src="{$config.iconsPath}{contentItem.title.toLowerCase().replace(/\s/g, '')}.svg" alt={contentItem.title} />
+				<h2>{contentItem.title}</h2>
 			</div>
 		{/each}
 	</div>
 </div>
 {#if $state.activePrimary === false}
 	<img
-		id="instruction-topic{rail.content.length == 4 ? "-small" : ""}"
-		src="{$config.mediaPath}INSTRUCTION-TOPIC{rail.content.length == 4 ? "-SMALL" : ""}.png"
+		id="instruction-topic{rail.content.length == 4 ? '-small' : ''}"
+		src="{$config.imagesPath}INSTRUCTION-TOPIC{rail.content.length == 4 ? '-SMALL' : ''}.png"
 		alt="Choose a topic"
 	/>
 {/if}
 
 <style>
+	.dr-primary-navigation-dateRange {
+		color: var(--dr-gallery-color-dateRange);
+		font-family: var(--dr-title-font);
+		/* font-weight: 700; */
+		font-size: 32pt;
+		margin-bottom: 0px;
+	}
+
 	#instruction-topic {
 		position: fixed;
 		top: 950px;
@@ -55,7 +71,7 @@
 		height: auto;
 	}
 
-  #instruction-topic-small {
+	#instruction-topic-small {
 		position: fixed;
 		top: 1120px;
 		left: 160px;
@@ -70,13 +86,13 @@
 		border-bottom-right-radius: 40px;
 		padding-left: 66px;
 		padding-top: 62px;
-    margin-bottom: auto;
+		margin-bottom: auto;
 	}
 
 	.dr-primary-navigation-content {
 		width: 500px;
-    margin-bottom: 20px;
-    padding-bottom: 4px;
+		margin-bottom: 20px;
+		padding-bottom: 4px;
 	}
 
 	.dr-primary-navigation-title {
@@ -101,6 +117,16 @@
 		align-self: flex-end;
 		font-family: var(--dr-title-font);
 		font-size: 48pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		line-height: 1.05;
+		margin-bottom: 35px;
+	}
+
+	.dr-primary-navigation-title #dr-title-mid {
+		align-self: flex-end;
+		font-family: var(--dr-title-font);
+		font-size: 54pt;
 		font-weight: bold;
 		text-transform: uppercase;
 		line-height: 1.05;

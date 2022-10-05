@@ -1,186 +1,243 @@
 <script>
-  import PrimaryNavigation from "./PrimaryNavigation.svelte";
-  import SecondaryNavigation from "./SecondaryNavigation.svelte";
-  import ContentWindow from "./ContentWindow.svelte";
-  import DwellScreen from "./DwellScreen.svelte";
-  import { state, config } from "./stores.js";
-  import { fade } from "svelte/transition";
+	import PrimaryNavigation from './PrimaryNavigation.svelte';
+	import SecondaryNavigation from './SecondaryNavigation.svelte';
+	import ContentWindow from './ContentWindow.svelte';
+	import DwellScreen from './DwellScreen.svelte';
+	import { state, apiurl, config } from './stores.js';
+	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
-  async function getRailContent() {
-    let response = await fetch(
-      "http://192.168.168.180:4000/drex/railRAIL_TARGET"
-    );
-    promise = await response.json();
-  }
+	const webSocket = new WebSocket('ws://192.168.168.180:9000');
+	webSocket.onmessage = (event) => {
+		const wsMessage = event.data.replace(/["]/g, '');
+		if (wsMessage == 'forceRefresh') {
+			console.log('Received reload message from DREX server.');
+			window.location.reload();
+		} else {
+			console.log(`Unrecognized message from DREX server: ${wsMessage}`);
+		}
+	};
 
-  async function getRailConfig() {
-    let response = await fetch(
-      "http://192.168.168.180:4000/drex/config"
-    );
-    var configPromise = await response.json();
-    return configPromise;
-  }
+	var url = window.location.href;
+	const railName = url.split('?')[1];
 
-  function setRailStyles(configObject) {
-    var bS = document.body.style;
-    var gallery = "gallery" + "RAIL_TARGET".substring(0,1);
-    bS.setProperty('--dr-title-font', configObject['dr-title-font']);
-    bS.setProperty('--dr-body-font', configObject['dr-body-font']);
-    bS.setProperty('--dr-gallery-color', configObject['dr-gallery-colors'][gallery].color);
-    bS.setProperty('--dr-gallery-color-active', configObject['dr-gallery-colors'][gallery].activeColor);
-  }
+	async function getRailContent() {
+		let response = await fetch($apiurl + '/drex/rail/rail' + railName);
+		promise = await response.json();
+		return promise;
+	}
 
-  var promise = getRailContent().then(value => {console.log('loaded', value)}).then(idleTimer);
+	async function getRailConfig() {
+		let response = await fetch($apiurl + '/drex/config');
+		var configPromise = await response.json();
+		return configPromise;
+	}
 
-  getRailConfig().then(result => setRailStyles(result));
+	var mediaFiles = [];
 
-  //Dwell screen timeout in seconds.
-  const DWELLTIMEOUT = 120;
+	function getMediaFiles(content) {
+		var filename;
+		content.dwell.images.forEach((image) => {
+			mediaFiles.push($config.imagesPath + image);
+		});
+		content.content.forEach((category) => {
+			if (category.contentType == 'stories') {
+				category.content.forEach((story) => {
+					mediaFiles.push($config.imagesPath + story.heroImage);
+					story.images.forEach((image) => {
+						mediaFiles.push($config.imagesPath + image.full);
+						mediaFiles.push($config.imagesPath + image.thumbnail);
+					});
+				});
+			} else if (category.contentType == 'artifacts') {
+				category.content.forEach((artifact) => {
+					artifact.images.forEach((image) => {
+						filename = artifact.objectID + '_' + image.name + '.jpg';
+						mediaFiles.push($config.objectImagesPath + filename);
+						image.altsizes.forEach((size) => {
+							filename = artifact.objectID + '_' + image.name + size + '.jpg';
+							mediaFiles.push($config.objectImagesPath + filename);
+						});
+					});
+				});
+			} else if (category.contentType == 'media') {
+				category.content.forEach((section) => {
+					mediaFiles.push($config.imagesPath + section.heroImage);
+					section.content.forEach((clip) => {
+						mediaFiles.push($config.imagesPath + clip.thumbnail);
+					});
+				});
+			}
+		});
+		mediaFiles.forEach((image) => {
+			var img = new Image();
+			img.src = image;
+		});
+	}
 
-  //Dwell screen image rotation in seconds.
-  const DWELLROTATE = 10;
+	function setRailStyles(configObject) {
+		var bS = document.body.style;
+		var gallery = 'gallery' + railName.substring(0, 1);
+		bS.setProperty('--dr-title-font', configObject['dr-title-font']);
+		bS.setProperty('--dr-body-font', configObject['dr-body-font']);
+		bS.setProperty('--dr-gallery-color', configObject['dr-gallery-colors'][gallery].color);
+		bS.setProperty('--dr-gallery-color-active', configObject['dr-gallery-colors'][gallery].activeColor);
+		if (configObject['dr-gallery-colors'][gallery].hasOwnProperty('dateRangeColor')) {
+			bS.setProperty('--dr-gallery-color-dateRange', configObject['dr-gallery-colors'][gallery].dateRangeColor);
+		}
+	}
 
-  function resetState() {
-    $state.activePrimary = false;
-    $state.activeSecondary = false;
-    $state.activeTertiary = false;
-    $state.activeImage = 0;
-    $state.activeObject = {};
-    $state.activeMediaCategory = {};
-    $state.playPause = "Pause",
-    $state.playPauseAudio = "Play"
-  }
+	getRailConfig().then((result) => setRailStyles(result));
 
-  var dwellCount = 0;
+	var promise = getRailContent()
+		.then((value) => {
+			getMediaFiles(value);
+		})
+		.then(idleTimer);
 
-  function idleTimer() {
-    var t;
-    window.onload = resetTimer;
-    window.onmousemove = resetTimer; // catches mouse movements
-    window.onmousedown = resetTimer; // catches mouse movements
-    window.onclick = resetTimer; // catches mouse clicks
-    window.onscroll = resetTimer; // catches scrolling
-    window.onkeypress = resetTimer; //catches keyboard actions
+	//Dwell screen timeout in seconds.
+	const DWELLTIMEOUT = 120;
 
-    function setDwellScreen() {
-      $state.dwellScreenActive = true;
-      console.log('dwell');
-      rotateDwellImage();
-      setTimeout(resetState, 2000);
-    }
+	//Dwell screen image rotation in seconds.
+	const DWELLROTATE = 10;
 
-    function rotateDwellImage() {
-      clearTimeout(t);
-      t = setTimeout(incrementDwellCount, DWELLROTATE * 1000);
-    }
+	function resetState() {
+		$state.activePrimary = false;
+		$state.activeSecondary = false;
+		$state.activeTertiary = false;
+		$state.activeImage = 0;
+		$state.activeObject = {};
+		$state.activeMediaCategory = {};
+		($state.playPause = 'Play'), ($state.playPauseAudio = 'Play');
+	}
 
-    function incrementDwellCount() {
-      if (dwellCount == 2) {
-        dwellCount = 0;
-      } else {
-        dwellCount = dwellCount + 1;
-      }
-      rotateDwellImage();
-    }
+	var dwellCount = 0;
 
-    function resetTimer() {
-      console.log('dwell timeout started');
-      clearTimeout(t);
-      t = setTimeout(setDwellScreen, DWELLTIMEOUT * 1000);
-    }
-    resetTimer();
-  }
+	function idleTimer() {
+		var t;
+		window.onload = resetTimer;
+		window.onmousemove = resetTimer; // catches mouse movements
+		window.onmousedown = resetTimer; // catches mouse movements
+		window.onclick = resetTimer; // catches mouse clicks
+		window.onscroll = resetTimer; // catches scrolling
+		window.onkeypress = resetTimer; //catches keyboard actions
 
-  //console.log(rail);
+		function setDwellScreen() {
+			if ($state.playPause == 'Play') {
+				$state.dwellScreenActive = true;
+				rotateDwellImage();
+				setTimeout(resetState, 2000);
+			} else {
+				resetTimer();
+			}
+		}
 
-  //idleTimer();
-  const sse = new EventSource('http://192.168.168.180:4000/drex/subscribe');
-  sse.addEventListener("notice", function(e) {
-    console.log(e.data)
-  })
+		function rotateDwellImage() {
+			clearTimeout(t);
+			t = setTimeout(incrementDwellCount, DWELLROTATE * 1000);
+		}
+
+		function incrementDwellCount() {
+			if (dwellCount == 2) {
+				dwellCount = 0;
+			} else {
+				dwellCount = dwellCount + 1;
+			}
+			rotateDwellImage();
+		}
+
+		function resetTimer() {
+			clearTimeout(t);
+			t = setTimeout(setDwellScreen, DWELLTIMEOUT * 1000);
+		}
+		resetTimer();
+	}
 
 </script>
 
 <svelte:head>
-  <title>Museum of Making Music Digital Rail RAIL_TARGET</title>
-  {#each MEDIA_FILES as item}
-    {#if item.substr(-3) == "jpg" || item.substr(-3) == "svg"}
-      <link rel="preload" as="image" href={$config.mediaPath + item} />
-    {:else if item.substr(-3) == "mp4"}
-      <link rel="preload" as="video" href={$config.mediaPath + item} />
-    {/if}
-  {/each}
+	<title>Museum of Making Music Digital Rail {railName}</title>
 </svelte:head>
 {#await promise}
-loading!
+	<div class="loading-container"><h1>Now loading Museum of Making Music Digital Rail {railName}</h1></div>
 {:then rail}
-  {#if $state.dwellScreenActive}
-    <DwellScreen {dwellCount} {rail} />
-  {/if}
-  <div class="dr-container" transition:fade>
-    <PrimaryNavigation {rail} on:resetState={resetState} />
-    <SecondaryNavigation on:resetState={resetState} />
-    <ContentWindow {rail} on:resetState={resetState} />
-  </div>
-  {:catch}
-  Connection disrupted!
+	{#if $state.dwellScreenActive}
+		<DwellScreen {dwellCount} {rail} />
+	{/if}
+	<div id="digital-rail" class="dr-container" transition:fade>
+		<PrimaryNavigation {rail} on:resetState={resetState} />
+		<SecondaryNavigation on:resetState={resetState} />
+		<ContentWindow {rail} on:resetState={resetState} />
+	</div>
+{:catch}
+	Connection disrupted!
 {/await}
 
-
 <style>
-  :global(:root) {
-    --dr-title-font: "";
-    --dr-body-font: "";
-    --dr-gallery-color: "";
-    --dr-gallery-color-active: "";
-  }
+	.loading-container {
+		position: absolute;
+		width: 1000px;
+		margin: -500px 0 0 -500px;
+		color: white;
+		top: 50%;
+		left: 50%;
+		font-family: var(--dr-title-font);
+	}
 
-  :global(.active) {
-    border: solid 4px white !important;
-    background-color: var(--dr-gallery-color-active) !important;
-  }
+	:global(:root) {
+		--dr-title-font: '';
+		--dr-body-font: '';
+		--dr-gallery-color: '';
+		--dr-gallery-color-active: '';
+		--dr-gallery-color-dateRange: '';
+	}
 
-  :global(img) {
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-  }
+	:global(.active) {
+		border: solid 4px white !important;
+		background-color: var(--dr-gallery-color-active) !important;
+	}
 
-  :global(html) {
-    background-color: black;
-  }
+	:global(img) {
+		user-select: none;
+		-moz-user-select: none;
+		-webkit-user-drag: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
 
-  .dr-container {
-    margin: 0px;
-    width: 3440px;
-    height: 1440px;
-    background-color: black;
-    display: grid;
-    grid-template-columns: [primary-nav] 620px [secondary-nav] 525px [content] 2120px [end];
-    grid-column-gap: 55px;
-    color: white;
-    z-index: -99;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  @font-face {
-    font-family: "Montserrat";
-    src: url(../fonts/Montserrat-VariableFont_wght.ttf) format("truetype");
-  }
+	:global(html) {
+		background-color: black;
+	}
 
-  @font-face {
-    font-family: "Signika";
-    src: url(../fonts/Signika-VariableFont_wght.ttf) format("truetype");
-  }
+	.dr-container {
+		margin: 0px;
+		width: 3440px;
+		height: 1440px;
+		background-color: black;
+		display: grid;
+		grid-template-columns: [primary-nav] 620px [secondary-nav] 525px [content] 2120px [end];
+		grid-column-gap: 55px;
+		color: white;
+		z-index: -99;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	@font-face {
+		font-family: 'Montserrat';
+		src: url('/mediapool/Montserrat-VariableFont_wght.ttf') format('truetype');
+	}
 
-  @font-face {
-    font-family: "OpenSans";
-    src: url(../fonts/OpenSans-VariableFont_wdthwght.ttf) format("truetype");
-  }
+	@font-face {
+		font-family: 'Signika';
+		src: url('/mediapool/Signika-VariableFont_wght.ttf') format('truetype');
+	}
+
+	@font-face {
+		font-family: 'OpenSans';
+		src: url('/mediapool/OpenSans-VariableFont_wdthwght.ttf') format('truetype');
+	}
 </style>

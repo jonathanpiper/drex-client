@@ -39,13 +39,16 @@
 			$state.playPause = "Play";
 		}
 	}
+
 </script>
 
 <div class="dr-content-stories">
 	{#if $state.activeSecondary !== false}
-		<div class="dr-content-story-text">
-			<h2>{$state.activeObject.title}</h2>
+		<div class="dr-content-story-text{$state.activeObject.body.length/60 > 21 ? '-small-pad' : ''}">
+			<h2 class="dr-content-story-title{$state.activeObject.body.length/60 > 21 ? '-small-margin' : ''}">{$state.activeObject.title}</h2>
+			<div class="dr-content-story-body{$state.activeObject.body.length/60 > 27 ? '-tiny' : $state.activeObject.body.length/60 > 21 ? '-small' : ''}">
 			<SvelteMarkdown source={$state.activeObject.body} />
+			</div>
 			<!-- {@html $state.activeObject.body.replace(" – ", "&mdash;")} -->
 			{#if $state.activeObject.inlineAudioClip}
 				<audio
@@ -77,7 +80,7 @@
 					>
 						<img
 							id="storyImage"
-							src="{$config.mediaPath}{$state.activeObject.images[
+							src="{$config.imagesPath}{$state.activeObject.images[
 								$state.activeImage
 							].full}"
 							alt="Story"
@@ -96,7 +99,7 @@
 					<div class="dr-content-video-player">
 						<video id="video" autoplay>
 							<source
-								src="{$config.mediaPath}{$state.activeObject
+								src="{$config.videosPath}{$state.activeObject
 									.images[$state.activeImage].full}"
 								type="video/mp4"
 							/>
@@ -132,7 +135,7 @@
 								on:click={() => setActiveImage(index)}
 							>
 								<img
-									src="{$config.mediaPath}{image.thumbnail}"
+									src="{$config.imagesPath}{image.thumbnail}"
 									alt={image.thumbnail}
 								/>
 							</div>
@@ -146,7 +149,7 @@
 {#if $state.activeSecondary === false}
 	<img
 		id="instruction-story"
-		src="{$config.mediaPath}INSTRUCTION-STORY.png"
+		src="{$config.imagesPath}INSTRUCTION-STORY.png"
 		alt="Choose a story"
 	/>
 {/if}
@@ -177,16 +180,39 @@
 		width: calc(1180px-160px-2px);
 		padding: 80px;
 	}
-	.dr-content-story-text h2 {
+	.dr-content-story-text-small-pad {
+		width: calc(1180px-160px-2px);
+		padding: 60px 80px;
+	}
+	.dr-content-story-title {
 		font-family: var(--dr-body-font);
 		font-weight: 400;
 		font-size: 40px;
 		margin-bottom: 20px;
 	}
-	:global(.dr-content-story-text p) {
+	.dr-content-story-title-small-margin {
+		font-family: var(--dr-body-font);
+		font-weight: 400;
+		font-size: 40px;
+		margin-bottom: 14px;
+		margin-top: 10px;
+	}
+	:global(.dr-content-story-body) {
 		font-family: var(--dr-body-font);
 		font-weight: 400;
 		font-size: 32px;
+		line-height: 150%;
+	}
+	:global(.dr-content-story-body-small) {
+		font-family: var(--dr-body-font);
+		font-weight: 400;
+		font-size: 30px;
+		line-height: 150%;
+	}
+	:global(.dr-content-story-body-tiny) {
+		font-family: var(--dr-body-font);
+		font-weight: 400;
+		font-size: 28px;
 		line-height: 150%;
 	}
 	.dr-content-story-image {
