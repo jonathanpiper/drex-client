@@ -5,10 +5,23 @@
 	const dispatch = createEventDispatcher();
 
 	function setActiveObject(object) {
-		$state.activePrimary.contentType == 'media' ? ($state.activeSecondary = object) : ($state.activeSecondary = {});
-		$state.activePrimary.contentType != 'media' ? ($state.activeObject = object) : ($state.activeObject = {});
+		if ($state.activePrimary.contentType == 'media') {
+			if (object.contentType == 'custom') {
+				$state.activeSecondary = object;
+				$state.activeObject = object;
+			} else {
+				$state.activeSecondary = object;
+				$state.activeObject = {}
+			}
+		} else {
+			$state.activeSecondary = {};
+			$state.activeObject = object;
+		}
+		// $state.activePrimary.contentType == 'media' && object.contentType != 'custom' ? ($state.activeSecondary = object) : ($state.activeSecondary = {});
+		// $state.activePrimary.contentType == 'media' && object.contentType != 'custom' ? ($state.activeObject = {}) : ($state.activeObject = object);
 		$state.activeImage = 0;
-		$state.playPause = 'Pause';
+		$state.playPause = 'Play';
+		console.log($state.activeObject);
 	}
 </script>
 
@@ -16,7 +29,7 @@
 	{#if $state.activePrimary}
 		<div class="dr-secondary-navigation-header">
 			<div class="flex-item">
-				<img src="{$config.iconsPath}{$state.activePrimary.title.toLowerCase().replace(/\s/g, '')}.svg" alt={$state.activePrimary.title} />
+				<img src="{$config.iconsPath}{$state.activePrimary.icon ? $state.activePrimary.icon : $state.activePrimary.title.toLowerCase().replace(/\s/g, '') + '.svg'}" alt="Icon" />
 			</div>
 			<div class="break" />
 			<div class="flex-item">
@@ -25,10 +38,13 @@
 				</h2>
 			</div>
 		</div>
-		{#if $state.activePrimary.title.toLowerCase().replace(/\s/g, '') != 'artifacts'}
+		{#if $state.activePrimary.contentType != 'artifacts'}
 			<div class="dr-secondary-navigation-items">
 				{#each $state.activePrimary.content as item}
-					<div class="dr-secondary-navigation-item {$state.activeObject == item || $state.activeSecondary == item ? 'active' : ''}" on:click={() => setActiveObject(item)}>
+					<div
+						class="dr-secondary-navigation-item {$state.activeObject == item || $state.activeSecondary == item ? 'active' : ''}"
+						on:click={() => setActiveObject($state.activePrimary.contentType == 'custom' ? item.content[0] : item)}
+					>
 						<img src="{$config.imagesPath}{item.heroImage}" alt={item.title} style="object-position: top" />
 						<h2>
 							{#if $substitutions.has(item.contentType)}
@@ -104,7 +120,7 @@
 	}
 
 	.dr-secondary-navigation-header-small {
-		font-size: 48px !important;
+		font-size: 44px !important;
 		text-align: center;
 	}
 

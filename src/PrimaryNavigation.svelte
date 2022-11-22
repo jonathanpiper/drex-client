@@ -40,7 +40,7 @@
 		</div>
 		{#each rail.content as contentItem, index}
 			<div class="dr-primary-navigation-item {$state.activePrimary.title == contentItem.title ? 'active' : ''}" on:click={() => setPrimaryNavigation(contentItem)}>
-				<img src="{$config.iconsPath}{contentItem.title.toLowerCase().replace(/\s/g, '')}.svg" alt={contentItem.title} />
+				<img src="{$config.iconsPath}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}" alt={contentItem.title} />
 				<h2>{contentItem.title}</h2>
 			</div>
 		{/each}

@@ -22,9 +22,20 @@
 	const railName = url.split('?')[1];
 
 	async function getRailContent() {
-		let response = await fetch($apiurl + '/drex/rail/rail' + railName);
-		promise = await response.json();
-		return promise;
+		console.log('getrail');
+		var req, res, content, response;
+		try {
+			req = await fetch('./mediapool/rail.json')
+			res = await req.text();
+			content = JSON.parse(res);
+		} catch (err) {
+			console.log(err);
+		}
+		if (content) {
+			return content;
+		} else {
+			console.log('cannot read json');
+		}
 	}
 
 	async function getRailConfig() {
@@ -46,7 +57,9 @@
 					mediaFiles.push($config.imagesPath + story.heroImage);
 					story.images.forEach((image) => {
 						mediaFiles.push($config.imagesPath + image.full);
-						mediaFiles.push($config.imagesPath + image.thumbnail);
+						if (image.thumbnail) {
+							mediaFiles.push($config.imagesPath + image.thumbnail);
+						}
 					});
 				});
 			} else if (category.contentType == 'artifacts') {
@@ -70,9 +83,14 @@
 			}
 		});
 		mediaFiles.forEach((image) => {
-			var img = new Image();
-			img.src = image;
+			try {
+				var img = new Image();
+				img.src = image;
+			} catch (err) {
+				console.log(err);
+			}
 		});
+		return mediaFiles;
 	}
 
 	function setRailStyles(configObject) {
@@ -89,11 +107,8 @@
 
 	getRailConfig().then((result) => setRailStyles(result));
 
-	var promise = getRailContent()
-		.then((value) => {
-			getMediaFiles(value);
-		})
-		.then(idleTimer);
+	let promise = getRailContent();
+	//.then(idleTimer);
 
 	//Dwell screen timeout in seconds.
 	const DWELLTIMEOUT = 120;
@@ -114,9 +129,10 @@
 	var dwellCount = 0;
 
 	function idleTimer() {
+		console.log('Initializing timer.');
 		var t;
 		window.onload = resetTimer;
-		window.onmousemove = resetTimer; // catches mouse movements
+		//window.onmousemove = resetTimer; // catches mouse movements
 		window.onmousedown = resetTimer; // catches mouse movements
 		window.onclick = resetTimer; // catches mouse clicks
 		window.onscroll = resetTimer; // catches scrolling
@@ -153,6 +169,9 @@
 		resetTimer();
 	}
 
+	onMount(async () => {
+		idleTimer();
+	});
 </script>
 
 <svelte:head>
@@ -207,6 +226,11 @@
 
 	:global(html) {
 		background-color: black;
+		cursor: none!important;
+	}
+
+	:global(*) {
+		cursor: none!important;
 	}
 
 	.dr-container {

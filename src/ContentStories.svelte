@@ -53,7 +53,7 @@
 			{#if $state.activeObject.inlineAudioClip}
 				<audio
 					id="audio"
-					src="{$config.mediaPath}{$state.activeObject.inlineAudioClip
+					src="{$config.audioPath}{$state.activeObject.inlineAudioClip
 						.source}"
 				/>
 				<div class="dr-content-audio-controls">
@@ -124,7 +124,7 @@
 						</div>
 					</div>
 				{/if}
-				{#if $state.activeObject.images[$state.activeImage].thumbnail != ""}
+				{#if $state.activeObject.images[$state.activeImage].thumbnail != "" && $state.activeObject.images.length > 1}
 					<div class="dr-content-story-image-selections">
 						{#each $state.activeObject.images as image, index}
 							<div
@@ -228,13 +228,16 @@
 
 	.dr-content-story-image-container {
 		display: flex;
+		width: 1000px;
+		height: 1072px;
 		align-self: flex-start;
-		height: 1078px;
+		height: auto;
 		border-bottom: solid 2px white;
 	}
 
 	.dr-content-story-image-container-nothumb {
 		display: flex;
+		width: 1000px;
 		align-self: flex-start;
 		height: 1320px;
 	}
@@ -260,13 +263,13 @@
 	}
 	.dr-content-story-image-container img {
 		align-self: flex-start;
-		width: 1000px;
-		height: 1078px;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 	}
 	.dr-content-story-image-container-nothumb img {
 		align-self: flex-start;
-		width: 1000px;
+		width: 100%;
 		height: 1320px;
 		object-fit: cover;
 	}

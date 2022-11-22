@@ -6,20 +6,50 @@
 	var video;
 
 	function setActiveObject(value) {
+		if ($state.activeObject.contentType == 'custom') {
+			$state.activeSecondary = {};
+		}
 		$state.activeObject = value;
 		$state.playPause = 'Play';
 	}
 
 	function toggleVideo() {
-		//video = document.getElementById('video');
-		if (video.paused) {
-			video.play();
-			$state.playPause = 'Pause';
-		} else {
-			video.pause();
-			$state.playPause = 'Play';
+		if (!video) {
+			video = document.getElementById('video');
+			console.log(video);
+		}
+		if (video) {
+			if (video.paused) {
+				video.play();
+				$state.playPause = 'Pause';
+			} else {
+				video.pause();
+				$state.playPause = 'Play';
+			}
 		}
 	}
+
+	// $: if (video && $state.activeObject.hasOwnProperty('content')) {
+	// 	console.log(video.children[0].getAttribute('src'), $config.videosPath + $state.activeObject.content[0].clip);
+	// 	console.log(video.children[0].getAttribute('src') == $config.videosPath + $state.activeObject.content[0].clip);
+	// 	// if (video.children[0].getAttribute('src') != $state.activeObject.content[0].clip) {
+	// 	// 	video.load();
+	// 	// 	video.pause();
+	// 	// 	video.load();
+	// 	// }
+	// }
+
+	function checkVideo() {
+		if (video && $state.activeObject.hasOwnProperty('content')) {
+			if (video.children[0].getAttribute('src') != $config.videosPath + $state.activeObject.content[0].clip) {
+				video.load();
+				video.pause();
+				video.load();
+			}
+		}
+	}
+
+	$: $state.activeObject, checkVideo();
 
 	afterUpdate(() => {
 		video = document.getElementById('video');
@@ -34,23 +64,28 @@
 			});
 		}
 	});
+	//{$state.activeSecondary.contentType == 'custom' ? $state.activeSecondary.content[0].clip : $state.activeObject.clip}
 </script>
 
 <div class="dr-content-media">
 	{#if Object.keys($state.activeSecondary).length > 0}
-		<div class="dr-content-media-header">
-			<h2 class="dr-content-media-header-title{$state.activeSecondary.summary ? '-small-margin' : ''}">{$substitutions.has($state.activeSecondary.contentType) ? $substitutions.get($state.activeSecondary.contentType) : $state.activeSecondary.title}</h2>
-		</div>
+		{#if $state.activeSecondary.contentType != 'custom'}
+			<div class="dr-content-media-header">
+				<h2 class="dr-content-media-header-title{$state.activeSecondary.summary ? '-small-margin' : ''}">
+					{$substitutions.has($state.activeSecondary.contentType) ? $substitutions.get($state.activeSecondary.contentType) : $state.activeSecondary.title}
+				</h2>
+			</div>
+		{/if}
 		{#if Object.keys($state.activeObject).length > 0}
 			<video id="video" autoplay>
-				<source src="{$config.videosPath}{$state.activeObject.clip}" type="video/mp4" />
+				<source src="{$config.videosPath}{$state.activeObject.contentType == 'custom' ? $state.activeObject.content[0].clip : $state.activeObject.clip}" type="video/mp4" />
 				<track src="" kind="captions" />
 			</video>
 			<div class="dr-content-media-overlay-{$state.activeSecondary.contentType}">
 				{#if $state.activeObject.person}
 					<h2>{$state.activeObject.person}</h2>
 				{/if}
-				{#if $state.activeObject.title}
+				{#if $state.activeObject.title && $state.activeObject.contentType != 'custom'}
 					<h2>“{$state.activeObject.title}”</h2>
 				{/if}
 				{#if $state.activeObject.instrument}
@@ -63,12 +98,16 @@
 					<h2>{$state.activeObject.caption}</h2>
 				{:else if $state.activeObject.label}
 					<h2>{$state.activeObject.label}</h2>
+				{:else if $state.activeSecondary.contentType == 'custom'}
+					<h2>{$state.activeSecondary.content[0].label}</h2>
 				{/if}
 			</div>
 			<div class="dr-content-media-controls">
-				<div class="dr-content-media-control-item" on:click={() => setActiveObject(false)}>
-					<p>Video Menu</p>
-				</div>
+				{#if $state.activeSecondary.content.length > 1}
+					<div class="dr-content-media-control-item" on:click={() => setActiveObject(false)}>
+						<p>Video Menu</p>
+					</div>
+				{/if}
 				<div class="dr-content-media-control-item" on:click={() => toggleVideo()}>
 					<p>{$state.playPause}</p>
 				</div>
@@ -230,6 +269,13 @@
 		z-index: 9;
 	}
 
+	.dr-content-media-overlay-custom {
+		position: absolute;
+		width: 1200px;
+		bottom: 90px;
+		z-index: 9;
+	}
+
 	.dr-content-media-overlay-factoryfootage {
 		position: absolute;
 		width: 1200px;
@@ -252,6 +298,13 @@
 	}
 
 	.dr-content-media-overlay-factoryfootage h2 {
+		font-family: var(--dr-body-font);
+		font-size: 48px;
+		font-weight: normal;
+		margin: 6px 0px;
+	}
+
+	.dr-content-media-overlay-custom h2 {
 		font-family: var(--dr-body-font);
 		font-size: 48px;
 		font-weight: normal;
