@@ -21,10 +21,10 @@
 		if (video) {
 			if (video.paused) {
 				video.play();
-				$state.playPause = 'Pause';
+				// $state.playPause = 'Pause';
 			} else {
 				video.pause();
-				$state.playPause = 'Play';
+				// $state.playPause = 'Play';
 			}
 		}
 	}
@@ -62,6 +62,9 @@
 			video.addEventListener('play', function () {
 				$state.playPause = 'Pause';
 			});
+			video.addEventListener('pause', function () {
+				$state.playPause = 'Play';
+			});
 		}
 	});
 	//{$state.activeSecondary.contentType == 'custom' ? $state.activeSecondary.content[0].clip : $state.activeObject.clip}
@@ -81,27 +84,38 @@
 				<source src="{$config.videosPath}{$state.activeObject.contentType == 'custom' ? $state.activeObject.content[0].clip : $state.activeObject.clip}" type="video/mp4" />
 				<track src="" kind="captions" />
 			</video>
-			<div class="dr-content-media-overlay-{$state.activeSecondary.contentType}">
-				{#if $state.activeObject.person}
-					<h2>{$state.activeObject.person}</h2>
-				{/if}
-				{#if $state.activeObject.title && $state.activeObject.contentType != 'custom'}
-					<h2>“{$state.activeObject.title}”</h2>
-				{/if}
-				{#if $state.activeObject.instrument}
-					<h2>{$state.activeObject.instrument}</h2>
-				{/if}
-				{#if $state.activeObject.credit}
-					<h2>{$state.activeObject.credit}</h2>
-				{/if}
-				{#if $state.activeObject.caption}
-					<h2>{$state.activeObject.caption}</h2>
-				{:else if $state.activeObject.label}
-					<h2>{$state.activeObject.label}</h2>
-				{:else if $state.activeSecondary.contentType == 'custom'}
-					<h2>{$state.activeSecondary.content[0].label}</h2>
-				{/if}
-			</div>
+			{#if $state.activeObject.staticClip}
+				<div class="dr-content-media-overlay-static-clip">
+					{#if $state.activeObject.title}
+						<p><strong>“{$state.activeObject.title}”</strong></p>
+					{/if}
+					{#if $state.activeObject.person}
+						<p>{$state.activeObject.person}{$state.activeObject.year ? ', ' + $state.activeObject.year : ''}</p>
+					{/if}
+				</div>
+			{:else}
+				<div class="dr-content-media-overlay-{$state.activeSecondary.contentType}">
+					{#if $state.activeObject.person}
+						<h2>{$state.activeObject.person}{$state.activeObject.year ? ', ' + $state.activeObject.year : ''}</h2>
+					{/if}
+					{#if $state.activeObject.title && $state.activeObject.contentType != 'custom'}
+						<h2>“{$state.activeObject.title}”</h2>
+					{/if}
+					{#if $state.activeObject.instrument}
+						<h2>{$state.activeObject.instrument}</h2>
+					{/if}
+					{#if $state.activeObject.credit}
+						<h2>{$state.activeObject.credit}</h2>
+					{/if}
+					{#if $state.activeObject.caption}
+						<h2>{$state.activeObject.caption}</h2>
+					{:else if $state.activeObject.label}
+						<h2>{$state.activeObject.label}</h2>
+					{:else if $state.activeSecondary.contentType == 'custom'}
+						<h2>{$state.activeSecondary.content[0].label}</h2>
+					{/if}
+				</div>
+			{/if}
 			<div class="dr-content-media-controls">
 				{#if $state.activeSecondary.content.length > 1}
 					<div class="dr-content-media-control-item" on:click={() => setActiveObject(false)}>
@@ -346,5 +360,15 @@
 	:global(.dr-content-media-control-item p) {
 		align-self: center;
 		margin: 0px;
+	}
+	.dr-content-media-overlay-static-clip {
+		position: absolute;
+		left: 1035px;
+		top: 434px;
+	}
+	.dr-content-media-overlay-static-clip p {
+		font-size: 64px;
+		font-family: var(--dr-body-font);
+		margin: 0;
 	}
 </style>

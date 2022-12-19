@@ -8,7 +8,7 @@
 		if ($state.activePrimary.contentType == 'media') {
 			if (object.contentType == 'custom') {
 				$state.activeSecondary = object;
-				$state.activeObject = object;
+				$state.activeObject = object;x
 			} else {
 				$state.activeSecondary = object;
 				$state.activeObject = {}

@@ -10,6 +10,7 @@
 	const webSocket = new WebSocket('ws://192.168.168.180:9000');
 	webSocket.onmessage = (event) => {
 		const wsMessage = event.data.replace(/["]/g, '');
+		console.log(wsMessage);
 		if (wsMessage == 'forceRefresh') {
 			console.log('Received reload message from DREX server.');
 			window.location.reload();
