@@ -3,12 +3,12 @@
 	import SvelteMarkdown from "svelte-markdown";
 	import { afterUpdate } from "svelte";
 
+	$state.playPause = "Pause";
+
 	function setActiveImage(value) {
 		$state.activeImage = value;
 		if (
-			$state.activeObject.images[$state.activeImage].full.substring(
-				$state.activeObject.images[$state.activeImage].full.length - 3
-			) == "mp4"
+			$state.activeObject.images[$state.activeImage].full.slice(-3) == "mp4"
 		) {
 			var video = document.getElementById("video");
 			video.pause();
@@ -264,7 +264,7 @@
 	.dr-content-story-image-container img {
 		align-self: flex-start;
 		width: 100%;
-		height: 100%;
+		height: 1078px;
 		object-fit: cover;
 	}
 	.dr-content-story-image-container-nothumb img {
