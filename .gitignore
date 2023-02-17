@@ -1,10 +1,3 @@
 /node_modules/
-/public/build/
-/public/*media
-/public/*media/
-/public/fonts/
-/public/mediapool
-/public/mediapool/
-
 
 .DS_Store
