@@ -33,11 +33,11 @@
       <SvelteMarkdown source={rail.body} />
       </div>
     </div>
-  {:else if $state.activePrimary.contentType == "stories"}
+  {:else if $state.activePrimary._type == "stories"}
     <ContentStories />
-  {:else if $state.activePrimary.contentType == "media"}
+  {:else if $state.activePrimary._type == "media"}
     <ContentMedia />
-  {:else if $state.activePrimary.contentType == "artifacts"}
+  {:else if $state.activePrimary._type == "artifacts"}
     <ContentArtifacts />
   {/if}
 </div>

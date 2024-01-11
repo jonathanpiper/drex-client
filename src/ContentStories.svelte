@@ -1,66 +1,59 @@
 <script>
-	import { state, config } from "./stores.js";
-	import SvelteMarkdown from "svelte-markdown";
-	import { afterUpdate } from "svelte";
+	import { state, config } from "./stores.js"
+	import SvelteMarkdown from "svelte-markdown"
+	import { afterUpdate } from "svelte"
 
-	$state.playPause = "Pause";
+	$state.playPause = "Pause"
 
 	function setActiveImage(value) {
-		$state.activeImage = value;
-		if (
-			$state.activeObject.images[$state.activeImage].full.slice(-3) == "mp4"
-		) {
-			var video = document.getElementById("video");
-			video.pause();
-			video.load();
-			video.play();
-			$state.playPause = "Pause";
+		$state.activeImage = value
+		if ($state.activeObject.storyMedia[$state.activeImage].video) {
+			var video = document.getElementById("video")
+			$state.playPause = "Pause"
+			video.pause()
+			video.load()
+			video.play()
 		}
 	}
 
 	function toggleAudio() {
-		var audio = document.getElementById("audio");
+		var audio = document.getElementById("audio")
 		if (audio.paused) {
-			audio.play();
-			$state.playPauseAudio = "Pause";
+			audio.play()
+			$state.playPauseAudio = "Pause"
 		} else {
-			audio.pause();
-			$state.playPauseAudio = "Play";
+			audio.pause()
+			$state.playPauseAudio = "Play"
 		}
 	}
 
 	function toggleVideo() {
-		var video = document.getElementById("video");
+		var video = document.getElementById("video")
 		if (video.paused) {
-			video.play();
-			$state.playPause = "Pause";
+			video.play()
+			$state.playPause = "Pause"
 		} else {
-			video.pause();
-			$state.playPause = "Play";
+			video.pause()
+			$state.playPause = "Play"
 		}
 	}
-
+	console.log("story", $state.activeSecondary)
+	// console.log(["", null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].thumbnail))
+	// console.log(['', null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].caption))
 </script>
 
 <div class="dr-content-stories">
 	{#if $state.activeSecondary !== false}
-		<div class="dr-content-story-text{$state.activeObject.body.length/60 > 21 ? '-small-pad' : ''}">
-			<h2 class="dr-content-story-title{$state.activeObject.body.length/60 > 21 ? '-small-margin' : ''}">{$state.activeObject.title}</h2>
-			<div class="dr-content-story-body{$state.activeObject.body.length/60 > 27 ? '-tiny' : $state.activeObject.body.length/60 > 21 ? '-small' : ''}">
-			<SvelteMarkdown source={$state.activeObject.body} />
+		<div class="dr-content-story-text{$state.activeObject.body.length / 60 > 21 ? '-small-pad' : ''}">
+			<h2 class="dr-content-story-title{$state.activeObject.body.length / 60 > 21 ? '-small-margin' : ''}">{$state.activeObject.title}</h2>
+			<div class="dr-content-story-body{$state.activeObject.body.length / 60 > 27 ? '-tiny' : $state.activeObject.body.length / 60 > 21 ? '-small' : ''}">
+				<SvelteMarkdown source={$state.activeObject.body} />
 			</div>
 			<!-- {@html $state.activeObject.body.replace(" – ", "&mdash;")} -->
 			{#if $state.activeObject.inlineAudioClip}
-				<audio
-					id="audio"
-					src="{$config.audioPath}{$state.activeObject.inlineAudioClip
-						.source}"
-				/>
+				<audio id="audio" src="{$config.localMediaPath}{$state.activeObject.inlineAudioClip.clip}" />
 				<div class="dr-content-audio-controls">
-					<div
-						class="dr-content-audio-control-item"
-						on:click={() => toggleAudio()}
-					>
+					<div class="dr-content-audio-control-item" on:click={() => toggleAudio()}>
 						<p>
 							{$state.activeObject.inlineAudioClip.label}
 						</p>
@@ -69,75 +62,45 @@
 			{/if}
 		</div>
 		<div class="dr-content-story-image">
-			{#if $state.activeObject.hasOwnProperty("images")}
-				{#if $state.activeObject.images[$state.activeImage].full.substring($state.activeObject.images[$state.activeImage].full.length - 3) == "jpg"}
-					<div
-						class="dr-content-story-image-container{$state
-							.activeObject.images[$state.activeImage]
-							.thumbnail == ''
-							? '-nothumb'
-							: ''}"
-					>
-						<img
-							id="storyImage"
-							src="{$config.imagesPath}{$state.activeObject.images[
-								$state.activeImage
-							].full}"
-							alt="Story"
-						/>
-						{#if $state.activeObject.images[$state.activeImage].caption != ""}
+			{#if $state.activeObject.hasOwnProperty("storyMedia")}
+				{#if $state.activeObject.storyMedia[$state.activeImage].full}
+					<div class="dr-content-story-image-container{$state.activeObject.storyMedia.length === 1 ? '-nothumb' : ''}">
+						<!-- // ['', null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].thumbnail) &&
+						// ['', null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].caption) && -->
+
+						<img id="storyImage" src="{$config.localMediaPath}{$state.activeObject.storyMedia[$state.activeImage].full}" alt="Story" />
+						{#if ["", null].includes($state.activeObject.storyMedia[$state.activeImage].caption) === -1}
 							<div class="dr-content-story-image-caption">
-								<SvelteMarkdown
-									source={$state.activeObject.images[
-										$state.activeImage
-									].caption}
-								/>
+								<SvelteMarkdown source={$state.activeObject.storyMedia[$state.activeImage].caption} />
 							</div>
 						{/if}
 					</div>
 				{:else}
 					<div class="dr-content-video-player">
 						<video id="video" autoplay>
-							<source
-								src="{$config.videosPath}{$state.activeObject
-									.images[$state.activeImage].full}"
-								type="video/mp4"
-							/>
+							<source src="{$config.localMediaPath}{$state.activeObject.storyMedia[$state.activeImage].video}" type="video/mp4" />
 							<track src="" kind="captions" />
 						</video>
 						<div class="dr-content-media-controls">
-							{#if $state.activeObject.images[$state.activeImage].caption != ""}
+							{#if $state.activeObject.storyMedia[$state.activeImage].caption != ""}
 								<div class="dr-content-media-caption">
-									<SvelteMarkdown
-										source={$state.activeObject.images[
-											$state.activeImage
-										].caption}
-									/>
+									<SvelteMarkdown source={$state.activeObject.storyMedia[$state.activeImage].caption} />
 								</div>
 							{/if}
-							<div
-								class="dr-content-media-control-item"
-								on:click={() => toggleVideo()}
-							>
+							<div class="dr-content-media-control-item" on:click={() => toggleVideo()}>
 								<p>{$state.playPause}</p>
 							</div>
 						</div>
 					</div>
 				{/if}
-				{#if $state.activeObject.images[$state.activeImage].thumbnail != "" && $state.activeObject.images.length > 1}
+				{#if $state.activeObject.storyMedia[$state.activeImage].thumbnail != "" && $state.activeObject.storyMedia.length > 1}
 					<div class="dr-content-story-image-selections">
-						{#each $state.activeObject.images as image, index}
+						{#each $state.activeObject.storyMedia as image, index}
 							<div
-								class="dr-content-story-image-selection-item {$state.activeImage ==
-								index
-									? 'active'
-									: ''}"
+								class="dr-content-story-image-selection-item {$state.activeImage == index ? 'active' : ''}"
 								on:click={() => setActiveImage(index)}
 							>
-								<img
-									src="{$config.imagesPath}{image.thumbnail}"
-									alt={image.thumbnail}
-								/>
+								<img src="{$config.localMediaPath}{image.thumbnail}" alt={image.thumbnail} />
 							</div>
 						{/each}
 					</div>
@@ -147,11 +110,7 @@
 	{/if}
 </div>
 {#if $state.activeSecondary === false}
-	<img
-		id="instruction-story"
-		src="{$config.imagesPath}INSTRUCTION-STORY.png"
-		alt="Choose a story"
-	/>
+	<img id="instruction-story" src="{$config.localMediaPath}INSTRUCTION-STORY.png" alt="Choose a story" />
 {/if}
 
 <style>

@@ -1,87 +1,82 @@
 <script>
-	import { state, config, substitutions } from './stores.js';
-	import SvelteMarkdown from 'svelte-markdown';
-	import { afterUpdate } from 'svelte';
+	import { state, config, substitutions } from "./stores.js"
+	import SvelteMarkdown from "svelte-markdown"
+	import { afterUpdate } from "svelte"
 
-	var video;
+	var video
 
 	function setActiveObject(value) {
-		if ($state.activeObject.contentType == 'custom') {
-			$state.activeSecondary = {};
+		if ($state.activeObject._type == "custom") {
+			$state.activeSecondary = {}
 		}
-		$state.activeObject = value;
-		$state.playPause = 'Play';
+		$state.activeObject = value
+		console.log(Object.keys($state.activeObject))
+		$state.playPause = "Play"
 	}
 
 	function toggleVideo() {
 		if (!video) {
-			video = document.getElementById('video');
-			console.log(video);
+			video = document.getElementById("video")
+			console.log(video)
 		}
 		if (video) {
 			if (video.paused) {
-				video.play();
+				video.play()
 				// $state.playPause = 'Pause';
 			} else {
-				video.pause();
+				video.pause()
 				// $state.playPause = 'Play';
 			}
 		}
 	}
 
-	// $: if (video && $state.activeObject.hasOwnProperty('content')) {
-	// 	console.log(video.children[0].getAttribute('src'), $config.videosPath + $state.activeObject.content[0].clip);
-	// 	console.log(video.children[0].getAttribute('src') == $config.videosPath + $state.activeObject.content[0].clip);
-	// 	// if (video.children[0].getAttribute('src') != $state.activeObject.content[0].clip) {
-	// 	// 	video.load();
-	// 	// 	video.pause();
-	// 	// 	video.load();
-	// 	// }
-	// }
-
 	function checkVideo() {
-		if (video && $state.activeObject.hasOwnProperty('content')) {
-			if (video.children[0].getAttribute('src') != $config.videosPath + $state.activeObject.content[0].clip) {
-				video.load();
-				video.pause();
-				video.load();
+        console.log($state.activeObject)
+		if (video && $state.activeObject.hasOwnProperty("items")) {
+			if (video.children[0].getAttribute("src") != $config.localMediaPath + $state.activeObject.items[0].clip) {
+				video.load()
+				video.pause()
+				video.load()
 			}
 		}
 	}
 
-	$: $state.activeObject, checkVideo();
+	$: $state.activeObject, checkVideo()
 
 	afterUpdate(() => {
-		video = document.getElementById('video');
+		video = document.getElementById("video")
 		if (video) {
-			video.addEventListener('ended', function () {
-				const event = new MouseEvent('click', { bubbles: true, view: window });
-				document.getElementById('digital-rail').dispatchEvent(event);
-				setActiveObject(false);
-			});
-			video.addEventListener('play', function () {
-				$state.playPause = 'Pause';
-			});
-			video.addEventListener('pause', function () {
-				$state.playPause = 'Play';
-			});
+			video.addEventListener("ended", function () {
+				const event = new MouseEvent("click", { bubbles: true, view: window })
+				document.getElementById("digital-rail").dispatchEvent(event)
+				setActiveObject(false)
+			})
+			video.addEventListener("play", function () {
+				$state.playPause = "Pause"
+			})
+			video.addEventListener("pause", function () {
+				$state.playPause = "Play"
+			})
 		}
-	});
-	//{$state.activeSecondary.contentType == 'custom' ? $state.activeSecondary.content[0].clip : $state.activeObject.clip}
+	})
+	//{$state.activeSecondary._type == 'custom' ? $state.activeSecondary.content[0].clip : $state.activeObject.clip}
 </script>
 
 <div class="dr-content-media">
-	{#if Object.keys($state.activeSecondary).length > 0}
-		{#if $state.activeSecondary.contentType != 'custom'}
+	{#if $state.activeSecondary}
+		{#if $state.activeSecondary._type != "custom"}
 			<div class="dr-content-media-header">
 				<h2 class="dr-content-media-header-title{$state.activeSecondary.summary ? '-small-margin' : ''}">
-					{$substitutions.has($state.activeSecondary.contentType) ? $substitutions.get($state.activeSecondary.contentType) : $state.activeSecondary.title}
+					{$substitutions.has($state.activeSecondary._type) ? $substitutions.get($state.activeSecondary._type) : $state.activeSecondary.title}
 				</h2>
 			</div>
 		{/if}
 		{#if Object.keys($state.activeObject).length > 0}
 			<video id="video" autoplay>
-				<source src="{$config.videosPath}{$state.activeObject.contentType == 'custom' ? $state.activeObject.content[0].clip : $state.activeObject.clip}" type="video/mp4" />
+				<source
+					src="{$config.localMediaPath}{$state.activeObject._type == 'custom' ? $state.activeObject.items[0].clip : $state.activeObject.clip}"
+					type="video/mp4"
+				/>
 				<track src="" kind="captions" />
 			</video>
 			{#if $state.activeObject.staticClip}
@@ -90,16 +85,20 @@
 						<p><strong>“{$state.activeObject.title}”</strong></p>
 					{/if}
 					{#if $state.activeObject.person}
-						<p>{$state.activeObject.person}{$state.activeObject.year ? ', ' + $state.activeObject.year : ''}</p>
+						<p>{$state.activeObject.person}{$state.activeObject.year ? ", " + $state.activeObject.year : ""}</p>
 					{/if}
 				</div>
 			{:else}
-				<div class="dr-content-media-overlay-{$state.activeSecondary.contentType}">
-					{#if $state.activeObject.person}
-						<h2>{$state.activeObject.person}{$state.activeObject.year ? ', ' + $state.activeObject.year : ''}</h2>
+				<div class="dr-content-media-overlay-{$state.activeSecondary._type}">
+					{#if $state.activeObject.artist}
+						<h2>{$state.activeObject.artist}{$state.activeObject.year ? ", " + $state.activeObject.year : ""}</h2>
 					{/if}
-					{#if $state.activeObject.title && $state.activeObject.contentType != 'custom'}
+					{#if $state.activeObject.title && $state.activeObject._type === "musicalMoments"}
 						<h2>“{$state.activeObject.title}”</h2>
+					{:else if $state.activeObject.title && $state.activeObject._type === "factoryFootage"}
+						<h2>{$state.activeObject.caption}</h2>
+					{:else if $state.activeObject._type !== 'custom'}
+						<h2>{$state.activeObject.title}</h2>
 					{/if}
 					{#if $state.activeObject.instrument}
 						<h2>{$state.activeObject.instrument}</h2>
@@ -107,17 +106,13 @@
 					{#if $state.activeObject.credit}
 						<h2>{$state.activeObject.credit}</h2>
 					{/if}
-					{#if $state.activeObject.caption}
-						<h2>{$state.activeObject.caption}</h2>
-					{:else if $state.activeObject.label}
-						<h2>{$state.activeObject.label}</h2>
-					{:else if $state.activeSecondary.contentType == 'custom'}
-						<h2>{$state.activeSecondary.content[0].label}</h2>
+					{#if $state.activeSecondary._type == "custom"}
+						<h2>{$state.activeSecondary.items[0].label}</h2>
 					{/if}
 				</div>
 			{/if}
 			<div class="dr-content-media-controls">
-				{#if $state.activeSecondary.content.length > 1}
+				{#if $state.activeSecondary.items.length > 1}
 					<div class="dr-content-media-control-item" on:click={() => setActiveObject(false)}>
 						<p>Video Menu</p>
 					</div>
@@ -133,18 +128,18 @@
 				</div>
 			{/if}
 			<div class="dr-content-media-list">
-				{#each $state.activeSecondary.content as item}
+				{#each $state.activeSecondary.items as item}
 					<div class="dr-content-media-wrapper">
-						<div class="dr-content-media-item-{$state.activeSecondary.contentType}" on:click={() => setActiveObject(item)}>
-							<img src="{$config.imagesPath}{item.thumbnail}" alt={item.title || item.label} />
-							{#if $state.activeSecondary.contentType == 'musicalmoments'}
+						<div class="dr-content-media-item-{$state.activeSecondary._type}" on:click={() => setActiveObject(item)}>
+							<img src="{$config.localMediaPath}{item.thumbnail}" alt={item.title || item.label} />
+							{#if $state.activeSecondary._type == "musicalMoments"}
 								<h2>“{item.title}”</h2>
-								<h2>{item.person}</h2>
-							{:else if $state.activeSecondary.contentType == 'factoryfootage' || 'oralhistories'}
-								<h2>{item.label || item.summary}</h2>
+								<h2>{item.artist}</h2>
+							{:else if $state.activeSecondary._type == "factoryFootage" || "oralHistories"}
+								<h2>{item.title}</h2>
 							{/if}
 						</div>
-						{#if $state.activeSecondary.contentType == 'oralhistories'}<p>
+						{#if $state.activeSecondary._type == "oralHistories"}<p>
 								{item.summary}
 							</p>{/if}
 					</div>
@@ -154,7 +149,7 @@
 	{/if}
 </div>
 {#if $state.activeSecondary === false}
-	<img id="instruction-media" src="{$config.imagesPath}INSTRUCTION-MEDIA.png" alt="Choose a category" />
+	<img id="instruction-media" src="{$config.localMediaPath}INSTRUCTION-MEDIA.png" alt="Choose a category" />
 {/if}
 
 <style>
@@ -212,7 +207,7 @@
     column-gap: 50px; */
 	}
 
-	div[class^='dr-content-media-item-'] {
+	div[class^="dr-content-media-item-"] {
 		width: 454px;
 		height: 341px;
 		background-color: var(--dr-gallery-color);
@@ -221,7 +216,7 @@
 		margin-right: 50px;
 	}
 
-	div[class^='dr-content-media-item-']:nth-child(4n) {
+	div[class^="dr-content-media-item-"]:nth-child(4n) {
 		margin-right: 0px;
 	}
 
@@ -244,21 +239,21 @@
 		line-height: 150%;
 	}
 
-	.dr-content-media-item-musicalmoments h2 {
+	.dr-content-media-item-musicalMoments h2 {
 		font-family: var(--dr-body-font);
 		font-size: 24px;
 		font-weight: normal;
 		margin: 8px 20px;
 	}
 
-	div[class^='dr-content-media-item-']:not(.dr-content-media-item-musicalmoments) h2 {
+	div[class^="dr-content-media-item-"]:not(.dr-content-media-item-musicalMoments) h2 {
 		font-family: var(--dr-body-font);
 		font-size: 34px;
 		font-weight: normal;
 		margin: 20px 20px;
 	}
 
-	div[class^='dr-content-media-item-'] img {
+	div[class^="dr-content-media-item-"] img {
 		width: 100%;
 		height: 250px;
 		object-fit: cover;
@@ -276,7 +271,7 @@
 		z-index: 0;
 	}
 
-	.dr-content-media-overlay-musicalmoments {
+	.dr-content-media-overlay-musicalMoments {
 		position: absolute;
 		width: 1200px;
 		bottom: 220px;
@@ -290,28 +285,28 @@
 		z-index: 9;
 	}
 
-	.dr-content-media-overlay-factoryfootage {
+	.dr-content-media-overlay-factoryFootage {
 		position: absolute;
 		width: 1200px;
 		bottom: 90px;
 		z-index: 9;
 	}
 
-	.dr-content-media-overlay-oralhistories {
+	.dr-content-media-overlay-oralHistories {
 		position: absolute;
 		width: 1200px;
 		bottom: 90px;
 		z-index: 9;
 	}
 
-	.dr-content-media-overlay-oralhistories h2 {
+	.dr-content-media-overlay-oralHistories h2 {
 		font-family: var(--dr-body-font);
 		font-size: 48px;
 		font-weight: normal;
 		margin: 6px 0px;
 	}
 
-	.dr-content-media-overlay-factoryfootage h2 {
+	.dr-content-media-overlay-factoryFootage h2 {
 		font-family: var(--dr-body-font);
 		font-size: 48px;
 		font-weight: normal;
@@ -325,7 +320,7 @@
 		margin: 6px 0px;
 	}
 
-	.dr-content-media-overlay-musicalmoments h2 {
+	.dr-content-media-overlay-musicalMoments h2 {
 		font-family: var(--dr-body-font);
 		font-size: 36px;
 		font-weight: normal;

@@ -1,51 +1,58 @@
 <script>
-	import { config, state, substitutions } from './stores.js';
-	import { createEventDispatcher } from 'svelte';
+	import { config, state, substitutions } from "./stores.js"
+	import { createEventDispatcher } from "svelte"
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher()
 
 	function setActiveObject(object) {
-		if ($state.activePrimary.contentType == 'media') {
-			if (object.contentType == 'custom') {
-				$state.activeSecondary = object;
-				$state.activeObject = object;x
+        console.log('object', object)
+		if ($state.activePrimary._type == "media") {
+			if (object._type == "custom") {
+				$state.activeSecondary = object
+				$state.activeObject = object
 			} else {
-				$state.activeSecondary = object;
+				$state.activeSecondary = object
 				$state.activeObject = {}
 			}
 		} else {
-			$state.activeSecondary = {};
-			$state.activeObject = object;
+			$state.activeSecondary = {}
+			$state.activeObject = object
 		}
 		// $state.activePrimary.contentType == 'media' && object.contentType != 'custom' ? ($state.activeSecondary = object) : ($state.activeSecondary = {});
 		// $state.activePrimary.contentType == 'media' && object.contentType != 'custom' ? ($state.activeObject = {}) : ($state.activeObject = object);
-		$state.activeImage = 0;
-		$state.playPause = 'Play';
-		console.log($state.activeObject);
+		$state.activeImage = 0
+		$state.playPause = "Play"
+		console.log($state.activeObject)
 	}
+	console.log($state.activePrimary)
 </script>
 
 <div class="dr-secondary-navigation-container">
 	{#if $state.activePrimary}
 		<div class="dr-secondary-navigation-header">
 			<div class="flex-item">
-				<img src="{$config.iconsPath}{$state.activePrimary.icon ? $state.activePrimary.icon : $state.activePrimary.title.toLowerCase().replace(/\s/g, '') + '.svg'}" alt="Icon" />
+				<img
+					src="{$config.localMediaPath}{$state.activePrimary.icon
+						? $state.activePrimary.icon
+						: $state.activePrimary.title.toLowerCase().replace(/\s/g, '') + '.svg'}"
+					alt="Icon"
+				/>
 			</div>
 			<div class="break" />
 			<div class="flex-item">
-				<h2 class={$state.activePrimary.title.length > 12 ? 'dr-secondary-navigation-header-small' : ''}>
+				<h2 class={$state.activePrimary.title.length > 12 ? "dr-secondary-navigation-header-small" : ""}>
 					{$state.activePrimary.title}
 				</h2>
 			</div>
 		</div>
-		{#if $state.activePrimary.contentType != 'artifacts'}
+		{#if $state.activePrimary._type != "artifacts"}
 			<div class="dr-secondary-navigation-items">
-				{#each $state.activePrimary.content as item}
+				{#each $state.activePrimary.items as item}
 					<div
 						class="dr-secondary-navigation-item {$state.activeObject == item || $state.activeSecondary == item ? 'active' : ''}"
-						on:click={() => setActiveObject($state.activePrimary.contentType == 'custom' ? item.content[0] : item)}
+						on:click={() => setActiveObject($state.activePrimary._type == "custom" ? item.content[0] : item)}
 					>
-						<img src="{$config.imagesPath}{item.heroImage}" alt={item.title} style="object-position: top" />
+						<img src="{$config.localMediaPath}{item.heroImage}" alt={item.title} style="object-position: top" />
 						<h2>
 							{#if $substitutions.has(item.contentType)}
 								{$substitutions.get(item.contentType)}
@@ -57,10 +64,12 @@
 				{/each}
 			</div>
 		{:else}
-			<div class="dr-secondary-navigation-artifacts-list{$state.activePrimary.content.length > 18 ? '-small' : ''}">
-				{#each $state.activePrimary.content as artifact, index}
+			<div class="dr-secondary-navigation-artifacts-list{$state.activePrimary.items.length > 18 ? '-small' : ''}">
+				{#each $state.activePrimary.items as artifact, index}
 					<div
-						class="dr-secondary-navigation-artifact{$state.activePrimary.content.length > 18 ? '-small' : ''} {$state.activeObject === artifact ? 'active' : ''}"
+						class="dr-secondary-navigation-artifact{$state.activePrimary.items.length > 18 ? '-small' : ''} {$state.activeObject === artifact
+							? 'active'
+							: ''}"
 						on:click={() => setActiveObject(artifact)}
 					>
 						{index + 1}

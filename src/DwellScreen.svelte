@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	{#each rail.dwell.images as image, index}
-		<img class="dwell-image {index == dwellCount ? 'visible' : 'hidden'}" src={$config.imagesPath + image} alt="Dwell screen" />
+		<img class="dwell-image {index == dwellCount ? 'visible' : 'hidden'}" src={$config.localMediaPath + image} alt="Dwell screen" />
 	{/each}
 </div>
 

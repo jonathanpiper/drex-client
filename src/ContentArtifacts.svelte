@@ -10,7 +10,7 @@
       <h2>{$state.activeObject.maker}</h2>
       <h2>{@html $state.activeObject.title}</h2>
       <h2>{$state.activeObject.date}</h2>
-      <SvelteMarkdown source={$state.activeObject.body} />
+      <SvelteMarkdown source={$state.activeObject.description} />
       <p>{$state.activeObject.credit}</p>
     </div>
     <div class="dr-content-artifact-image">

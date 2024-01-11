@@ -1,33 +1,35 @@
 <script>
-	import { config, state } from './stores.js';
-	import { createEventDispatcher, onMount } from 'svelte';
-	export let rail;
-	var titleLongestWord = 0;
-	var titleNumberOfWords = 0;
+	import { config, state } from "./stores.js"
+	import { createEventDispatcher, onMount } from "svelte"
+	export let rail
+	var titleLongestWord = 0
+	var titleNumberOfWords = 0
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher()
 
 	function setPrimaryNavigation(value) {
-		dispatch('resetState');
-		$state.activePrimary = value;
+        console.log(value)
+		dispatch("resetState")
+		$state.activePrimary = value
 	}
 
 	function getTitleSize(string) {
-		var words = string.split(' ');
-		let numberOfWords, longestWord = 0;
-		numberOfWords = words.length;
+		var words = string.split(" ")
+		let numberOfWords,
+			longestWord = 0
+		numberOfWords = words.length
 		words.forEach((word) => {
 			if (longestWord < word.length) {
-				longestWord = word.length;
+				longestWord = word.length
 			}
-		});
-		console.log(string, numberOfWords, longestWord)
-		return [numberOfWords, longestWord];
+		})
+		// console.log(string, numberOfWords, longestWord)
+		return [numberOfWords, longestWord]
 	}
 
 	onMount(async () => {
-		[titleLongestWord, titleNumberOfWords] = getTitleSize(rail.title);
-	});
+		;[titleLongestWord, titleNumberOfWords] = getTitleSize(rail.title)
+	})
 </script>
 
 <div class="dr-primary-navigation-container">
@@ -35,24 +37,39 @@
 		{#if rail.dateRange}
 			<h1 class="dr-primary-navigation-dateRange">{rail.dateRange}</h1>
 		{/if}
-		<div class="dr-primary-navigation-title" on:click={() => dispatch('resetState')}>
-			<div id="dr-title{rail.identifier == 'rail4a' || rail.identifier.substring(4, 5) == '2' ? '-small' : titleLongestWord > 8 || titleNumberOfWords > 3 ? '-mid' : ''}">
+		<div class="dr-primary-navigation-title" on:click={() => dispatch("resetState")}>
+			<div
+				id="dr-title{rail.identifier == 'rail4a' || rail.identifier.substring(4, 5) == '2'
+					? '-small'
+					: titleLongestWord > 8 || titleNumberOfWords > 3
+					  ? '-mid'
+					  : ''}"
+			>
 				{rail.title}
 			</div>
 		</div>
 		{#each rail.content as contentItem, index}
 			<div
-				class="dr-primary-navigation-item{getTitleSize(contentItem.title)[0] > 3 ? '-small' : ''} {$state.activePrimary.title == contentItem.title ? 'active' : ''}"
+				class="dr-primary-navigation-item{getTitleSize(contentItem.title)[0] > 3 ? '-small' : ''} {$state.activePrimary.title == contentItem.title
+					? 'active'
+					: ''}"
 				on:click={() => setPrimaryNavigation(contentItem)}
 			>
-				<img src="{$config.iconsPath}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}" alt={contentItem.title} />
+				<img
+					src="{$config.localMediaPath}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}"
+					alt={contentItem.title}
+				/>
 				<h2>{contentItem.title}</h2>
 			</div>
 		{/each}
 	</div>
 </div>
 {#if $state.activePrimary === false}
-	<img id="instruction-topic{rail.content.length == 4 ? '-small' : ''}" src="{$config.imagesPath}INSTRUCTION-TOPIC{rail.content.length == 4 ? '-SMALL' : ''}.png" alt="Choose a topic" />
+	<img
+		id="instruction-topic{rail.content.length == 4 ? '-small' : ''}"
+		src="{$config.imagesPath}INSTRUCTION-TOPIC{rail.content.length == 4 ? '-SMALL' : ''}.png"
+		alt="Choose a topic"
+	/>
 {/if}
 
 <style>
