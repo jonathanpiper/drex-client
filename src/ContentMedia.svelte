@@ -10,7 +10,6 @@
 			$state.activeSecondary = {}
 		}
 		$state.activeObject = value
-		console.log(Object.keys($state.activeObject))
 		$state.playPause = "Play"
 	}
 
@@ -31,7 +30,6 @@
 	}
 
 	function checkVideo() {
-        console.log($state.activeObject)
 		if (video && $state.activeObject.hasOwnProperty("items")) {
 			if (video.children[0].getAttribute("src") != $config.localMediaPath + $state.activeObject.items[0].clip) {
 				video.load()
@@ -59,7 +57,6 @@
 			})
 		}
 	})
-	//{$state.activeSecondary._type == 'custom' ? $state.activeSecondary.content[0].clip : $state.activeObject.clip}
 </script>
 
 <div class="dr-content-media">

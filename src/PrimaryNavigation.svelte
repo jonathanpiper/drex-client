@@ -8,7 +8,6 @@
 	const dispatch = createEventDispatcher()
 
 	function setPrimaryNavigation(value) {
-        console.log(value)
 		dispatch("resetState")
 		$state.activePrimary = value
 	}
@@ -23,7 +22,6 @@
 				longestWord = word.length
 			}
 		})
-		// console.log(string, numberOfWords, longestWord)
 		return [numberOfWords, longestWord]
 	}
 

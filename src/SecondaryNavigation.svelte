@@ -5,7 +5,6 @@
 	const dispatch = createEventDispatcher()
 
 	function setActiveObject(object) {
-        console.log('object', object)
 		if ($state.activePrimary._type == "media") {
 			if (object._type == "custom") {
 				$state.activeSecondary = object
@@ -18,13 +17,9 @@
 			$state.activeSecondary = {}
 			$state.activeObject = object
 		}
-		// $state.activePrimary.contentType == 'media' && object.contentType != 'custom' ? ($state.activeSecondary = object) : ($state.activeSecondary = {});
-		// $state.activePrimary.contentType == 'media' && object.contentType != 'custom' ? ($state.activeObject = {}) : ($state.activeObject = object);
 		$state.activeImage = 0
 		$state.playPause = "Play"
-		console.log($state.activeObject)
 	}
-	console.log($state.activePrimary)
 </script>
 
 <div class="dr-secondary-navigation-container">

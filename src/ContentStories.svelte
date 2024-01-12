@@ -37,9 +37,6 @@
 			$state.playPause = "Play"
 		}
 	}
-	console.log("story", $state.activeSecondary)
-	// console.log(["", null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].thumbnail))
-	// console.log(['', null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].caption))
 </script>
 
 <div class="dr-content-stories">
@@ -65,11 +62,8 @@
 			{#if $state.activeObject.hasOwnProperty("storyMedia")}
 				{#if $state.activeObject.storyMedia[$state.activeImage].full}
 					<div class="dr-content-story-image-container{$state.activeObject.storyMedia.length === 1 ? '-nothumb' : ''}">
-						<!-- // ['', null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].thumbnail) &&
-						// ['', null, undefined].includes($state.activeObject.storyMedia[$state.activeImage].caption) && -->
-
 						<img id="storyImage" src="{$config.localMediaPath}{$state.activeObject.storyMedia[$state.activeImage].full}" alt="Story" />
-						{#if ["", null].includes($state.activeObject.storyMedia[$state.activeImage].caption) === -1}
+						{#if !["", null].includes($state.activeObject.storyMedia[$state.activeImage].caption)}
 							<div class="dr-content-story-image-caption">
 								<SvelteMarkdown source={$state.activeObject.storyMedia[$state.activeImage].caption} />
 							</div>
