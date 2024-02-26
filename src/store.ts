@@ -14,6 +14,5 @@ export const state = writable({
         this.activePrimary = null
         this.activeSecondary = null
         this.activeTertiary = null
-        console.log(this)
     }
 })

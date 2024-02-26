@@ -1,8 +1,6 @@
-// const APIURL = 'http://192.168.168.180:9000'
-
 const getRailContent = async () => {
 	try {
-		const req = await fetch("./mediapool/rail.json")
+		const req = await fetch("./files/rail.json")
 		const content = await req.json()
 		return content
 	} catch (err) {
@@ -12,7 +10,7 @@ const getRailContent = async () => {
 
 const getConfig = async () => {
 	try {
-		const req = await fetch("./mediapool/config.json")
+		const req = await fetch("./files/config.json")
 		const content = await req.json()
 		return content
 	} catch (err) {

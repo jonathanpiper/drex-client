@@ -14,7 +14,7 @@
 	var longestWord: number = 0
 	var numberOfWords: number = 0
 
-	$: Type, console.log(Type)
+	$: console.log(Type)
 
 	onMount(async () => {
 		getTitleSize(HomeScreen.title)
@@ -62,7 +62,7 @@
 		height: 1320px;
 		margin-top: 58px;
 		margin-bottom: 58px;
-		background-color: rgba(255, 255, 255, 0.1);
+		background-color: rgba(255, 255, 255, 0.0);
 	}
 
 	.dr-content-home {

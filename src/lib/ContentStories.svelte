@@ -182,7 +182,7 @@
 		border-left: solid 2px white;
 		align-content: flex-start;
 		display: flex;
-		flex-flow: wrap column;
+		flex-flow: wrap row;
 	}
 
 	.dr-content-story-image-container {
@@ -235,7 +235,7 @@
 
 	.dr-content-story-image-selections {
 		align-self: flex-start;
-		height: calc(100%-1072px);
+		height: calc(100% - 1072px);
 		display: flex;
 		width: 950px;
 		flex-flow: wrap row;

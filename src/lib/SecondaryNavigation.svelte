@@ -11,22 +11,18 @@
         $state.activeImage = 0
 	}
 
-	// function setActiveObject(object) {
-	// 	if ($state.activePrimary._type == "media") {
-	// 		if (object._type == "custom") {
-	// 			$state.activeSecondary = object
-	// 			$state.activeObject = object
-	// 		} else {
-	// 			$state.activeSecondary = object
-	// 			$state.activeObject = {}
-	// 		}
-	// 	} else {
-	// 		$state.activeSecondary = {}
-	// 		$state.activeObject = object
-	// 	}
-	// 	$state.activeImage = 0
-	// 	$state.playPause = "Play"
-	// }
+	function getTitleSize(string: string) {
+		var words = string.split(" ")
+		let numberOfWords: number = 0
+		let longestWord: number = 0
+		numberOfWords = words.length
+		words.forEach((word) => {
+			if (longestWord < word.length) {
+				longestWord = word.length
+			}
+		})
+		return string.length
+	}
 </script>
 
 <div class="dr-secondary-navigation-container">
@@ -46,7 +42,7 @@
 			<div class="dr-secondary-navigation-items">
 				{#each Category.items as item, index}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<div class="dr-secondary-navigation-item {$state.activeSecondary == index ? 'active' : ''}" on:click={() => setSecondaryNavigation(index)}>
+					<div class="dr-secondary-navigation-item{getTitleSize(item.title) > 20 ? '-small' : ''} {$state.activeSecondary == index ? 'active' : ''}" on:click={() => setSecondaryNavigation(index)}>
 						<img src="{MEDIAPATH}{item.heroImage}" alt={item.title} style="object-position: top" />
 						<h2>
 							{#if SUBSTITUTIONS.hasOwnProperty(item.contentType)}
@@ -132,7 +128,7 @@
 		break-after: always;
 	}
 
-	.dr-secondary-navigation-item {
+	div[class^="dr-secondary-navigation-item"] {
 		border: solid 4px black;
 		background-color: var(--dr-gallery-color);
 		height: 325px;
@@ -143,10 +139,17 @@
 		font-family: var(--dr-body-font);
 		font-size: 36px;
 		font-weight: normal;
-		margin: 12px 20px;
+		margin: 4px 16px;
 	}
 
-	.dr-secondary-navigation-item img {
+    .dr-secondary-navigation-item-small h2 {
+		font-family: var(--dr-body-font);
+		font-size: 30px;
+		font-weight: normal;
+		margin: 6px 16px;
+	}
+
+	div[class^="dr-secondary-navigation-item"] img {
 		width: 100%;
 		height: 250px;
 		object-fit: cover;

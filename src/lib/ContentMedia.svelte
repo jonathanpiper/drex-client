@@ -9,24 +9,15 @@
 
 	var video
 
-	// function setActiveObject(value) {
-	// 	if ($state.activeObject._type == "custom") {
-	// 		$state.activeSecondary = {}
-	// 	}
-	// 	$state.activeObject = value
-	// 	$state.playPause = "Play"
-	// }
-
 	const setTertiaryNavigation = (value) => {
 		$state.activeTertiary = value
-        MediaItem = Content.items[$state.activeTertiary]
-        $state.playPause = "Play"
+		MediaItem = Content.items[$state.activeTertiary]
+		$state.playPause = "Play"
 	}
 
 	function toggleVideo() {
 		if (!video) {
 			video = document.getElementById("video") as HTMLVideoElement
-			console.log(video)
 		}
 		if (video) {
 			if (video.paused) {
@@ -49,11 +40,11 @@
 		}
 	}
 
-	$: MediaItem !== null, checkVideo()
+    $: console.log(Content, MediaItem)
 
-    $: if ($state.activeTertiary === null) MediaItem = null
+	$: (MediaItem !== null && Content !== null), checkVideo()
 
-    // $: $state.activeSecondary, setTertiaryNavigation(null)
+	$: if ($state.activeTertiary === null) MediaItem = null
 
 	afterUpdate(() => {
 		video = document.getElementById("video")
@@ -75,7 +66,7 @@
 
 <div class="dr-content-media">
 	{#if $state.activeSecondary !== null}
-		{#if Content._type != "custom"}
+		{#if Content?._type !== "custom"}
 			<div class="dr-content-media-header">
 				<h2 class="dr-content-media-header-title{Content.summary ? '-small-margin' : ''}">
 					{SUBSTITUTIONS.hasOwnProperty(Content._type) ? SUBSTITUTIONS[Content._type] : Content.title}
@@ -87,35 +78,36 @@
 				<source src="{MEDIAPATH}{Content._type == 'custom' ? Content.items[0].clip : MediaItem.clip}" type="video/mp4" />
 				<track src="" kind="captions" />
 			</video>
-			{#if MediaItem.staticClip}
+			{#if MediaItem?.staticClip}
 				<div class="dr-content-media-overlay-static-clip">
-					{#if MediaItem.title}
+					{#if MediaItem?.title}
 						<p><strong>“{MediaItem.title}”</strong></p>
 					{/if}
-					{#if MediaItem.artist}
+					{#if MediaItem?.artist}
 						<p>{MediaItem.artist}{MediaItem.year ? ", " + MediaItem.year : ""}</p>
 					{/if}
 				</div>
 			{:else}
 				<div class="dr-content-media-overlay-{Content._type}">
-					{#if MediaItem.artist}
-						<h2>{MediaItem.artist}{MediaItem.year ? ", " + MediaItem.year : ""}</h2>
-					{/if}
-					{#if MediaItem.title && MediaItem._type === "musicalMoments"}
-						<h2>“{MediaItem.title}”</h2>
-					{:else if MediaItem.title && MediaItem._type === "factoryFootage"}
-						<h2>{MediaItem.caption}</h2>
-					{:else if MediaItem._type !== "custom"}
-						<h2>{MediaItem.title}</h2>
-					{/if}
-					{#if MediaItem.instrument}
-						<h2>{MediaItem.instrument}</h2>
-					{/if}
-					{#if MediaItem.credit}
-						<h2>{MediaItem.credit}</h2>
-					{/if}
-					{#if Content._type == "custom"}
+					{#if Content?._type === "custom"}
 						<h2>{Content.items[0].label}</h2>
+					{:else}
+						{#if MediaItem?.artist}
+							<h2>{MediaItem.artist}{MediaItem.year ? ", " + MediaItem.year : ""}</h2>
+						{/if}
+						{#if MediaItem?.title && MediaItem?._type === "musicalMoments"}
+							<h2>“{MediaItem?.title}”</h2>
+						{:else if MediaItem?.title && MediaItem?._type === "factoryFootage"}
+							<h2>{MediaItem.caption}</h2>
+						{:else if MediaItem?._type !== "custom"}
+							<h2>{MediaItem?.title}</h2>
+						{/if}
+						{#if MediaItem?.instrument}
+							<h2>{MediaItem.instrument}</h2>
+						{/if}
+						{#if MediaItem?.credit}
+							<h2>{MediaItem.credit}</h2>
+						{/if}
 					{/if}
 				</div>
 			{/if}
@@ -144,14 +136,14 @@
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div class="dr-content-media-item-{Content._type}" on:click={() => setTertiaryNavigation(index)}>
 							<img src="{MEDIAPATH}{item.thumbnail}" alt={item.title || item.label} />
-							{#if Content._type === "musicalMoments"}
+							{#if Content?._type === "musicalMoments"}
 								<h2>“{item.title}”</h2>
 								<h2>{item.artist}</h2>
-							{:else if Content._type === "factoryFootage" || "oralHistories"}
+							{:else if Content?._type === "factoryFootage" || "oralHistories"}
 								<h2>{item.title}</h2>
 							{/if}
 						</div>
-						{#if Content._type == "oralHistories"}<p>
+						{#if Content?._type == "oralHistories"}<p>
 								{item.summary}
 							</p>{/if}
 					</div>
@@ -256,13 +248,14 @@
 		font-size: 24px;
 		font-weight: normal;
 		margin: 8px 20px;
+        line-height: 1.2
 	}
 
 	div[class^="dr-content-media-item-"]:not(.dr-content-media-item-musicalMoments) h2 {
 		font-family: var(--dr-body-font);
 		font-size: 34px;
 		font-weight: normal;
-		margin: 20px 20px;
+		margin: 14px 20px;
 	}
 
 	div[class^="dr-content-media-item-"] img {

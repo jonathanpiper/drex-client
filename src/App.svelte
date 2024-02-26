@@ -76,16 +76,16 @@
 
 	@font-face {
 		font-family: "Montserrat";
-		src: url("/mediapool/Montserrat-VariableFont_wght.ttf") format("truetype");
+		src: url("/files/Montserrat-VariableFont_wght.ttf") format("truetype");
 	}
 
 	@font-face {
 		font-family: "Signika";
-		src: url("/mediapool/Signika-VariableFont_wght.ttf") format("truetype");
+		src: url("/files/Signika-VariableFont_wght.ttf") format("truetype");
 	}
 
 	@font-face {
 		font-family: "OpenSans";
-		src: url("/mediapool/OpenSans-VariableFont_wdthwght.ttf") format("truetype");
+		src: url("/files/OpenSans-VariableFont_wdthwght.ttf") format("truetype");
 	}
 </style>

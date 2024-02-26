@@ -183,6 +183,7 @@
 		font-size: 48px;
 		font-weight: normal;
 		text-transform: uppercase;
+        line-height: 1.2;
 	}
 	.dr-primary-navigation-item-small h2 {
 		align-self: center;
@@ -190,6 +191,7 @@
 		font-size: 40px;
 		font-weight: normal;
 		text-transform: uppercase;
+        line-height: 1.2;
 	}
 	.dr-primary-navigation-item-small {
 		display: flex;
