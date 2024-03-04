@@ -22,10 +22,8 @@
 		if (video) {
 			if (video.paused) {
 				video.play()
-				// $state.playPause = 'Pause';
 			} else {
 				video.pause()
-				// $state.playPause = 'Play';
 			}
 		}
 	}
@@ -39,8 +37,6 @@
 			}
 		}
 	}
-
-    $: console.log(Content, MediaItem)
 
 	$: (MediaItem !== null && Content !== null), checkVideo()
 

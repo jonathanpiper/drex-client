@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { state } from "../store"
+    import { afterUpdate } from "svelte"
 	import SvelteMarkdown from "svelte-markdown"
     import { MEDIAPATH } from '../const'
-	// import { afterUpdate } from "svelte"
     import { marked } from "marked"
     export let Content
-
-	$state.playPause = "Pause"
 
 	function setActiveImage(value) {
 		$state.activeImage = value
@@ -40,6 +38,36 @@
 			$state.playPause = "Play"
 		}
 	}
+
+    afterUpdate(() => {
+		var audio = document.getElementById("audio") as HTMLAudioElement
+		if (audio) {
+			audio.addEventListener("ended", function () {
+				const event = new MouseEvent("click", { bubbles: true, view: window })
+				document.getElementById("digital-rail").dispatchEvent(event)
+			})
+			audio.addEventListener("play", function () {
+				$state.playPauseAudio = "Pause"
+			})
+			audio.addEventListener("pause", function () {
+				$state.playPauseAudio = "Play"
+			})
+		}
+
+        var video = document.getElementById("video")
+		if (video) {
+			video.addEventListener("ended", function () {
+				const event = new MouseEvent("click", { bubbles: true, view: window })
+				document.getElementById("digital-rail").dispatchEvent(event)
+			})
+			video.addEventListener("play", function () {
+				$state.playPause = "Pause"
+			})
+			video.addEventListener("pause", function () {
+				$state.playPause = "Play"
+			})
+		}
+	})
 </script>
 
 <div class="dr-content-stories">

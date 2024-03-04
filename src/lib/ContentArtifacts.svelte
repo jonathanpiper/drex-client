@@ -3,10 +3,8 @@
 	import { MEDIAPATH } from "../const"
 	import SvelteMarkdown from "svelte-markdown"
 	import OSD from "./OSD.svelte"
-    import { marked } from "marked"
+	import { marked } from "marked"
 	export let Content
-
-    console.log(Content)
 </script>
 
 <div class="dr-content-artifacts">

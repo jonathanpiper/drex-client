@@ -19,8 +19,6 @@
     } else { 
         Content = null
     }
-
-    $: console.log(Content, Category)
 </script>
 
 <div id="digital-rail" class="dr-container" transition:fade>

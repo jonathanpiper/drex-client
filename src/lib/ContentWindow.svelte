@@ -14,8 +14,6 @@
 	var longestWord: number = 0
 	var numberOfWords: number = 0
 
-	$: console.log(Type)
-
 	onMount(async () => {
 		getTitleSize(HomeScreen.title)
 	})

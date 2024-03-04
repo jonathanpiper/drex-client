@@ -1,5 +1,5 @@
-export const DWELLTIMEOUT = 20000
-export const DWELLROTATE = 5
+export const DWELLTIMEOUT = 120
+export const DWELLROTATE = 10
 export const MEDIAPATH = './files/'
 export const SUBSTITUTIONS = {
     "musicalmoments": "Musical Moments",

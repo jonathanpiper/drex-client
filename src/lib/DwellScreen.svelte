@@ -27,7 +27,8 @@
 		window.onkeydown = resetTimer //catches keyboard actions
 
 		function setDwellScreen() {
-			if ($state.playPause == "Play") {
+            console.log('setDwellScreen triggered ', $state.playPause, $state.playPauseAudio)
+			if ($state.playPause === "Play" && $state.playPauseAudio === "Play") {
 				dwellScreenActive = true
 				rotateDwellImage()
 				setTimeout($state.reset, 2000)
@@ -53,6 +54,7 @@
 		function resetTimer() {
 			clearTimeout(t)
 			t = setTimeout(setDwellScreen, DWELLTIMEOUT * 1000)
+            console.log('Clearing timer.', t)
 		}
 		resetTimer()
 	}

@@ -1,43 +1,49 @@
 <script lang="ts">
 	import { loadData, setRailStyles } from "./functions"
 	import { state } from "./store"
+	import { onMount } from "svelte"
 	import DigitalRail from "./lib/DigitalRail.svelte"
 	import DwellScreen from "./lib/DwellScreen.svelte"
 	import LoadingScreen from "./lib/LoadingScreen.svelte"
 
-	const { rail: Rail, config: Config } = loadData
-	const railDefinition = {
-		identifier: Rail.identifier,
-		shortIdentifier: Rail.identifier.substring(4),
-		get gallery() {
-			return this.shortIdentifier.substring(0, 1)
-		},
-	}
-	setRailStyles(document.body.style, Config, `gallery${railDefinition.gallery}`)
+	let Rail, Config, railDefinition
+	onMount(async () => {
+		const promise = await loadData()
+		Rail = promise.rail
+		Config = promise.config
+		railDefinition = {
+			identifier: Rail.identifier,
+			shortIdentifier: Rail.identifier.substring(4),
+			get gallery() {
+				return this.shortIdentifier.substring(0, 1)
+			},
+		}
+		setRailStyles(document.body.style, Config, `gallery${railDefinition.gallery}`)
+	})
+
 	const setPrimary = (e: any) => {
-        resetState()
+		resetState()
 		$state.activePrimary = e.detail
 	}
-    const setSecondary = (e: any) => {
+	const setSecondary = (e: any) => {
 		$state.activeSecondary = e.detail
-        $state.activeTertiary = null
+		$state.activeTertiary = null
 	}
 	const resetState = () => {
 		$state.reset()
-        console.log($state)
 		$state.activePrimary = null
-        $state.activeSecondary = null
-        $state.activeTertiary = null
-        $state.activeImage = 0
+		$state.activeSecondary = null
+		$state.activeTertiary = null
+		$state.activeImage = 0
 	}
 </script>
 
 <svelte:head>
-	<title>Museum of Making Music Digital Rail {railDefinition.shortIdentifier}</title>
+	<title>Museum of Making Music Digital Rail {railDefinition?.shortIdentifier}</title>
 </svelte:head>
 
 {#if !Rail}
-	<LoadingScreen identifier={railDefinition.identifier} />
+	<LoadingScreen identifier={railDefinition?.identifier} />
 {:else}
 	<DwellScreen dwellImages={Rail.dwell.images} />
 	<DigitalRail {Rail} on:resetState={resetState} on:setPrimary={setPrimary} on:setSecondary={setSecondary} />

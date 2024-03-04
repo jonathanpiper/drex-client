@@ -14,7 +14,7 @@
 	function createOSDViewer() {
 		viewer = OpenSeadragon({
 			id: "openseadragon1",
-			prefixUrl: "/mediapool/",
+			prefixUrl: "/files/",
 			sequenceMode: true,
 			tileSources: [],
 			navigatorAutoResize: false,
