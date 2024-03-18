@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { state } from "../store"
-	import { MEDIAPATH, SUBSTITUTIONS } from "../const"
+	import { state, MEDIAPATH } from "../store"
+	import { SUBSTITUTIONS } from "../const"
 	import SvelteMarkdown from "svelte-markdown"
+	import { marked } from "marked"
 	import { afterUpdate } from "svelte"
+	import { construct_svelte_component } from "svelte/internal"
 
 	export let Content
 	let MediaItem = null
@@ -10,27 +12,33 @@
 	var video
 
 	const setTertiaryNavigation = (value) => {
+        video = null
 		$state.activeTertiary = value
 		MediaItem = Content.items[$state.activeTertiary]
 		$state.playPause = "Play"
 	}
 
 	function toggleVideo() {
+		console.log("trying to toggle")
 		if (!video) {
 			video = document.getElementById("video") as HTMLVideoElement
+			console.log("got video")
 		}
 		if (video) {
 			if (video.paused) {
 				video.play()
 			} else {
+				console.log("pause!", video)
 				video.pause()
 			}
 		}
 	}
 
 	function checkVideo() {
-		if (video && Content.hasOwnProperty("items")) {
-			if (video.children[0].getAttribute("src") !== MEDIAPATH + Content.items[0].clip) {
+		console.log("check video", $state.playPause, video)
+		if (video && ( MediaItem || Content?._type === "custom")) {
+			if (![$MEDIAPATH + MediaItem?.clip, $MEDIAPATH + Content?.items[0]?.clip].includes(video.children[0].getAttribute("src"))) {
+                console.log('hey')
 				video.load()
 				video.pause()
 				video.load()
@@ -38,24 +46,34 @@
 		}
 	}
 
-	$: (MediaItem !== null && Content !== null), checkVideo()
+    $: if (Content?._type === "custom") {
+        console.log('custom!')
+        checkVideo()
+    }
+
+	$: if (MediaItem !== null) checkVideo()
 
 	$: if ($state.activeTertiary === null) MediaItem = null
 
 	afterUpdate(() => {
-		video = document.getElementById("video")
-		if (video) {
-			video.addEventListener("ended", function () {
-				const event = new MouseEvent("click", { bubbles: true, view: window })
-				document.getElementById("digital-rail").dispatchEvent(event)
-				setTertiaryNavigation(null)
-			})
-			video.addEventListener("play", function () {
-				$state.playPause = "Pause"
-			})
-			video.addEventListener("pause", function () {
-				$state.playPause = "Play"
-			})
+		if (!video) {
+			video = document.getElementById("video") as HTMLVideoElement
+			if (video) {
+				video.addEventListener("ended", function () {
+					const event = new MouseEvent("click", { bubbles: true, view: window })
+					document.getElementById("digital-rail").dispatchEvent(event)
+					console.log("ended")
+					setTertiaryNavigation(null)
+				})
+				video.addEventListener("play", function () {
+					$state.playPause = "Pause"
+				})
+				video.addEventListener("pause", function () {
+					$state.playPause = "Play"
+				})
+				console.log("gotta play")
+				video.play()
+			}
 		}
 	})
 </script>
@@ -71,7 +89,7 @@
 		{/if}
 		{#if MediaItem !== null || Content._type === "custom"}
 			<video id="video" autoplay>
-				<source src="{MEDIAPATH}{Content._type == 'custom' ? Content.items[0].clip : MediaItem.clip}" type="video/mp4" />
+				<source src="{$MEDIAPATH}{Content._type === 'custom' ? Content.items[0].clip : MediaItem.clip}" type="video/mp4" />
 				<track src="" kind="captions" />
 			</video>
 			{#if MediaItem?.staticClip}
@@ -108,7 +126,7 @@
 				</div>
 			{/if}
 			<div class="dr-content-media-controls">
-				{#if Content.length > 1}
+				{#if Content.items.length > 1}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div class="dr-content-media-control-item" on:click={() => setTertiaryNavigation(null)}>
 						<p>Video Menu</p>
@@ -116,14 +134,14 @@
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 				{/if}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div class="dr-content-media-control-item" on:click={() => toggleVideo()}>
+				<div class="dr-content-media-control-item" on:click={toggleVideo}>
 					<p>{$state.playPause}</p>
 				</div>
 			</div>
 		{:else}
 			{#if Content.summary}
 				<div class="dr-content-media-summary">
-					<SvelteMarkdown source={Content.summary} />
+					<div>{@html marked.parse(Content.summary)}</div>
 				</div>
 			{/if}
 			<div class="dr-content-media-list">
@@ -131,7 +149,7 @@
 					<div class="dr-content-media-wrapper">
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div class="dr-content-media-item-{Content._type}" on:click={() => setTertiaryNavigation(index)}>
-							<img src="{MEDIAPATH}{item.thumbnail}" alt={item.title || item.label} />
+							<img src="{$MEDIAPATH}{item.thumbnail}" alt={item.title || item.label} />
 							{#if Content?._type === "musicalMoments"}
 								<h2>“{item.title}”</h2>
 								<h2>{item.artist}</h2>
@@ -149,7 +167,7 @@
 	{/if}
 </div>
 {#if Content === null}
-	<img id="instruction-media" src="{MEDIAPATH}INSTRUCTION-MEDIA.png" alt="Choose a category" />
+	<img id="instruction-media" src="{$MEDIAPATH}INSTRUCTION-MEDIA.png" alt="Choose a category" />
 {/if}
 
 <style>
@@ -244,14 +262,14 @@
 		font-size: 24px;
 		font-weight: normal;
 		margin: 8px 20px;
-        line-height: 1.2
+		line-height: 1.2;
 	}
 
 	div[class^="dr-content-media-item-"]:not(.dr-content-media-item-musicalMoments) h2 {
 		font-family: var(--dr-body-font);
 		font-size: 34px;
 		font-weight: normal;
-		margin: 14px 20px;
+		margin: 18px 20px;
 	}
 
 	div[class^="dr-content-media-item-"] img {

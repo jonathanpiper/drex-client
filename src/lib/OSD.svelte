@@ -1,8 +1,8 @@
 <script lang="ts">
 	import OpenSeadragon from "openseadragon"
-	import { MEDIAPATH } from "../const"
+	import {  } from "../const"
 	import { onMount } from "svelte"
-	import { state } from "../store"
+	import { state, MEDIAPATH, previewIdentifier } from "../store"
 	export let Content
 	var viewer
 
@@ -14,7 +14,7 @@
 	function createOSDViewer() {
 		viewer = OpenSeadragon({
 			id: "openseadragon1",
-			prefixUrl: "/files/",
+			prefixUrl: $MEDIAPATH,
 			sequenceMode: true,
 			tileSources: [],
 			navigatorAutoResize: false,
@@ -44,16 +44,18 @@
 		object.artifactImages.forEach((img) => {
 			const filename = img.image.substring(0, img.image.length - 4)
 			var levelsArray = []
-			;["_quarter", "_half", "_threequarter"].forEach((size) => {
-				var multiplier = size == "_quarter" ? 0.25 : size == "_half" ? 0.5 : 0.75
-				levelsArray.push({
-					url: MEDIAPATH + filename + size + ".jpg",
-					width: Math.floor(img.width * multiplier),
-					height: Math.floor(img.height * multiplier),
+			if (!previewIdentifier) {
+				;["_quarter", "_half", "_threequarter"].forEach((size) => {
+					var multiplier = size == "_quarter" ? 0.25 : size == "_half" ? 0.5 : 0.75
+					levelsArray.push({
+						url: $MEDIAPATH + filename + size + ".jpg",
+						width: Math.floor(img.width * multiplier),
+						height: Math.floor(img.height * multiplier),
+					})
 				})
-			})
+			}
 			levelsArray.push({
-				url: MEDIAPATH + filename + ".jpg",
+				url: $MEDIAPATH + filename + ".jpg",
 				width: img.width,
 				height: img.height,
 			})
@@ -72,10 +74,10 @@
 	<div id="OSDToolbar" class="toolbar">
 		<div class="left">
 			<a id="zoom-out" href="#zoom-out">
-				<img src="{MEDIAPATH}zoomout.svg" alt="Zoom out" />
+				<img src="{$MEDIAPATH}zoomout.svg" alt="Zoom out" />
 			</a>
 			<a id="zoom-in" href="#zoom-in">
-				<img src="{MEDIAPATH}zoomin.svg" alt="Zoom in" />
+				<img src="{$MEDIAPATH}zoomin.svg" alt="Zoom in" />
 			</a>
 			<!-- <img
         id="home"
@@ -86,10 +88,10 @@
 		</div>
 		<div class="right">
 			<a id="previous" href="#previous">
-				<img src="{MEDIAPATH}previous.svg" alt="Previous" />
+				<img src="{$MEDIAPATH}previous.svg" alt="Previous" />
 			</a>
 			<a id="next" href="#next">
-				<img src="{MEDIAPATH}next.svg" alt="Next" />
+				<img src="{$MEDIAPATH}next.svg" alt="Next" />
 			</a>
 		</div>
 	</div>

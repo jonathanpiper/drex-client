@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { state } from "../store"
+	import { state, MEDIAPATH } from "../store"
 	import { onMount, createEventDispatcher } from "svelte"
-	import { MEDIAPATH } from "../const"
 
 	export let Rail
 
@@ -56,7 +55,7 @@
 				on:click={() => setPrimaryNavigation(index)}
 			>
 				<img
-					src="{MEDIAPATH}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}"
+					src="{$MEDIAPATH}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}"
 					alt={contentItem.title}
 				/>
 				<h2>{contentItem.title}</h2>
@@ -66,7 +65,7 @@
 	{#if $state.activePrimary === null}
 		<img
 			id="instruction-topic{Rail.content.length == 4 ? '-small' : ''}"
-			src="{MEDIAPATH}INSTRUCTION-TOPIC{Rail.content.length == 4 ? '-SMALL' : ''}.png"
+			src="{$MEDIAPATH}INSTRUCTION-TOPIC{Rail.content.length == 4 ? '-SMALL' : ''}.png"
 			alt="Choose a topic"
 		/>
 	{/if}

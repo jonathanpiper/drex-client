@@ -1,14 +1,31 @@
 <script lang="ts">
 	import { loadData, setRailStyles } from "./functions"
-	import { state } from "./store"
+	import { previewIdentifier, MEDIAPATH, state } from "./store"
 	import { onMount } from "svelte"
 	import DigitalRail from "./lib/DigitalRail.svelte"
 	import DwellScreen from "./lib/DwellScreen.svelte"
 	import LoadingScreen from "./lib/LoadingScreen.svelte"
 
+    const params = new URLSearchParams(window.location.search)
+    if (params.has('preview')) {
+        $previewIdentifier = params.get('preview')
+        console.log($MEDIAPATH)
+    }
+
 	let Rail, Config, railDefinition
+	const webSocket = new WebSocket("ws://192.168.168.180:9000")
+	webSocket.onmessage = (event) => {
+		const wsMessage = event.data.replace(/["]/g, "")
+		console.log(wsMessage)
+		if (wsMessage == "forceRefresh") {
+			console.log("Received reload message from DREX server.")
+			window.location.reload()
+		} else {
+			console.log(`Unrecognized message from DREX server: ${wsMessage}`)
+		}
+	}
 	onMount(async () => {
-		const promise = await loadData()
+	    const promise = await loadData($previewIdentifier)
 		Rail = promise.rail
 		Config = promise.config
 		railDefinition = {
@@ -35,6 +52,8 @@
 		$state.activeSecondary = null
 		$state.activeTertiary = null
 		$state.activeImage = 0
+        $state.playPause = "Play"
+        $state.playPauseAudio = "Play"
 	}
 </script>
 
@@ -45,7 +64,7 @@
 {#if !Rail}
 	<LoadingScreen identifier={railDefinition?.identifier} />
 {:else}
-	<DwellScreen dwellImages={Rail.dwell.images} />
+	<DwellScreen dwellImages={Rail.dwell.images} on:resetState={resetState} />
 	<DigitalRail {Rail} on:resetState={resetState} on:setPrimary={setPrimary} on:setSecondary={setSecondary} />
 {/if}
 
@@ -79,19 +98,4 @@
 	/* :global(*) {
 		cursor: none !important;
     } */
-
-	@font-face {
-		font-family: "Montserrat";
-		src: url("/files/Montserrat-VariableFont_wght.ttf") format("truetype");
-	}
-
-	@font-face {
-		font-family: "Signika";
-		src: url("/files/Signika-VariableFont_wght.ttf") format("truetype");
-	}
-
-	@font-face {
-		font-family: "OpenSans";
-		src: url("/files/OpenSans-VariableFont_wdthwght.ttf") format("truetype");
-	}
 </style>

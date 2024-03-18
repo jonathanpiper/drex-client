@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { state } from "../store"
+	import { state, MEDIAPATH } from "../store"
     import { afterUpdate } from "svelte"
 	import SvelteMarkdown from "svelte-markdown"
-    import { MEDIAPATH } from '../const'
     import { marked } from "marked"
     export let Content
 
@@ -79,7 +78,7 @@
 			</div>
 			<!-- {@html Content.body.replace(" – ", "&mdash;")} -->
 			{#if Content.inlineAudioClip}
-				<audio id="audio" src="{MEDIAPATH}{Content.inlineAudioClip.clip}" />
+				<audio id="audio" src="{$MEDIAPATH}{Content.inlineAudioClip.clip}" />
 				<div class="dr-content-audio-controls">
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div class="dr-content-audio-control-item" on:click={() => toggleAudio()}>
@@ -94,7 +93,7 @@
 			{#if Content.hasOwnProperty("storyMedia")}
 				{#if Content.storyMedia[$state.activeImage].full}
 					<div class="dr-content-story-image-container{Content.storyMedia.length === 1 ? '-nothumb' : ''}">
-						<img id="storyImage" src="{MEDIAPATH}{Content.storyMedia[$state.activeImage].full}" alt="Story" />
+						<img id="storyImage" src="{$MEDIAPATH}{Content.storyMedia[$state.activeImage].full}" alt="Story" />
 						{#if !["", null].includes(Content.storyMedia[$state.activeImage].caption)}
 							<div class="dr-content-story-image-caption">
 								{@html marked.parse(Content.storyMedia[$state.activeImage].caption)}
@@ -104,7 +103,7 @@
 				{:else}
 					<div class="dr-content-video-player">
 						<video id="video" autoplay>
-							<source src="{MEDIAPATH}{Content.storyMedia[$state.activeImage].video}" type="video/mp4" />
+							<source src="{$MEDIAPATH}{Content.storyMedia[$state.activeImage].video}" type="video/mp4" />
 							<track src="" kind="captions" />
 						</video>
 						<div class="dr-content-media-controls">
@@ -128,7 +127,7 @@
 								class="dr-content-story-image-selection-item {$state.activeImage == index ? 'active' : ''}"
 								on:click={() => setActiveImage(index)}
 							>
-								<img src="{MEDIAPATH}{image.thumbnail}" alt={image.thumbnail} />
+								<img src="{$MEDIAPATH}{image.thumbnail}" alt={image.thumbnail} />
 							</div>
 						{/each}
 					</div>
@@ -138,7 +137,7 @@
 	{/if}
 </div>
 {#if Content === null}
-	<img id="instruction-story" src="{MEDIAPATH}INSTRUCTION-STORY.png" alt="Choose a story" />
+	<img id="instruction-story" src="{$MEDIAPATH}INSTRUCTION-STORY.png" alt="Choose a story" />
 {/if}
 
 <style>

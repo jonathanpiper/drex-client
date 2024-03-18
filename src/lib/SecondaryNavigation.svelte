@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { state } from "../store.js"
-	import { MEDIAPATH, SUBSTITUTIONS } from "../const.js"
+	import { state, MEDIAPATH } from "../store.js"
+	import { SUBSTITUTIONS } from "../const.js"
 	import { createEventDispatcher } from "svelte"
 	export let Category
 
@@ -8,7 +8,7 @@
 
 	const setSecondaryNavigation = (index: number) => {
 		dispatch("setSecondary", index)
-        $state.activeImage = 0
+		$state.activeImage = 0
 	}
 
 	function getTitleSize(string: string) {
@@ -29,7 +29,7 @@
 	{#if Category}
 		<div class="dr-secondary-navigation-header">
 			<div class="flex-item">
-				<img src="{MEDIAPATH}{Category.icon ? Category.icon : Category.toLowerCase().replace(/\s/g, '') + '.svg'}" alt="Icon" />
+				<img src="{$MEDIAPATH}{Category.icon ? Category.icon : Category.toLowerCase().replace(/\s/g, '') + '.svg'}" alt="Icon" />
 			</div>
 			<div class="break" />
 			<div class="flex-item">
@@ -38,20 +38,27 @@
 				</h2>
 			</div>
 		</div>
-		{#if Category._type != "artifacts"}
+		{#if Category._type !== "artifacts"}
 			<div class="dr-secondary-navigation-items">
 				{#each Category.items as item, index}
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<div class="dr-secondary-navigation-item{getTitleSize(item.title) > 20 ? '-small' : ''} {$state.activeSecondary == index ? 'active' : ''}" on:click={() => setSecondaryNavigation(index)}>
-						<img src="{MEDIAPATH}{item.heroImage}" alt={item.title} style="object-position: top" />
-						<h2>
-							{#if SUBSTITUTIONS.hasOwnProperty(item.contentType)}
-								{SUBSTITUTIONS[item.contentType]}
-							{:else}
-								{item.title}
-							{/if}
-						</h2>
-					</div>
+					{#if item}
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<div
+							class="dr-secondary-navigation-item{getTitleSize(item.title) > 20 ? '-small' : ''} {$state.activeSecondary == index
+								? 'active'
+								: ''}"
+							on:click={() => setSecondaryNavigation(index)}
+						>
+							<img src="{$MEDIAPATH}{item.heroImage}" alt={item.title} style="object-position: top" />
+							<h2>
+								{#if SUBSTITUTIONS.hasOwnProperty(item._type)}
+									{SUBSTITUTIONS[item._type]}
+								{:else}
+									{item.title}
+								{/if}
+							</h2>
+						</div>
+					{/if}
 				{/each}
 			</div>
 		{:else}
@@ -139,14 +146,14 @@
 		font-family: var(--dr-body-font);
 		font-size: 36px;
 		font-weight: normal;
-		margin: 4px 16px;
+		margin: 8px 16px;
 	}
 
-    .dr-secondary-navigation-item-small h2 {
+	.dr-secondary-navigation-item-small h2 {
 		font-family: var(--dr-body-font);
 		font-size: 30px;
 		font-weight: normal;
-		margin: 6px 16px;
+		margin: 12px 16px;
 	}
 
 	div[class^="dr-secondary-navigation-item"] img {

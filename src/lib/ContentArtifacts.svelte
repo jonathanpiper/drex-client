@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { state } from "../store"
-	import { MEDIAPATH } from "../const"
+	import { state, MEDIAPATH } from "../store"
 	import SvelteMarkdown from "svelte-markdown"
 	import OSD from "./OSD.svelte"
 	import { marked } from "marked"
@@ -22,7 +21,7 @@
 			{/key}
 		</div>
 	{:else}
-		<img id="instruction-artifact" src="{MEDIAPATH}INSTRUCTION-ARTIFACT.png" alt="Choose an artifact" />
+		<img id="instruction-artifact" src="{$MEDIAPATH}INSTRUCTION-ARTIFACT.png" alt="Choose an artifact" />
 	{/if}
 </div>
 
@@ -45,26 +44,26 @@
 		padding: 80px;
 	}
 
-	:global(.dr-content-artifacts h2) {
+	.dr-content-artifacts h2 {
 		font-family: var(--dr-body-font);
 		font-weight: 500;
 		font-size: 48px;
 		margin: 0px;
+        line-height: normal;
 	}
 
-	:global(.dr-content-artifacts h2:last-of-type) {
+	.dr-content-artifacts h2:last-of-type {
 		margin-bottom: 20px;
 	}
 
-	:global(.dr-content-artifacts p) {
+	.dr-content-artifact-text {
 		font-family: var(--dr-body-font);
 		font-size: 36px;
+        line-height: normal;
 	}
 
-	:global(.dr-content-artifacts p:last-of-type) {
-		font-family: var(--dr-body-font);
+	.dr-content-artifact-text p:last-of-type {
 		font-style: italic;
-		font-size: 36px;
 	}
 
 	.dr-content-artifact-image {
@@ -75,10 +74,4 @@
 		border-color: white;
 		align-content: center;
 	}
-
-	/* .dr-content-artifact-image img {
-    width: 1000px;
-    height: 1316px;
-    object-fit: cover;
-  } */
 </style>

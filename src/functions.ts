@@ -18,18 +18,33 @@ const getConfig = async () => {
 	}
 }
 
-export const loadData = async () => {
+const getPreviewContent = async (identifier: string | null) => {
+    try {
+        const req = await fetch(`http://192.168.168.180:3000/api/preview/${identifier}`)
+        const content = await req.json()
+        console.log(content)
+        return content
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export const loadData = async (previewIdentifier = null) => {
 	try {
-		const rail = await getRailContent()
-		const config = await getConfig()
-		return { rail: rail, config: config }
+		if (!previewIdentifier) {
+			const rail = await getRailContent()
+			const config = await getConfig()
+			return { rail: rail, config: config }
+		} else {
+            const previewContent = await getPreviewContent(previewIdentifier)
+            return previewContent
+        }
 	} catch (err) {
 		console.log(err)
 	}
 }
 
 export const setRailStyles = (styleSet: any, configObject: any, gallery: string) => {
-	console.log(configObject, gallery)
 	styleSet.setProperty("--dr-title-font", configObject["dr-title-font"])
 	styleSet.setProperty("--dr-body-font", configObject["dr-body-font"])
 	styleSet.setProperty("--dr-gallery-color", configObject[gallery].color)

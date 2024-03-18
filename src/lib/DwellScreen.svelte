@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fade } from "svelte/transition"
 	import { onMount } from "svelte"
-	import { state } from "../store"
-	import { MEDIAPATH, DWELLROTATE, DWELLTIMEOUT } from "../const"
+	import { state, MEDIAPATH } from "../store"
+	import { DWELLROTATE, DWELLTIMEOUT } from "../const"
 	import { createEventDispatcher } from "svelte"
 
 	export let dwellImages: []
@@ -18,7 +18,6 @@
 	}
 
 	function idleTimer() {
-		console.log("Initializing timer.")
 		var t
 		window.onload = resetTimer
 		window.onmousedown = resetTimer // catches mouse movements
@@ -27,8 +26,8 @@
 		window.onkeydown = resetTimer //catches keyboard actions
 
 		function setDwellScreen() {
-            console.log('setDwellScreen triggered ', $state.playPause, $state.playPauseAudio)
 			if ($state.playPause === "Play" && $state.playPauseAudio === "Play") {
+                console.log('setting dwell screen')
 				dwellScreenActive = true
 				rotateDwellImage()
 				setTimeout($state.reset, 2000)
@@ -54,7 +53,6 @@
 		function resetTimer() {
 			clearTimeout(t)
 			t = setTimeout(setDwellScreen, DWELLTIMEOUT * 1000)
-            console.log('Clearing timer.', t)
 		}
 		resetTimer()
 	}
@@ -72,7 +70,7 @@
 			</div>
 		</div>
 		{#each dwellImages as image, index}
-			<img class="dwell-image {index == dwellCount ? 'visible' : 'hidden'}" src={MEDIAPATH + image} alt="Dwell screen" />
+			<img class="dwell-image {index == dwellCount ? 'visible' : 'hidden'}" src={$MEDIAPATH + image} alt="Dwell screen" />
 		{/each}
 	</div>
 {/if}
