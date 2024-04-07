@@ -67,7 +67,7 @@
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div
 						class="dr-secondary-navigation-artifact{Category.items.length > 18 ? '-small' : ''} {$state.activeSecondary === index ? 'active' : ''}"
-						on:click={() => setSecondaryNavigation(index)}
+						on:click={() => $state.activeSecondary !== index ? setSecondaryNavigation(index) : null}
 					>
 						{index + 1}
 					</div>
