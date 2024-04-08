@@ -12,33 +12,28 @@
 	var video
 
 	const setTertiaryNavigation = (value) => {
-        video = null
+		video = null
 		$state.activeTertiary = value
 		MediaItem = Content.items[$state.activeTertiary]
 		$state.playPause = "Play"
 	}
 
 	function toggleVideo() {
-		console.log("trying to toggle")
 		if (!video) {
 			video = document.getElementById("video") as HTMLVideoElement
-			console.log("got video")
 		}
 		if (video) {
 			if (video.paused) {
 				video.play()
 			} else {
-				console.log("pause!", video)
 				video.pause()
 			}
 		}
 	}
 
 	function checkVideo() {
-		console.log("check video", $state.playPause, video)
-		if (video && ( MediaItem || Content?._type === "custom")) {
+		if (video && (MediaItem || Content?._type === "custom")) {
 			if (![$MEDIAPATH + MediaItem?.clip, $MEDIAPATH + Content?.items[0]?.clip].includes(video.children[0].getAttribute("src"))) {
-                console.log('hey')
 				video.load()
 				video.pause()
 				video.load()
@@ -46,14 +41,14 @@
 		}
 	}
 
-    $: if (Content?._type === "custom") {
-        console.log('custom!')
-        checkVideo()
-    }
+	$: if (Content?._type === "custom") {
+		checkVideo()
+	}
 
 	$: if (MediaItem !== null) checkVideo()
 
 	$: if ($state.activeTertiary === null) MediaItem = null
+	$: console.log(MediaItem)
 
 	afterUpdate(() => {
 		if (!video) {
@@ -62,7 +57,6 @@
 				video.addEventListener("ended", function () {
 					const event = new MouseEvent("click", { bubbles: true, view: window })
 					document.getElementById("digital-rail").dispatchEvent(event)
-					console.log("ended")
 					setTertiaryNavigation(null)
 				})
 				video.addEventListener("play", function () {
@@ -71,7 +65,6 @@
 				video.addEventListener("pause", function () {
 					$state.playPause = "Play"
 				})
-				console.log("gotta play")
 				video.play()
 			}
 		}
@@ -109,7 +102,7 @@
 						{#if MediaItem?.artist}
 							<h2>{MediaItem.artist}{MediaItem.year ? ", " + MediaItem.year : ""}</h2>
 						{/if}
-						{#if MediaItem?.title && MediaItem?._type === "musicalMoments"}
+						{#if MediaItem?.title && Content?._type === "musicalMoments"}
 							<h2>“{MediaItem?.title}”</h2>
 						{:else if MediaItem?.title && MediaItem?._type === "factoryFootage"}
 							<h2>{MediaItem.caption}</h2>
@@ -152,7 +145,7 @@
 							<img src="{$MEDIAPATH}{item.thumbnail}" alt={item.title || item.label} />
 							{#if Content?._type === "musicalMoments"}
 								<h2>“{item.title}”</h2>
-								<h2>{item.artist}</h2>
+								<h2 class={item.artist.length > 30 ? "small" : ""}>{item.artist}</h2>
 							{:else if Content?._type === "factoryFootage" || "oralHistories"}
 								<h2>{item.title}</h2>
 							{/if}
@@ -265,6 +258,15 @@
 		line-height: 1.2;
 	}
 
+	.dr-content-media-item-musicalMoments h2.small {
+		font-family: var(--dr-body-font);
+		font-size: 22px;
+		font-weight: normal;
+		margin: 8px 20px;
+		line-height: 1.2;
+		letter-spacing: -1.5px;
+	}
+
 	div[class^="dr-content-media-item-"]:not(.dr-content-media-item-musicalMoments) h2 {
 		font-family: var(--dr-body-font);
 		font-size: 34px;
@@ -297,42 +299,14 @@
 		z-index: 9;
 	}
 
-	.dr-content-media-overlay-custom {
+	div[class^="dr-content-media-overlay-"]:not(.dr-content-media-overlay-musicalMoments) {
 		position: absolute;
 		width: 1200px;
-		bottom: 90px;
+		bottom: 84px;
 		z-index: 9;
 	}
 
-	.dr-content-media-overlay-factoryFootage {
-		position: absolute;
-		width: 1200px;
-		bottom: 90px;
-		z-index: 9;
-	}
-
-	.dr-content-media-overlay-oralHistories {
-		position: absolute;
-		width: 1200px;
-		bottom: 90px;
-		z-index: 9;
-	}
-
-	.dr-content-media-overlay-oralHistories h2 {
-		font-family: var(--dr-body-font);
-		font-size: 48px;
-		font-weight: normal;
-		margin: 6px 0px;
-	}
-
-	.dr-content-media-overlay-factoryFootage h2 {
-		font-family: var(--dr-body-font);
-		font-size: 48px;
-		font-weight: normal;
-		margin: 6px 0px;
-	}
-
-	.dr-content-media-overlay-custom h2 {
+	div[class^="dr-content-media-overlay-"]:not(.dr-content-media-overlay-musicalMoments) h2 {
 		font-family: var(--dr-body-font);
 		font-size: 48px;
 		font-weight: normal;

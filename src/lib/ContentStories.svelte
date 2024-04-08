@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { state, MEDIAPATH } from "../store"
-    import { afterUpdate } from "svelte"
+	import { afterUpdate } from "svelte"
 	import SvelteMarkdown from "svelte-markdown"
-    import { marked } from "marked"
-    export let Content
+	import { marked } from "marked"
+	export let Content
 
 	function setActiveImage(value) {
 		$state.activeImage = value
@@ -38,7 +38,7 @@
 		}
 	}
 
-    afterUpdate(() => {
+	afterUpdate(() => {
 		var audio = document.getElementById("audio") as HTMLAudioElement
 		if (audio) {
 			audio.addEventListener("ended", function () {
@@ -53,7 +53,7 @@
 			})
 		}
 
-        var video = document.getElementById("video")
+		var video = document.getElementById("video")
 		if (video) {
 			video.addEventListener("ended", function () {
 				const event = new MouseEvent("click", { bubbles: true, view: window })
@@ -107,7 +107,7 @@
 							<track src="" kind="captions" />
 						</video>
 						<div class="dr-content-media-controls">
-							{#if Content.storyMedia[$state.activeImage].caption != ""}
+							{#if Content.storyMedia[$state.activeImage].caption && Content.storyMedia[$state.activeImage].caption !== ""}
 								<div class="dr-content-media-caption">
 									{@html marked.parse(Content.storyMedia[$state.activeImage].caption)}
 								</div>

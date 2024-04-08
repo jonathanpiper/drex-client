@@ -6,6 +6,8 @@
 	import DwellScreen from "./lib/DwellScreen.svelte"
 	import LoadingScreen from "./lib/LoadingScreen.svelte"
 
+    console.log('Build version 4-6-24')
+
     const params = new URLSearchParams(window.location.search)
     if (params.has('preview')) {
         $previewIdentifier = params.get('preview')
