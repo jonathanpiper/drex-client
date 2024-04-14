@@ -9,11 +9,6 @@
     src: url("/files/Signika-VariableFont_wght.ttf") format("truetype");
 }
 
-@font-face {
-    font-family: "OpenSans";
-    src: url("/files/OpenSans-VariableFont_wdthwght.ttf") format("truetype");
-}
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.3;

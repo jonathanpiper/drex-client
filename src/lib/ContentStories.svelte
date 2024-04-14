@@ -135,10 +135,10 @@
 			{/if}
 		</div>
 	{/if}
+	{#if Content === null}
+		<img id="instruction-story" src="{$MEDIAPATH}INSTRUCTION-STORY.png" alt="Choose a story" />
+	{/if}
 </div>
-{#if Content === null}
-	<img id="instruction-story" src="{$MEDIAPATH}INSTRUCTION-STORY.png" alt="Choose a story" />
-{/if}
 
 <style>
 	.dr-content-story-image-selection-item {
@@ -151,9 +151,8 @@
 		margin-right: 0px;
 	}
 	#instruction-story {
-		position: fixed;
-		top: 300px;
-		left: 1220px;
+        margin-left: -36px;
+        margin-top: 240px;
 		width: auto;
 		height: 420px;
 	}
@@ -337,7 +336,7 @@
 	}
 
 	.dr-content-audio-control-item p {
-		margin: 12px;
+		margin: 14px;
 		font-size: 24px;
 	}
 

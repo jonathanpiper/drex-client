@@ -1,0 +1,11 @@
+services:
+    drex:
+        build: .
+        ports: 
+            - "8001:80"
+    kiosk:
+        image: "ubuntu:21.04"
+        working_dir: /host_applications/
+        volumes:
+            - /Applications/:/host_applications/
+        command: [ "Books" ]

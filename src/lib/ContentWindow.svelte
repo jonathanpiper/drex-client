@@ -66,7 +66,8 @@
 	.dr-content-home {
 		width: 100%;
 		align-self: flex-start;
-		padding: 220px 280px;
+        margin: auto 200px;
+		/* padding: 220px 280px; */
 	}
 
 	.dr-content-home-title {

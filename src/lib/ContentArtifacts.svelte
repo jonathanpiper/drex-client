@@ -13,7 +13,7 @@
 			<h2>{@html Content.title}</h2>
 			<h2>{Content.date}</h2>
 			<div>{@html marked.parse(Content.description)}</div>
-			<p>{Content.credit}</p>
+			<p>{@html Content.credit}</p>
 		</div>
 		<div class="dr-content-artifact-image">
 			{#key Content}
@@ -21,18 +21,17 @@
 			{/key}
 		</div>
 	{:else}
-		<img id="instruction-artifact" src="{$MEDIAPATH}INSTRUCTION-ARTIFACT.png" alt="Choose an artifact" />
+        <img id="instruction-artifact" src="{$MEDIAPATH}INSTRUCTION-ARTIFACT.png" alt="Choose an artifact" />
 	{/if}
 </div>
 
 <style>
 	#instruction-artifact {
-		position: fixed;
-		top: 300px;
-		left: 1220px;
+        margin-left: -36px;
+        margin-top: 240px;
 		width: auto;
 		height: 420px;
-	}
+    }
 	.dr-content-artifacts {
 		display: flex;
 		flex-direction: row;
@@ -49,7 +48,7 @@
 		font-weight: 500;
 		font-size: 48px;
 		margin: 0px;
-        line-height: normal;
+		line-height: normal;
 	}
 
 	.dr-content-artifacts h2:last-of-type {
@@ -59,7 +58,7 @@
 	.dr-content-artifact-text {
 		font-family: var(--dr-body-font);
 		font-size: 36px;
-        line-height: normal;
+		line-height: normal;
 	}
 
 	.dr-content-artifact-text p:last-of-type {

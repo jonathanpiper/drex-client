@@ -31,40 +31,42 @@
 	})
 </script>
 
-<div class="dr-primary-navigation-container">
-	<div class="dr-primary-navigation-content">
-		{#if Rail.dateRange}
-			<h1 class="dr-primary-navigation-dateRange">{Rail.dateRange}</h1>
-		{/if}
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div class="dr-primary-navigation-title" on:click={() => dispatch("resetState")}>
-			<div
-				id="dr-title{Rail.identifier == 'rail4a' || Rail.identifier.substring(4, 5) == '2'
-					? '-small'
-					: titleLongestWord > 8 || titleNumberOfWords > 3
-						? '-mid'
-						: ''}"
-			>
-				{Rail.title}
-			</div>
-		</div>
-		{#each Rail.content as contentItem, index}
+<div class="dr-primary-navigation">
+	<div class="dr-primary-navigation-container">
+		<div class="dr-primary-navigation-content">
+			{#if Rail.dateRange}
+				<div class="dr-primary-navigation-dateRange"><h1>{Rail.dateRange}</h1></div>
+			{/if}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
-				class="dr-primary-navigation-item{getTitleSize(contentItem.title)[0] > 3 ? '-small' : ''} {$state.activePrimary == index ? 'active' : ''}"
-				on:click={() => setPrimaryNavigation(index)}
-			>
-				<img
-					src="{$MEDIAPATH}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}"
-					alt={contentItem.title}
-				/>
-				<h2>{contentItem.title}</h2>
+			<div class="dr-primary-navigation-title" on:click={() => dispatch("resetState")}>
+				<div
+					id="dr-title{Rail.identifier == 'rail4a' || Rail.identifier.substring(4, 5) == '2'
+						? '-small'
+						: titleLongestWord > 8 || titleNumberOfWords > 3
+							? '-mid'
+							: ''}"
+				>
+					{Rail.title}
+				</div>
 			</div>
-		{/each}
+			{#each Rail.content as contentItem, index}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<div
+					class="dr-primary-navigation-item{getTitleSize(contentItem.title)[0] > 3 ? '-small' : ''} {$state.activePrimary == index ? 'active' : ''}"
+					on:click={() => setPrimaryNavigation(index)}
+				>
+					<img
+						src="{$MEDIAPATH}{contentItem.icon ? contentItem.icon : contentItem.title.toLowerCase().replace(/\s/g, '') + '.svg'}"
+						alt={contentItem.title}
+					/>
+					<h2>{contentItem.title}</h2>
+				</div>
+			{/each}
+		</div>
 	</div>
 	{#if $state.activePrimary === null}
 		<img
-			id="instruction-topic{Rail.content.length == 4 ? '-small' : ''}"
+			id="instruction-topic{Rail.content.length === 4 || Rail.dateRange ? '-small' : ''}"
 			src="{$MEDIAPATH}INSTRUCTION-TOPIC{Rail.content.length == 4 ? '-SMALL' : ''}.png"
 			alt="Choose a topic"
 		/>
@@ -73,6 +75,9 @@
 
 <style>
 	.dr-primary-navigation-dateRange {
+		margin-bottom: -60px;
+	}
+	.dr-primary-navigation-dateRange h1 {
 		color: var(--dr-gallery-color-dateRange);
 		font-family: var(--dr-title-font);
 		/* font-weight: 700; */
@@ -80,10 +85,17 @@
 		margin-bottom: 0px;
 	}
 
-	#instruction-topic {
+	/* #instruction-topic {
 		position: fixed;
 		top: 950px;
 		left: 160px;
+		width: 250px;
+		height: auto;
+	} */
+
+	#instruction-topic {
+		margin-top: -30px;
+		margin-left: 160px;
 		width: 250px;
 		height: auto;
 	}
@@ -98,17 +110,19 @@
 	} */
 
 	#instruction-topic-small {
-		position: fixed;
-		top: 1120px;
-		left: 160px;
+		margin-top: -30px;
+		margin-left: 160px;
 		width: 250px;
 		height: auto;
 	}
 
-	.dr-primary-navigation-container {
-		background-color: rgba(255, 255, 255, 0.1);
+	.dr-primary-navigation {
 		grid-column-start: primary-nav;
 		grid-column-end: secondary-nav;
+	}
+
+	.dr-primary-navigation-container {
+		background-color: rgba(255, 255, 255, 0.1);
 		border-bottom-right-radius: 40px;
 		padding-left: 66px;
 		padding-top: 62px;
@@ -142,7 +156,7 @@
 	.dr-primary-navigation-title #dr-title-small {
 		align-self: flex-end;
 		font-family: var(--dr-title-font);
-		font-size: 48pt;
+		font-size: 42pt;
 		font-weight: bold;
 		text-transform: uppercase;
 		line-height: 1.05;
@@ -159,7 +173,7 @@
 		margin-bottom: 35px;
 	}
 
-	.dr-primary-navigation-item {
+	[class*="dr-primary-navigation-item"] {
 		display: flex;
 		align-items: center;
 		height: 130px;
@@ -171,9 +185,11 @@
 		margin-bottom: 40px;
 	}
 
-	.dr-primary-navigation-item img {
+	[class*="dr-primary-navigation-item"] img {
+		width: 87px;
 		height: 60px;
 		margin-right: 25px;
+		object-fit: contain;
 	}
 
 	.dr-primary-navigation-item h2 {
@@ -182,7 +198,7 @@
 		font-size: 48px;
 		font-weight: normal;
 		text-transform: uppercase;
-        line-height: 1.2;
+		line-height: 1.2;
 	}
 	.dr-primary-navigation-item-small h2 {
 		align-self: center;
@@ -190,17 +206,6 @@
 		font-size: 40px;
 		font-weight: normal;
 		text-transform: uppercase;
-        line-height: 1.2;
-	}
-	.dr-primary-navigation-item-small {
-		display: flex;
-		align-items: center;
-		height: 130px;
-		width: 1fr;
-		border-radius: 10px;
-		border: solid 4px black;
-		background-color: var(--dr-gallery-color);
-		padding-left: 25px;
-		margin-bottom: 40px;
+		line-height: 1.2;
 	}
 </style>

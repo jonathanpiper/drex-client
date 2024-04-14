@@ -88,10 +88,10 @@
 			{#if MediaItem?.staticClip}
 				<div class="dr-content-media-overlay-static-clip">
 					{#if MediaItem?.title}
-						<p><strong>“{MediaItem.title}”</strong></p>
+						<h2 class="dr-content-media-overlay-static-title">“{MediaItem.title}”</h2>
 					{/if}
 					{#if MediaItem?.artist}
-						<p>{MediaItem.artist}{MediaItem.year ? ", " + MediaItem.year : ""}</p>
+						<h2>{MediaItem.artist}{MediaItem.year ? ", " + MediaItem.year : ""}</h2>
 					{/if}
 				</div>
 			{:else}
@@ -147,7 +147,7 @@
 								<h2>“{item.title}”</h2>
 								<h2 class={item.artist.length > 30 ? "small" : ""}>{item.artist}</h2>
 							{:else if Content?._type === "factoryFootage" || "oralHistories"}
-								<h2>{item.title}</h2>
+								<h2 class={item.title.length > 20 ? "small" : ""}>{item.title}</h2>
 							{/if}
 						</div>
 						{#if Content?._type == "oralHistories"}<p>
@@ -158,16 +158,15 @@
 			</div>
 		{/if}
 	{/if}
+	{#if Content === null}
+		<img id="instruction-media" src="{$MEDIAPATH}INSTRUCTION-MEDIA.png" alt="Choose a category" />
+	{/if}
 </div>
-{#if Content === null}
-	<img id="instruction-media" src="{$MEDIAPATH}INSTRUCTION-MEDIA.png" alt="Choose a category" />
-{/if}
 
 <style>
 	#instruction-media {
-		position: fixed;
-		top: 300px;
-		left: 1220px;
+        margin-left: -94px;
+        margin-top: 182px;
 		width: auto;
 		height: 420px;
 	}
@@ -177,6 +176,7 @@
 		height: 1320px;
 		position: relative;
 		z-index: 0;
+		/* overflow: hidden; */
 	}
 
 	:global(.dr-content-media-header) {
@@ -247,7 +247,7 @@
 		margin-bottom: 0px;
 		margin-left: 10px;
 		margin-right: 10px;
-		line-height: 150%;
+		line-height: 120%;
 	}
 
 	.dr-content-media-item-musicalMoments h2 {
@@ -259,11 +259,7 @@
 	}
 
 	.dr-content-media-item-musicalMoments h2.small {
-		font-family: var(--dr-body-font);
-		font-size: 22px;
-		font-weight: normal;
-		margin: 8px 20px;
-		line-height: 1.2;
+		font-size: 20px;
 		letter-spacing: -1.5px;
 	}
 
@@ -272,6 +268,11 @@
 		font-size: 34px;
 		font-weight: normal;
 		margin: 18px 20px;
+	}
+
+	div[class^="dr-content-media-item-"]:not(.dr-content-media-item-musicalMoments) h2.small {
+		font-size: 34px;
+		letter-spacing: -1.2px;
 	}
 
 	div[class^="dr-content-media-item-"] img {
@@ -287,14 +288,14 @@
 		top: -58px;
 		left: -58px;
 		width: 2120px !important;
-		height: auto !important;
-		object-fit: cover;
+		height: 1192.5px;
+		object-fit: contain;
 		z-index: 0;
 	}
 
 	.dr-content-media-overlay-musicalMoments {
 		position: absolute;
-		width: 1200px;
+		width: auto;
 		bottom: 220px;
 		z-index: 9;
 	}
@@ -350,13 +351,19 @@
 		margin: 0px;
 	}
 	.dr-content-media-overlay-static-clip {
-		position: absolute;
-		left: 1035px;
-		top: 434px;
+		position: relative !important;
+		height: auto;
+		width: 1000px !important;
+		left: 940px;
+		top: 334px;
 	}
-	.dr-content-media-overlay-static-clip p {
-		font-size: 64px;
+	.dr-content-media-overlay-static-clip h2 {
+		font-size: 64px!important;
 		font-family: var(--dr-body-font);
-		margin: 0;
+		margin: 0!important;
 	}
+
+    .dr-content-media-overlay-static-title {
+        font-weight: bold!important;
+    }
 </style>
