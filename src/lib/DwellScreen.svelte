@@ -92,7 +92,7 @@
 		justify-content: center;
 	}
 	.bounce {
-		animation: bounce 60s linear 100;
+		animation: bounce 60s linear infinite;
 		transform-origin: 50% 80%;
 		transform-box: view-box;
 	}
