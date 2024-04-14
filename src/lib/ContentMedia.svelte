@@ -48,7 +48,6 @@
 	$: if (MediaItem !== null) checkVideo()
 
 	$: if ($state.activeTertiary === null) MediaItem = null
-	$: console.log(MediaItem)
 
 	afterUpdate(() => {
 		if (!video) {

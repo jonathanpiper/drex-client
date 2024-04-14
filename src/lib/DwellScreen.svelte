@@ -27,7 +27,6 @@
 
 		function setDwellScreen() {
 			if ($state.playPause === "Play" && $state.playPauseAudio === "Play") {
-                console.log('setting dwell screen')
 				dwellScreenActive = true
 				rotateDwellImage()
 				setTimeout($state.reset, 2000)

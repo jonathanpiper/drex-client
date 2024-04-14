@@ -6,20 +6,18 @@
 	import DwellScreen from "./lib/DwellScreen.svelte"
 	import LoadingScreen from "./lib/LoadingScreen.svelte"
 
-    console.log('Build version 4-6-24')
+    console.log('Build version 4-15-24')
 
     const params = new URLSearchParams(window.location.search)
     if (params.has('preview')) {
         $previewIdentifier = params.get('preview')
-        console.log($MEDIAPATH)
     }
 
 	let Rail, Config, railDefinition
 	const webSocket = new WebSocket("ws://192.168.168.180:9000")
 	webSocket.onmessage = (event) => {
 		const wsMessage = event.data.replace(/["]/g, "")
-		console.log(wsMessage)
-		if (wsMessage == "forceRefresh") {
+		if (wsMessage === "forceRefresh") {
 			console.log("Received reload message from DREX server.")
 			window.location.reload()
 		} else {

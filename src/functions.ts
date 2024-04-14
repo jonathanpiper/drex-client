@@ -22,7 +22,7 @@ const getPreviewContent = async (identifier: string | null) => {
     try {
         const req = await fetch(`http://192.168.168.180:3000/api/preview/${identifier}`)
         const content = await req.json()
-        console.log(content)
+        console.log('Preview:', content)
         return content
     } catch (err) {
         console.log(err)
