@@ -1,17 +1,38 @@
 <script lang="ts">
 	import { loadData, setRailStyles } from "./functions"
-	import { previewIdentifier, MEDIAPATH, state } from "./store"
+	import { previewIdentifier, MEDIAPATH, state, DEBUG } from "./store"
 	import { onMount } from "svelte"
 	import DigitalRail from "./lib/DigitalRail.svelte"
 	import DwellScreen from "./lib/DwellScreen.svelte"
 	import LoadingScreen from "./lib/LoadingScreen.svelte"
+	import Debug from "./lib/Debug.svelte"
 
-    console.log('Build version 4-15-24')
+	var con = []
+	;["log", "debug", "info", "warn", "error"].forEach(function (verb) {
+		console[verb] = (function (method, verb) {
+			return function () {
+				method.apply(console, arguments)
+				var msg = verb + ": " + JSON.stringify(Array.prototype.slice.call(arguments).join(" "), null, "\t")
+				con.push(msg)
+			}
+		})(console[verb], verb)
+	})
 
-    const params = new URLSearchParams(window.location.search)
-    if (params.has('preview')) {
-        $previewIdentifier = params.get('preview')
-    }
+	const BUILD = "Build version 5-3-24"
+
+	console.log(BUILD)
+
+	const params = new URLSearchParams(window.location.search)
+	if (params.has("preview")) {
+		$previewIdentifier = params.get("preview")
+	}
+
+	$DEBUG = params.has("debug") ? true : null
+
+	addEventListener("keydown", (event) => {
+		event.key === "d" ? ($DEBUG ? ($DEBUG = null) : ($DEBUG = true)) : null
+        event.key === "c" ? con = [] : null
+	})
 
 	let Rail, Config, railDefinition
 	const webSocket = new WebSocket("ws://192.168.168.180:9000")
@@ -25,7 +46,7 @@
 		}
 	}
 	onMount(async () => {
-	    const promise = await loadData($previewIdentifier)
+		const promise = await loadData($previewIdentifier)
 		Rail = promise.rail
 		Config = promise.config
 		railDefinition = {
@@ -52,8 +73,8 @@
 		$state.activeSecondary = null
 		$state.activeTertiary = null
 		$state.activeImage = 0
-        $state.playPause = "Play"
-        $state.playPauseAudio = "Play"
+		$state.playPause = "Play"
+		$state.playPauseAudio = "Play"
 	}
 </script>
 
@@ -62,10 +83,13 @@
 </svelte:head>
 
 {#if !Rail}
-	<LoadingScreen identifier={railDefinition?.identifier} />
+	<LoadingScreen {BUILD} identifier={railDefinition?.identifier} />
 {:else}
 	<DwellScreen dwellImages={Rail.dwell.images} on:resetState={resetState} />
 	<DigitalRail {Rail} on:resetState={resetState} on:setPrimary={setPrimary} on:setSecondary={setSecondary} />
+{/if}
+{#if $DEBUG}
+	<Debug {Rail} {con} />
 {/if}
 
 <style>

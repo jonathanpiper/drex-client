@@ -43,19 +43,20 @@
 		viewer.tileSources = []
 		object.artifactImages.forEach((img) => {
 			const filename = img.image.substring(0, img.image.length - 4)
+            const extension = img.image.replace(filename, '')
 			var levelsArray = []
 			if (!previewIdentifier) {
 				;["_quarter", "_half", "_threequarter"].forEach((size) => {
 					var multiplier = size == "_quarter" ? 0.25 : size == "_half" ? 0.5 : 0.75
 					levelsArray.push({
-						url: $MEDIAPATH + filename + size + ".jpg",
+						url: $MEDIAPATH + filename + size + extension,
 						width: Math.floor(img.width * multiplier),
 						height: Math.floor(img.height * multiplier),
 					})
 				})
 			}
 			levelsArray.push({
-				url: $MEDIAPATH + filename + ".jpg",
+				url: $MEDIAPATH + filename + extension,
 				width: img.width,
 				height: img.height,
 			})

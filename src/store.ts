@@ -1,5 +1,7 @@
 import { writable, derived } from "svelte/store"
 
+export const DEBUG = writable(null)
+
 export const state = writable({
 	playPause: "Play",
 	playPauseAudio: "Play",

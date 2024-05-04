@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { state, MEDIAPATH } from "../store"
+	import { state, MEDIAPATH, DEBUG } from "../store"
 	import SvelteMarkdown from "svelte-markdown"
 	import OSD from "./OSD.svelte"
 	import { marked } from "marked"
@@ -39,8 +39,11 @@
 	}
 
 	.dr-content-artifact-text {
-		width: calc(1180px-160px-2px);
+		width: 959px;
 		padding: 80px;
+        font-family: var(--dr-body-font);
+		font-size: 36px;
+		line-height: normal;
 	}
 
 	.dr-content-artifacts h2 {
@@ -53,12 +56,6 @@
 
 	.dr-content-artifacts h2:last-of-type {
 		margin-bottom: 20px;
-	}
-
-	.dr-content-artifact-text {
-		font-family: var(--dr-body-font);
-		font-size: 36px;
-		line-height: normal;
 	}
 
 	.dr-content-artifact-text p:last-of-type {
