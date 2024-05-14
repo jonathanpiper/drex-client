@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { loadData, setRailStyles } from "./functions"
+	import { loadData, setRailStyles, getAllImages } from "./functions"
 	import { previewIdentifier, MEDIAPATH, state, DEBUG } from "./store"
 	import { onMount } from "svelte"
 	import DigitalRail from "./lib/DigitalRail.svelte"
@@ -18,7 +18,7 @@
 		})(console[verb], verb)
 	})
 
-	const BUILD = "Build version 5-3-24"
+	const BUILD = "Build version 5-13-24"
 
 	console.log(BUILD)
 
@@ -48,6 +48,11 @@
 	onMount(async () => {
 		const promise = await loadData($previewIdentifier)
 		Rail = promise.rail
+        const imgArray = getAllImages(Rail)
+        console.log(imgArray)
+        imgArray.forEach(img => {
+            new Image().src = $MEDIAPATH + img
+        })
 		Config = promise.config
 		railDefinition = {
 			identifier: Rail.identifier,

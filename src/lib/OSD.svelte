@@ -1,6 +1,6 @@
 <script lang="ts">
 	import OpenSeadragon from "openseadragon"
-	import {  } from "../const"
+	import {} from "../const"
 	import { onMount } from "svelte"
 	import { state, MEDIAPATH, previewIdentifier } from "../store"
 	export let Content
@@ -9,6 +9,7 @@
 	onMount(() => {
 		createOSDViewer()
 		updateOSDViewerImages(Content, viewer)
+		console.log("Mounting OSD",)
 	})
 
 	function createOSDViewer() {
@@ -41,9 +42,10 @@
 
 	function updateOSDViewerImages(object, viewer) {
 		viewer.tileSources = []
+        console.log(JSON.stringify(object.artifactImages, null, "\t"))
 		object.artifactImages.forEach((img) => {
 			const filename = img.image.substring(0, img.image.length - 4)
-            const extension = img.image.replace(filename, '')
+			const extension = img.image.replace(filename, "")
 			var levelsArray = []
 			if (!previewIdentifier) {
 				;["_quarter", "_half", "_threequarter"].forEach((size) => {
@@ -80,12 +82,6 @@
 			<a id="zoom-in" href="#zoom-in">
 				<img src="{$MEDIAPATH}zoomin.svg" alt="Zoom in" />
 			</a>
-			<!-- <img
-        id="home"
-        href="#home"
-        src="./media/OSDimages/fa-home.png"
-        alt="Home"
-      /> -->
 		</div>
 		<div class="right">
 			<a id="previous" href="#previous">
