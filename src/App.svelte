@@ -18,7 +18,7 @@
 		})(console[verb], verb)
 	})
 
-	const BUILD = "Build version 5-13-24"
+	const BUILD = "Build version 5-16-24"
 
 	console.log(BUILD)
 
@@ -49,7 +49,6 @@
 		const promise = await loadData($previewIdentifier)
 		Rail = promise.rail
         const imgArray = getAllImages(Rail)
-        console.log(imgArray)
         imgArray.forEach(img => {
             new Image().src = $MEDIAPATH + img
         })

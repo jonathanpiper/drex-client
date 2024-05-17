@@ -1,19 +1,24 @@
 <script lang="ts">
 	import OpenSeadragon from "openseadragon"
 	import {} from "../const"
-	import { onMount } from "svelte"
+	import { onMount, onDestroy } from "svelte"
 	import { state, MEDIAPATH, previewIdentifier } from "../store"
 	export let Content
 	var viewer
 
 	onMount(() => {
-		createOSDViewer()
+		viewer = createOSDViewer()
 		updateOSDViewerImages(Content, viewer)
-		console.log("Mounting OSD",)
+		console.log("Mounting OSD")
 	})
 
+    onDestroy(() => {
+        viewer.destroy()
+        console.log("Cleaning up OSD")
+    })
+
 	function createOSDViewer() {
-		viewer = OpenSeadragon({
+		return OpenSeadragon({
 			id: "openseadragon1",
 			prefixUrl: $MEDIAPATH,
 			sequenceMode: true,
@@ -28,12 +33,9 @@
 			minZoomLevel: null,
 			autoHideControls: false,
 			showFullPageControl: false,
-			// dblClickToZoom: false,
 			clickTimeThreshold: 500,
-			// toolbar: "OSDToolbar",
 			zoomInButton: "zoom-in",
 			zoomOutButton: "zoom-out",
-			// homeButton: "home",
 			previousButton: "previous",
 			nextButton: "next",
 			showHomeControl: false,
@@ -42,7 +44,6 @@
 
 	function updateOSDViewerImages(object, viewer) {
 		viewer.tileSources = []
-        console.log(JSON.stringify(object.artifactImages, null, "\t"))
 		object.artifactImages.forEach((img) => {
 			const filename = img.image.substring(0, img.image.length - 4)
 			const extension = img.image.replace(filename, "")

@@ -3,7 +3,7 @@
     export let BUILD
 </script>
 
-<div class="loading-container"><h1>Now loading Museum of Making Music Digital Rail {identifier || ""}</h1><h2>{BUILD}</h2></div>
+<div class="loading-container"><h1>Now loading Museum of Making Music Digital Rail{` ${identifier}` || ""}</h1><h2>{BUILD}</h2></div>
 
 <style>
 	.loading-container {
